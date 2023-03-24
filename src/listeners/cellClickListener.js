@@ -2,10 +2,9 @@ import fieldInstance from "../components/Field";
 
 function cellClickListener(event) {
   const targetId = event.target.id.split("-");
-  const caller = targetId[0];
+  const [caller, x, y] = targetId;
   if (caller !== "cell") return;
-  const clickedCell = fieldInstance.columns[targetId[1]][targetId[2]];
-  clickedCell["type"] = 0;
+  fieldInstance.getAggregationArea(x, y);
   fieldInstance.rerender();
 }
 

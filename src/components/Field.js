@@ -16,8 +16,12 @@ class Field {
         return Array(numY)
           .fill(0)
           .map((cell, indexY) => {
-            const cellType = this._getCellType(numColors);
-            return { id: `${indexX}-${indexY}`, type: cellType };
+            const cellType = this._getRandomCellType(numColors);
+            return {
+              id: `${indexX}-${indexY}`,
+              type: cellType,
+              aggregation: 0,
+            };
           });
       });
   }
@@ -40,7 +44,7 @@ class Field {
     field.append(...columns);
   }
 
-  _getCellType(numColors) {
+  _getRandomCellType(numColors) {
     return Math.ceil(Math.random() * numColors);
   }
 
@@ -70,6 +74,48 @@ class Field {
 
         return column;
       });
+  }
+  // this fn returns array of aggregated cells' coordinates
+  getAggregationArea(x, y) {
+    const clickedCell = this.columns[x][y];
+    const type = clickedCell.type;
+
+    let agg = [{ x: +x, y: +y }];
+    clickedCell.aggregation = type;
+    clickedCell.type = 0;
+    let prevLenght = 1;
+
+    while (true) {
+      agg.forEach((cell) => {
+        agg = [...agg, ...this._getNeighbourCells(+cell.x, +cell.y, type)];
+      });
+      if (prevLenght === agg.length) break;
+      prevLenght = agg.length;
+    }
+    return agg;
+  }
+
+  _getNeighbourCells(x, y, targetType) {
+    const aggr = [];
+    const __getNeighbourCell = ([a, b]) => {
+      const cell = this.columns[a][b];
+      if (cell.type === targetType && !cell.aggregation) {
+        cell.aggregation = targetType;
+        cell.type = 0;
+        aggr.push({ x: a, y: b });
+      }
+    };
+
+    // neighbor cell top
+    if (y > 0) __getNeighbourCell([x, y - 1]);
+    // neighbor cell right
+    if (x < this.numX - 1) __getNeighbourCell([x + 1, y]);
+    // neighbor cell bottom
+    if (y < this.numY - 1) __getNeighbourCell([x, y + 1]);
+    // neighbor cell left
+    if (x > 0) __getNeighbourCell([x - 1, y]);
+
+    return aggr;
   }
 }
 
