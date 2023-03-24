@@ -1,3 +1,4 @@
+import elements from "../state/elements";
 class Field {
   constructor() {
     this.numX = 0;
@@ -15,7 +16,7 @@ class Field {
         return Array(numY)
           .fill(0)
           .map((cell, indexY) => {
-            const cellType = this.getCellType(numColors);
+            const cellType = this._getCellType(numColors);
             return { id: `${indexX}-${indexY}`, type: cellType };
           });
       });
@@ -24,8 +25,27 @@ class Field {
   render() {
     const field = document.createElement("main");
     field.setAttribute("id", "field-container");
+    elements.fieldContainer = field;
 
-    const columns = Array(this.numX)
+    const columns = this._getColumns();
+    field.append(...columns);
+
+    return field;
+  }
+
+  rerender() {
+    const field = elements.fieldContainer;
+    field.innerHTML = "";
+    const columns = this._getColumns();
+    field.append(...columns);
+  }
+
+  _getCellType(numColors) {
+    return Math.ceil(Math.random() * numColors);
+  }
+
+  _getColumns() {
+    return Array(this.numX)
       .fill(0)
       .map((clmn, indexX) => {
         const column = document.createElement("div");
@@ -50,14 +70,6 @@ class Field {
 
         return column;
       });
-
-    field.append(...columns);
-
-    return field;
-  }
-
-  getCellType(numColors) {
-    return Math.floor(Math.random() * numColors);
   }
 }
 
