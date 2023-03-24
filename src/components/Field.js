@@ -19,7 +19,6 @@ class Field {
             return { id: `${indexX}-${indexY}`, type: cellType };
           });
       });
-    console.log(this.columns);
   }
 
   render() {
