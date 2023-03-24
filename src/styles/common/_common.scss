@@ -1,0 +1,37 @@
+html {
+    font-size: 16px;
+}
+
+.theme-main {
+    --font-clr: white;
+    --btn-main-0-clr: #008966;
+    --btn-main-1-clr: #00bc8c;
+    --btn-hover-clr: #00e9ae;
+    --bgrnd-0-clr: #222;
+    --bgrnd-1-clr: #303030;
+    --brdr-1-clr: #555;
+    --bgrnd-1-hover-clr: #444;
+    --player-1-clr: #ff6347;
+}
+
+.theme-another {
+    --font-clr: white;
+    --btn-main-0-clr: #cb6757;
+    --btn-main-1-clr: #ed7966;
+    --btn-hover-clr: #f08e7e;
+    --bgrnd-0-clr: #141850;
+    --bgrnd-1-clr: #303179;
+    --brdr-1-clr: #626398;
+    --bgrnd-1-hover-clr: #8e8fb3;
+    --player-1-clr: #f5cac2;
+}
+
+#body {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: var(--bgrnd-0-clr);
+    font-family: 'Roboto';
+    color: var(--font-clr);
+}

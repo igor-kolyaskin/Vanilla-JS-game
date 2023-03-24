@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import "./common/common";
+
+@media (min-width: 300px) {
+    @import "./xl/main-xl";
+}
+
+// @media (min-width: 1000px) and (max-width: 1200px) {
+//     @import "./l/main-l";
+// }
+
+// @media (min-width: 350px) and (max-width: 999px) {
+//     @import "./s/main-s";
+// }

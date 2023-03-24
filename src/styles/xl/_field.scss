@@ -1,0 +1,28 @@
+#field-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17rem;
+    height: 25rem;
+    background-color: teal;
+    box-sizing: border-box;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 4rem;
+    margin: 0.1rem;
+    background-color: olive;
+    box-sizing: border-box;
+}
+
+.cell{
+    width: 3.8rem;
+    height: 3.8rem;
+    margin: 0.1rem;
+    background-color: tomato;
+    box-sizing: border-box;
+}
