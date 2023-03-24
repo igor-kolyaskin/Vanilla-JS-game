@@ -1,13 +1,12 @@
-// import elements from "../../constants/elements"
-
 class Field {
   constructor() {
     this.numX = 0;
     this.numY = 0;
+    this.numColors = 0;
     this.columns = [];
   }
 
-  init({ numX, numY }) {
+  init({ numX, numY, numColors }) {
     this.numX = numX;
     this.numY = numY;
     this.columns = Array(numX)
@@ -15,7 +14,10 @@ class Field {
       .map((column, indexX) => {
         return Array(numY)
           .fill(0)
-          .map((cell, indexY) => ({ id: `${indexX}-${indexY}` }));
+          .map((cell, indexY) => {
+            const cellType = this.getCellType(numColors);
+            return { id: `${indexX}-${indexY}`, type: cellType };
+          });
       });
     console.log(this.columns);
   }
@@ -34,9 +36,15 @@ class Field {
         const cells = Array(this.numY)
           .fill(0)
           .map((cll, indexY) => {
+            const objectCellType = this.columns[indexX][indexY]["type"];
+
             const cell = document.createElement("div");
-            cell.setAttribute("id", `cell-${indexX}-${indexY}`);
+            cell.setAttribute(
+              "id",
+              `cell-${indexX}-${indexY}-${objectCellType}`
+            );
             cell.classList.add("cell");
+            cell.style.backgroundColor = `var(--cell-${objectCellType}-clr)`;
             return cell;
           });
         column.append(...cells);
@@ -47,6 +55,10 @@ class Field {
     field.append(...columns);
 
     return field;
+  }
+
+  getCellType(numColors) {
+    return Math.floor(Math.random() * numColors);
   }
 }
 
