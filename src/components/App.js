@@ -1,5 +1,5 @@
 import Header from "./header/Header";
-import Field from "./Field";
+import fieldInstance from "./Field";
 import Score from "./score/Score";
 import cellClickListener from "../listeners/cellClickListener";
 
@@ -8,11 +8,11 @@ function App() {
   app.classList.add("app");
 
   const header = Header();
-  const field = Field.render();
-  field.addEventListener("click", cellClickListener);
+  const fieldDomElement = fieldInstance.render();
+  fieldDomElement.addEventListener("click", cellClickListener);
   const score = Score();
 
-  app.append(header, field, score);
+  app.append(header, fieldDomElement, score);
 
   return app;
 }
