@@ -16,17 +16,6 @@ function tileClickListener(event) {
   }
 
   handleClick();
-
-  // rerender() creates a new field DOM-tree
-  // fieldInstance.rerender();
-
-  // for (let i = 0; i < fieldInstance.numX; i++) {
-  //   console.log(
-  //     `column ${i}: ${fieldInstance
-  //       ._getRefreshedColumn(i)
-  //       .map((tile) => `<${tile.id}/${tile.type}>`)}`
-  //   );
-  // }
 }
 
 export default tileClickListener;

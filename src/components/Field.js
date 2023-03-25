@@ -124,19 +124,6 @@ class Field {
     return aggr;
   }
 
-  _getRefreshedColumn(columnNumber) {
-    const column = this.tiles[columnNumber];
-    const cleanedColumn = column.filter((tile) => tile.type);
-    const gap = this.numY - cleanedColumn.length;
-    let replenishment = [];
-    if (gap) {
-      replenishment = Array(gap)
-        .fill(0)
-        .map((tl, index) => this._createTile(columnNumber, index));
-    }
-    return replenishment.concat(cleanedColumn);
-  }
-
   // changeAggregatedTilesInDOM(aggArea)
   // applies visible changes to aggregated DOM-tiles in accordance with aggArea
   // currently sets color = 0
