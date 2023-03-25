@@ -54,15 +54,15 @@ html {
   #header {
     width: 100%;
     height: 8rem;
-    background-color: limegreen;
+    background-color: darkolivegreen;
     box-sizing: border-box;
   }
   #field-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 17rem;
-    height: 25rem;
+    width: 16rem;
+    height: 24rem;
     background-color: teal;
     box-sizing: border-box;
   }
@@ -72,20 +72,20 @@ html {
     justify-content: flex-start;
     align-items: center;
     width: 4rem;
-    margin: 0.1rem;
     background-color: olive;
     box-sizing: border-box;
   }
   .tile {
-    width: 3.8rem;
-    height: 3.8rem;
-    margin: 0.1rem;
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid grey;
     box-sizing: border-box;
   }
   #score {
     width: 22rem;
     height: 8rem;
-    background-color: gold;
+    margin: 1rem;
+    background-color: darkgray;
     box-sizing: border-box;
   }
 }/*# sourceMappingURL=main.css.map */
