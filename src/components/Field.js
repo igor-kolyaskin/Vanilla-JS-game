@@ -78,7 +78,10 @@ class Field {
         return column;
       });
   }
-  // this fn returns array of aggregated tiles' coordinates
+
+  // getAggregationArea(x, y)
+  // 1) sets type = 0 for aggregated tiles in object this.tiles
+  // 2) returns array of aggregated tiles' coordinates
   getAggregationArea(x, y) {
     const clickedTile = this.tiles[x][y];
     const type = clickedTile.type;
@@ -134,14 +137,41 @@ class Field {
     return replenishment.concat(cleanedColumn);
   }
 
-  // applies changes to aggregated DOM-tiles
-  // currently changes id and sets type = 0
-  changeAggregatedTilesInDOM(aggArea) {
+  // changeAggregatedTilesInDOM(aggArea)
+  // applies visible changes to aggregated DOM-tiles in accordance with aggArea
+  // currently sets color = 0
+  changeAggregatedTilesInDOM(aggArea, color) {
     aggArea.forEach((tile) => {
       const tileDOM = document.getElementById(`tile-${tile.x}-${tile.y}`);
-      tileDOM.style.backgroundColor = "var(--tile-0-clr)";
+      tileDOM.style.backgroundColor = `var(--tile-${color}-clr)`;
     });
   }
+
+  // refreshColumns(aggArea)
+  // 1) changes columns in object this.tiles
+  // 2) changes columns in DOM-tree
+  refreshColumns(aggArea) {
+    const columnArray = [];
+    aggArea.forEach((tile) => {
+      if (!columnArray.includes(tile.x)) columnArray.push(+tile.x);
+    });
+    columnArray
+      .sort((a, b) => a - b)
+      .forEach((columnNum) => {
+        const aggregatedTilesInThisColumn = aggArea
+          .filter((tile) => tile.x === columnNum)
+          .sort((a, b) => a.y - b.y)
+          .map((tile) => tile.y);
+        this._refreshColumnInTilesObject(
+          columnNum,
+          aggregatedTilesInThisColumn
+        );
+        this._refreshColumnInTilesDOM(columnNum, aggregatedTilesInThisColumn);
+      });
+  }
+
+  _refreshColumnInTilesObject(columnNum, tilesArray) {}
+  _refreshColumnInTilesDOM(columnNum, tilesArray) {}
 }
 
 export default new Field();
