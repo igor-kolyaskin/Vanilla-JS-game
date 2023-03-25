@@ -10,45 +10,51 @@ class Field {
   init({ numX, numY, numColors }) {
     this.numX = numX;
     this.numY = numY;
+    this.numColors = numColors;
+
     this.tiles = Array(numX)
       .fill(0)
       .map((column, indexX) => {
         return Array(numY)
           .fill(0)
-          .map((tile, indexY) => {
-            const tileType = this._getRandomTileType(numColors);
-            return {
-              id: `${indexX}-${indexY}`,
-              type: tileType,
-              aggregation: 0,
-            };
-          });
+          .map((tile, indexY) => this._createTile(indexX, indexY));
       });
   }
 
+  _createTile(x, y, aggregation = 0) {
+    const tileType = this._getRandomTileType();
+    return {
+      id: `${x}-${y}`,
+      type: tileType,
+      aggregation: aggregation,
+    };
+  }
+
+  // creates DOM-tree of tiles first time
   render() {
     const field = document.createElement("main");
     field.setAttribute("id", "field-container");
     elements.fieldContainer = field;
 
-    const tiles = this._getTiles();
-    field.append(...tiles);
+    const tilesDOM = this._createDOMTiles();
+    field.append(...tilesDOM);
 
     return field;
   }
 
+  // creates a new DOM-tree of tiles and replaces the old one
   rerender() {
     const field = elements.fieldContainer;
     field.innerHTML = "";
-    const tiles = this._getTiles();
-    field.append(...tiles);
+    const tilesDOM = this._createDOMTiles();
+    field.append(...tilesDOM);
   }
 
-  _getRandomTileType(numColors) {
-    return Math.ceil(Math.random() * numColors);
+  _getRandomTileType() {
+    return Math.ceil(Math.random() * this.numColors);
   }
 
-  _getTiles() {
+  _createDOMTiles() {
     return Array(this.numX)
       .fill(0)
       .map((clmn, indexX) => {
@@ -62,10 +68,7 @@ class Field {
             const objectTileType = this.tiles[indexX][indexY]["type"];
 
             const tile = document.createElement("div");
-            tile.setAttribute(
-              "id",
-              `tile-${indexX}-${indexY}-${objectTileType}`
-            );
+            tile.setAttribute("id", `tile-${indexX}-${indexY}`);
             tile.classList.add("tile");
             tile.style.backgroundColor = `var(--tile-${objectTileType}-clr)`;
             return tile;
@@ -116,6 +119,28 @@ class Field {
     if (x > 0) __getNeighbourTile([x - 1, y]);
 
     return aggr;
+  }
+
+  _getRefreshedColumn(columnNumber) {
+    const column = this.tiles[columnNumber];
+    const cleanedColumn = column.filter((tile) => tile.type);
+    const gap = this.numY - cleanedColumn.length;
+    let replenishment = [];
+    if (gap) {
+      replenishment = Array(gap)
+        .fill(0)
+        .map((tl, index) => this._createTile(columnNumber, index));
+    }
+    return replenishment.concat(cleanedColumn);
+  }
+
+  // applies changes to aggregated DOM-tiles
+  // currently changes id and sets type = 0
+  changeAggregatedTilesInDOM(aggArea) {
+    aggArea.forEach((tile) => {
+      const tileDOM = document.getElementById(`tile-${tile.x}-${tile.y}`);
+      tileDOM.style.backgroundColor = "var(--tile-0-clr)";
+    });
   }
 }
 
