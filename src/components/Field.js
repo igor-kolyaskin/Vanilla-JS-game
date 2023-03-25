@@ -162,15 +162,26 @@ class Field {
           .filter((tile) => tile.x === columnNum)
           .sort((a, b) => a.y - b.y)
           .map((tile) => tile.y);
-        this._refreshColumnInTilesObject(
-          columnNum,
-          aggregatedTilesInThisColumn
-        );
+        this._refreshColumnInTilesObject(columnNum);
         this._refreshColumnInTilesDOM(columnNum, aggregatedTilesInThisColumn);
       });
   }
 
-  _refreshColumnInTilesObject(columnNum, tilesArray) {}
+  _refreshColumnInTilesObject(columnNum) {
+    const column = this.tiles[columnNum];
+    const gap = column.filter((tile) => tile.type === 0).length;
+
+    const filteredColumn = column
+      .filter((tile) => tile.type !== 0)
+      .map((tile, index) => ({ ...tile, id: `${columnNum}-${index + gap}` }));
+
+    const replenishment = Array(gap)
+      .fill(0)
+      .map((_, index) => this._createTile(columnNum, index));
+
+    return replenishment.concat(filteredColumn);
+  }
+
   _refreshColumnInTilesDOM(columnNum, tilesArray) {}
 }
 
