@@ -9,16 +9,15 @@
 }
 
 .column{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    position: relative;
     width: 4rem;
     background-color: olive;
     box-sizing: border-box;
 }
 
 .tile{
+    position: relative;
+    left: 0;
     width: 4rem;
     height: 4rem;
     border: 1px solid grey;
