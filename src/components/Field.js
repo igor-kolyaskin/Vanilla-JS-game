@@ -4,22 +4,22 @@ class Field {
     this.numX = 0;
     this.numY = 0;
     this.numColors = 0;
-    this.columns = [];
+    this.tiles = [];
   }
 
   init({ numX, numY, numColors }) {
     this.numX = numX;
     this.numY = numY;
-    this.columns = Array(numX)
+    this.tiles = Array(numX)
       .fill(0)
       .map((column, indexX) => {
         return Array(numY)
           .fill(0)
-          .map((cell, indexY) => {
-            const cellType = this._getRandomCellType(numColors);
+          .map((tile, indexY) => {
+            const tileType = this._getRandomTileType(numColors);
             return {
               id: `${indexX}-${indexY}`,
-              type: cellType,
+              type: tileType,
               aggregation: 0,
             };
           });
@@ -31,8 +31,8 @@ class Field {
     field.setAttribute("id", "field-container");
     elements.fieldContainer = field;
 
-    const columns = this._getColumns();
-    field.append(...columns);
+    const tiles = this._getTiles();
+    field.append(...tiles);
 
     return field;
   }
@@ -40,15 +40,15 @@ class Field {
   rerender() {
     const field = elements.fieldContainer;
     field.innerHTML = "";
-    const columns = this._getColumns();
-    field.append(...columns);
+    const tiles = this._getTiles();
+    field.append(...tiles);
   }
 
-  _getRandomCellType(numColors) {
+  _getRandomTileType(numColors) {
     return Math.ceil(Math.random() * numColors);
   }
 
-  _getColumns() {
+  _getTiles() {
     return Array(this.numX)
       .fill(0)
       .map((clmn, indexX) => {
@@ -56,64 +56,64 @@ class Field {
         column.setAttribute("id", `column-${indexX}`);
         column.classList.add("column");
 
-        const cells = Array(this.numY)
+        const tiles = Array(this.numY)
           .fill(0)
-          .map((cll, indexY) => {
-            const objectCellType = this.columns[indexX][indexY]["type"];
+          .map((tl, indexY) => {
+            const objectTileType = this.tiles[indexX][indexY]["type"];
 
-            const cell = document.createElement("div");
-            cell.setAttribute(
+            const tile = document.createElement("div");
+            tile.setAttribute(
               "id",
-              `cell-${indexX}-${indexY}-${objectCellType}`
+              `tile-${indexX}-${indexY}-${objectTileType}`
             );
-            cell.classList.add("cell");
-            cell.style.backgroundColor = `var(--cell-${objectCellType}-clr)`;
-            return cell;
+            tile.classList.add("tile");
+            tile.style.backgroundColor = `var(--tile-${objectTileType}-clr)`;
+            return tile;
           });
-        column.append(...cells);
+        column.append(...tiles);
 
         return column;
       });
   }
-  // this fn returns array of aggregated cells' coordinates
+  // this fn returns array of aggregated tiles' coordinates
   getAggregationArea(x, y) {
-    const clickedCell = this.columns[x][y];
-    const type = clickedCell.type;
+    const clickedTile = this.tiles[x][y];
+    const type = clickedTile.type;
 
     let agg = [{ x: +x, y: +y }];
-    clickedCell.aggregation = type;
-    clickedCell.type = 0;
-    let prevLenght = 1;
+    clickedTile.aggregation = type;
+    clickedTile.type = 0;
+    let prevLength = 1;
 
     while (true) {
-      agg.forEach((cell) => {
-        agg = [...agg, ...this._getNeighbourCells(+cell.x, +cell.y, type)];
+      agg.forEach((tile) => {
+        agg = [...agg, ...this._getNeighbourTiles(+tile.x, +tile.y, type)];
       });
-      if (prevLenght === agg.length) break;
-      prevLenght = agg.length;
+      if (prevLength === agg.length) break;
+      prevLength = agg.length;
     }
     return agg;
   }
 
-  _getNeighbourCells(x, y, targetType) {
+  _getNeighbourTiles(x, y, targetType) {
     const aggr = [];
-    const __getNeighbourCell = ([a, b]) => {
-      const cell = this.columns[a][b];
-      if (cell.type === targetType && !cell.aggregation) {
-        cell.aggregation = targetType;
-        cell.type = 0;
+    const __getNeighbourTile = ([a, b]) => {
+      const tile = this.tiles[a][b];
+      if (tile.type === targetType && !tile.aggregation) {
+        tile.aggregation = targetType;
+        tile.type = 0;
         aggr.push({ x: a, y: b });
       }
     };
 
-    // neighbor cell top
-    if (y > 0) __getNeighbourCell([x, y - 1]);
-    // neighbor cell right
-    if (x < this.numX - 1) __getNeighbourCell([x + 1, y]);
-    // neighbor cell bottom
-    if (y < this.numY - 1) __getNeighbourCell([x, y + 1]);
-    // neighbor cell left
-    if (x > 0) __getNeighbourCell([x - 1, y]);
+    // neighbor tile top
+    if (y > 0) __getNeighbourTile([x, y - 1]);
+    // neighbor tile right
+    if (x < this.numX - 1) __getNeighbourTile([x + 1, y]);
+    // neighbor tile bottom
+    if (y < this.numY - 1) __getNeighbourTile([x, y + 1]);
+    // neighbor tile left
+    if (x > 0) __getNeighbourTile([x - 1, y]);
 
     return aggr;
   }

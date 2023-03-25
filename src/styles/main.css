@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 html {
   font-size: 16px;
-  --cell-0-clr: #0D233D;
-  --cell-1-clr: #349EE9;
-  --cell-2-clr: #A84197;
-  --cell-3-clr: #D2334A;
-  --cell-4-clr: #DCA223;
-  --cell-5-clr: #7DC23E;
+  --tile-0-clr: #0D233D;
+  --tile-1-clr: #349EE9;
+  --tile-2-clr: #A84197;
+  --tile-3-clr: #D2334A;
+  --tile-4-clr: #DCA223;
+  --tile-5-clr: #7DC23E;
 }
 
 .theme-main {
@@ -76,7 +76,7 @@ html {
     background-color: olive;
     box-sizing: border-box;
   }
-  .cell {
+  .tile {
     width: 3.8rem;
     height: 3.8rem;
     margin: 0.1rem;

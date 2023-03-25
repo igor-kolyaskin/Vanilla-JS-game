@@ -1,7 +1,7 @@
 import Header from "./header/Header";
 import fieldInstance from "./Field";
 import Score from "./score/Score";
-import cellClickListener from "../listeners/cellClickListener";
+import tileClickListener from "../listeners/tileClickListener";
 
 function App() {
   const app = document.createElement("div");
@@ -9,7 +9,7 @@ function App() {
 
   const header = Header();
   const fieldDomElement = fieldInstance.render();
-  fieldDomElement.addEventListener("click", cellClickListener);
+  fieldDomElement.addEventListener("click", tileClickListener);
   const score = Score();
 
   app.append(header, fieldDomElement, score);

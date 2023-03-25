@@ -1,11 +1,11 @@
 import fieldInstance from "../components/Field";
 
-function cellClickListener(event) {
+function tileClickListener(event) {
   const targetId = event.target.id.split("-");
   const [caller, x, y] = targetId;
-  if (caller !== "cell") return;
+  if (caller !== "tile") return;
   fieldInstance.getAggregationArea(x, y);
   fieldInstance.rerender();
 }
 
-export default cellClickListener;
+export default tileClickListener;
