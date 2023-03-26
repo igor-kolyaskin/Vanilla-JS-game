@@ -56,10 +56,12 @@ class Field {
   }
 
   _createDomTiles() {
-    return Array(this.numX)
+    const domColumnRefs = [];
+    const domTiles = Array(this.numX)
       .fill(0)
       .map((clmn, indexX) => {
         const column = document.createElement("div");
+        domColumnRefs.push(column);
         column.setAttribute("id", `column-${indexX}`);
         column.classList.add("column");
 
@@ -78,6 +80,9 @@ class Field {
 
         return column;
       });
+    elements.domColumns = domColumnRefs;
+
+    return domTiles;
   }
 
   // getAggregationArea(x, y)
@@ -171,7 +176,8 @@ class Field {
 
     const refreshedModelColumn = modelReplenishment.concat(filteredModelColumn);
 
-    const domColumn = document.getElementById(`column-${columnNum}`);
+    const domColumn = elements.domColumns[columnNum];
+    console.log(domColumn);
   }
 }
 

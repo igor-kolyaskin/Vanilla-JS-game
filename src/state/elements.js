@@ -6,4 +6,12 @@ const elements = {
   set fieldContainer(fc) {
     this._fieldContainer = fc;
   },
+
+  _domColumns: [],
+  get domColumns() {
+    return this._domColumns;
+  },
+  set domColumns(arr) {
+    this._domColumns = arr;
+  },
 };
