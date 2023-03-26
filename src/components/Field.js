@@ -1,6 +1,8 @@
 import elements from "../state/elements";
 import wait from "../utils/wait";
 import state from "../state/state";
+import streetlightInstance from "../components/header/Streetlight";
+
 class Field {
   constructor() {
     this.numX = 0;
@@ -185,7 +187,6 @@ class Field {
 
     const refreshedModelColumn = modelReplenishment.concat(filteredModelColumn);
     this.tiles[columnNum] = [...refreshedModelColumn];
-    console.log("renewed", this.tiles[columnNum]);
 
     // changes in DOM ---------------------------------------------------------------------
 
@@ -217,7 +218,6 @@ class Field {
       let whileCondition = true;
       while (whileCondition) {
         whileCondition = false;
-        await wait(200);
 
         tileNum = 0;
         for (let domTile of domColumn.children) {
@@ -231,10 +231,15 @@ class Field {
           }rem`;
           tileNum++;
         }
+        await wait(250);
       }
+      await wait(150);
     };
 
-    shiftTiles();
+    shiftTiles().then(() => {
+      state.fieldLock = false;
+      streetlightInstance.green();
+    });
   }
 }
 
