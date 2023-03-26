@@ -36,25 +36,26 @@ class Field {
     field.setAttribute("id", "field-container");
     elements.fieldContainer = field;
 
-    const tilesDOM = this._createDOMTiles();
-    field.append(...tilesDOM);
+    const domTiles = this._createDomTiles();
+    field.append(...domTiles);
 
     return field;
   }
 
+  // TODO: could be joined with render()
   // creates a new DOM-tree of tiles and replaces the old one
   rerender() {
     const field = elements.fieldContainer;
     field.innerHTML = "";
-    const tilesDOM = this._createDOMTiles();
-    field.append(...tilesDOM);
+    const domTiles = this._createDomTiles();
+    field.append(...domTiles);
   }
 
   _getRandomTileType() {
     return Math.ceil(Math.random() * this.numColors);
   }
 
-  _createDOMTiles() {
+  _createDomTiles() {
     return Array(this.numX)
       .fill(0)
       .map((clmn, indexX) => {
@@ -80,7 +81,7 @@ class Field {
   }
 
   // getAggregationArea(x, y)
-  // 1) sets type = 0 for aggregated tiles in object this.tiles
+  // 1) sets type = 0 for aggregated tiles in model
   // 2) returns array of aggregated tiles' coordinates
   getAggregationArea(x, y) {
     const clickedTile = this.tiles[x][y];
@@ -124,10 +125,10 @@ class Field {
     return aggr;
   }
 
-  // changeAggregatedTilesInDOM(aggArea)
+  // changeAggregatedDomTiles(aggArea)
   // applies visible changes to aggregated DOM-tiles in accordance with aggArea
   // currently sets color = 0
-  changeAggregatedTilesInDOM(aggArea, color) {
+  changeAggregatedDomTiles(aggArea, color) {
     aggArea.forEach((tile) => {
       const tileDOM = document.getElementById(`tile-${tile.x}-${tile.y}`);
       tileDOM.style.backgroundColor = `var(--tile-${color}-clr)`;
@@ -135,8 +136,8 @@ class Field {
   }
 
   // refreshColumns(aggArea)
-  // 1) changes columns in object this.tiles
-  // 2) changes columns in DOM-tree
+  // 1) changes columns in model
+  // 2) changes columns in DOM
   refreshColumns(aggArea) {
     const columnArray = [];
     aggArea.forEach((tile) => {
@@ -149,27 +150,29 @@ class Field {
           .filter((tile) => tile.x === columnNum)
           .sort((a, b) => a.y - b.y)
           .map((tile) => tile.y);
-        this._refreshColumnInTilesObject(columnNum);
-        this._refreshColumnInTilesDOM(columnNum, aggregatedTilesInThisColumn);
+        this._refreshColumn(columnNum, aggregatedTilesInThisColumn);
       });
   }
 
-  _refreshColumnInTilesObject(columnNum) {
-    const column = this.tiles[columnNum];
-    const gap = column.filter((tile) => tile.type === 0).length;
+  // refreshColumns(aggArea)
+  // 1) changes a column in model
+  // 2) changes a column in DOM
+  _refreshColumn(columnNum, aggTiles) {
+    const modelColumn = this.tiles[columnNum];
+    const gap = modelColumn.filter((tile) => tile.type === 0).length;
 
-    const filteredColumn = column
+    const filteredModelColumn = modelColumn
       .filter((tile) => tile.type !== 0)
       .map((tile, index) => ({ ...tile, id: `${columnNum}-${index + gap}` }));
 
-    const replenishment = Array(gap)
+    const modelReplenishment = Array(gap)
       .fill(0)
       .map((_, index) => this._createTile(columnNum, index));
 
-    return replenishment.concat(filteredColumn);
-  }
+    const refreshedModelColumn = modelReplenishment.concat(filteredModelColumn);
 
-  _refreshColumnInTilesDOM(columnNum, tilesArray) {}
+    const domColumn = document.getElementById(`column-${columnNum}`);
+  }
 }
 
 export default new Field();
