@@ -10,7 +10,7 @@ function tileClickListener(event) {
   console.log(aggArea);
 
   async function handleClick() {
-    fieldInstance.changeAggregatedTilesInDOM(aggArea, 0);
+    fieldInstance.changeAggregatedDomTiles(aggArea, 0);
     await wait(1000);
     fieldInstance.refreshColumns(aggArea);
   }
