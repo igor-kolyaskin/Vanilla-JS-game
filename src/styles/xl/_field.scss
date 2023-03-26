@@ -22,8 +22,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 4rem;
-    height: 4rem;
+    width: var(--tile-size);
+    height: var(--tile-size);
     border: 1px solid grey;
     box-sizing: border-box;
     transition: top .4s ease-out;

@@ -1,12 +1,12 @@
 import elements from "../state/elements";
 import wait from "../utils/wait";
+import state from "../state/state";
 class Field {
   constructor() {
     this.numX = 0;
     this.numY = 0;
     this.numColors = 0;
     this.tiles = [];
-    this.tileSize = 4;
   }
 
   init({ numX, numY, numColors }) {
@@ -86,7 +86,7 @@ class Field {
     tile.setAttribute("id", `tile-${x}-${y}`);
     tile.classList.add("tile");
     tile.style.backgroundColor = `var(--tile-${type}-clr)`;
-    tile.style.top = `${this.tileSize * top}rem`;
+    tile.style.top = `${state.fieldConfig.tileSize * top}rem`;
     tile.innerText = type;
 
     return tile;
@@ -227,7 +227,7 @@ class Field {
             whileCondition = true;
           }
           domTile.style.top = `${
-            currentColumn[tileNum]["positionY"] * this.tileSize
+            currentColumn[tileNum]["positionY"] * state.fieldConfig.tileSize
           }rem`;
           tileNum++;
         }
