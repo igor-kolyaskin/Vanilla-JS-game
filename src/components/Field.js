@@ -67,15 +67,7 @@ class Field {
 
         const tiles = Array(this.numY)
           .fill(0)
-          .map((tl, indexY) => {
-            const objectTileType = this.tiles[indexX][indexY]["type"];
-
-            const tile = document.createElement("div");
-            tile.setAttribute("id", `tile-${indexX}-${indexY}`);
-            tile.classList.add("tile");
-            tile.style.backgroundColor = `var(--tile-${objectTileType}-clr)`;
-            return tile;
-          });
+          .map((_, indexY) => this._createDomTile(indexX, indexY));
         column.append(...tiles);
 
         return column;
@@ -83,6 +75,16 @@ class Field {
     elements.domColumns = domColumnRefs;
 
     return domTiles;
+  }
+
+  _createDomTile(x, y) {
+    const type = this.tiles[x][y]["type"];
+    const tile = document.createElement("div");
+    tile.setAttribute("id", `tile-${x}-${y}`);
+    tile.classList.add("tile");
+    tile.style.backgroundColor = `var(--tile-${type}-clr)`;
+
+    return tile;
   }
 
   // getAggregationArea(x, y)
@@ -166,6 +168,8 @@ class Field {
     const modelColumn = this.tiles[columnNum];
     const gap = modelColumn.filter((tile) => tile.type === 0).length;
 
+    // changes in model ------------------------------------------------------------------
+
     const filteredModelColumn = modelColumn
       .filter((tile) => tile.type !== 0)
       .map((tile, index) => ({ ...tile, id: `${columnNum}-${index + gap}` }));
@@ -175,9 +179,30 @@ class Field {
       .map((_, index) => this._createTile(columnNum, index));
 
     const refreshedModelColumn = modelReplenishment.concat(filteredModelColumn);
+    this.tiles[columnNum] = refreshedModelColumn;
 
+    // changes in DOM ---------------------------------------------------------------------
+
+    // remove aggregated tiles
     const domColumn = elements.domColumns[columnNum];
-    console.log(domColumn);
+    aggTiles.forEach((tile) =>
+      document.getElementById(`tile-${columnNum}-${tile}`).remove()
+    );
+
+    // change id
+    let tileNum = gap;
+    for (let domTile of domColumn.children) {
+      domTile.setAttribute("id", `tile-${columnNum}-${tileNum}`);
+      tileNum++;
+    }
+
+    // create replenishment for DOM
+    const domReplenishment = Array(gap)
+      .fill(0)
+      .map((_, index) => this._createDomTile(columnNum, index));
+
+    // add replenishment tiles to DOM column
+    domColumn.prepend(...domReplenishment);
   }
 }
 
