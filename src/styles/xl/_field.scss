@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 
-.column{
+.column {
     position: relative;
     width: 4rem;
     height: 24rem;
@@ -16,12 +16,15 @@
     box-sizing: border-box;
 }
 
-.tile{
-    position: relative;
+.tile {
+    position: absolute;
     left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4rem;
     height: 4rem;
     border: 1px solid grey;
     box-sizing: border-box;
-    transition: top 1s ease;
+    transition: top .4s ease-out;
 }

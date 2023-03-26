@@ -1,10 +1,12 @@
 import elements from "../state/elements";
+import wait from "../utils/wait";
 class Field {
   constructor() {
     this.numX = 0;
     this.numY = 0;
     this.numColors = 0;
     this.tiles = [];
+    this.tileSize = 4;
   }
 
   init({ numX, numY, numColors }) {
@@ -21,12 +23,13 @@ class Field {
       });
   }
 
-  _createTile(x, y, aggregation = 0) {
+  _createTile(x, y, aggregation = 0, position = y) {
     const tileType = this._getRandomTileType();
     return {
       id: `${x}-${y}`,
       type: tileType,
       aggregation: aggregation,
+      positionY: position, // shows actual place along y-axis
     };
   }
 
@@ -77,12 +80,14 @@ class Field {
     return domTiles;
   }
 
-  _createDomTile(x, y) {
+  _createDomTile(x, y, top = y) {
     const type = this.tiles[x][y]["type"];
     const tile = document.createElement("div");
     tile.setAttribute("id", `tile-${x}-${y}`);
     tile.classList.add("tile");
     tile.style.backgroundColor = `var(--tile-${type}-clr)`;
+    tile.style.top = `${this.tileSize * top}rem`;
+    tile.innerText = type;
 
     return tile;
   }
@@ -165,7 +170,7 @@ class Field {
   // 1) changes a column in model
   // 2) changes a column in DOM
   _refreshColumn(columnNum, aggTiles) {
-    const modelColumn = this.tiles[columnNum];
+    let modelColumn = this.tiles[columnNum];
     const gap = modelColumn.filter((tile) => tile.type === 0).length;
 
     // changes in model ------------------------------------------------------------------
@@ -176,10 +181,11 @@ class Field {
 
     const modelReplenishment = Array(gap)
       .fill(0)
-      .map((_, index) => this._createTile(columnNum, index));
+      .map((_, index) => this._createTile(columnNum, index, 0, index - gap));
 
     const refreshedModelColumn = modelReplenishment.concat(filteredModelColumn);
-    this.tiles[columnNum] = refreshedModelColumn;
+    this.tiles[columnNum] = [...refreshedModelColumn];
+    console.log("renewed", this.tiles[columnNum]);
 
     // changes in DOM ---------------------------------------------------------------------
 
@@ -199,10 +205,36 @@ class Field {
     // create replenishment for DOM
     const domReplenishment = Array(gap)
       .fill(0)
-      .map((_, index) => this._createDomTile(columnNum, index));
+      .map((_, index) => this._createDomTile(columnNum, index, index - gap));
 
     // add replenishment tiles to DOM column
     domColumn.prepend(...domReplenishment);
+
+    // reassign y-position of tiles
+    const currentColumn = this.tiles[columnNum];
+
+    const shiftTiles = async () => {
+      let whileCondition = true;
+      while (whileCondition) {
+        whileCondition = false;
+        await wait(200);
+
+        tileNum = 0;
+        for (let domTile of domColumn.children) {
+          const currentPositionY = currentColumn[tileNum]["positionY"];
+          if (currentPositionY - tileNum) {
+            currentColumn[tileNum]["positionY"]++;
+            whileCondition = true;
+          }
+          domTile.style.top = `${
+            currentColumn[tileNum]["positionY"] * this.tileSize
+          }rem`;
+          tileNum++;
+        }
+      }
+    };
+
+    shiftTiles();
   }
 }
 
