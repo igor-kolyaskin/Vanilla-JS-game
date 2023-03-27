@@ -11,9 +11,13 @@ function tileClickListener(event) {
   const [caller, x, y] = targetId;
   if (caller !== "tile") return;
 
-  const aggArea = fieldInstance.getAggregationArea(x, y);
+  const aggArea = fieldInstance.getAggregationArea(x, y, true);
+  if (aggArea.length < state.gameConfig.minAggregationSize) {
+    state.fieldLock = false;
+    return;
+  }
 
-  // fieldInstance.changeAggregatedDomTiles(aggArea, 0);
+  fieldInstance.changeAggregatedTiles(x, y, aggArea);
   fieldInstance.refreshColumns(aggArea);
 }
 

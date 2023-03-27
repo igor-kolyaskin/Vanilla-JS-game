@@ -5,6 +5,9 @@ const state = {
     numColors: 5,
     tileSize: 4,
   },
+  gameConfig: {
+    minAggregationSize: 2,
+  },
   _fieldLock: false,
   get fieldLock() {
     return this._fieldLock;

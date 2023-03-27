@@ -2,6 +2,7 @@ import elements from "../state/elements";
 import wait from "../utils/wait";
 import state from "../state/state";
 import streetlightInstance from "../components/header/Streetlight";
+import deepCloneTiles from "../utils/deepCloneTiles";
 
 class Field {
   constructor() {
@@ -94,11 +95,12 @@ class Field {
     return tile;
   }
 
-  // getAggregationArea(x, y)
+  // getAggregationArea(x, y, clone)
   // 1) sets type = 0 for aggregated tiles in model
   // 2) returns array of aggregated tiles' coordinates
-  getAggregationArea(x, y) {
-    const clickedTile = this.tiles[x][y];
+  getAggregationArea(x, y, clone) {
+    const tiles = clone ? deepCloneTiles(this.tiles) : this.tiles;
+    const clickedTile = tiles[x][y];
     const type = clickedTile.type;
 
     let agg = [{ x: +x, y: +y }];
@@ -106,9 +108,32 @@ class Field {
     clickedTile.type = 0;
     let prevLength = 1;
 
+    const _getNeighbourTiles = (x, y, targetType) => {
+      const aggr = [];
+      const __getNeighbourTile = ([a, b]) => {
+        const tile = tiles[a][b];
+        if (tile.type === targetType && !tile.aggregation) {
+          tile.aggregation = targetType;
+          tile.type = 0;
+          aggr.push({ x: a, y: b });
+        }
+      };
+
+      // neighbor tile top
+      if (y > 0) __getNeighbourTile([x, y - 1]);
+      // neighbor tile right
+      if (x < this.numX - 1) __getNeighbourTile([x + 1, y]);
+      // neighbor tile bottom
+      if (y < this.numY - 1) __getNeighbourTile([x, y + 1]);
+      // neighbor tile left
+      if (x > 0) __getNeighbourTile([x - 1, y]);
+
+      return aggr;
+    };
+
     while (true) {
       agg.forEach((tile) => {
-        agg = [...agg, ...this._getNeighbourTiles(+tile.x, +tile.y, type)];
+        agg = [...agg, ..._getNeighbourTiles(+tile.x, +tile.y, type)];
       });
       if (prevLength === agg.length) break;
       prevLength = agg.length;
@@ -116,36 +141,20 @@ class Field {
     return agg;
   }
 
-  _getNeighbourTiles(x, y, targetType) {
-    const aggr = [];
-    const __getNeighbourTile = ([a, b]) => {
-      const tile = this.tiles[a][b];
-      if (tile.type === targetType && !tile.aggregation) {
-        tile.aggregation = targetType;
-        tile.type = 0;
-        aggr.push({ x: a, y: b });
-      }
-    };
-
-    // neighbor tile top
-    if (y > 0) __getNeighbourTile([x, y - 1]);
-    // neighbor tile right
-    if (x < this.numX - 1) __getNeighbourTile([x + 1, y]);
-    // neighbor tile bottom
-    if (y < this.numY - 1) __getNeighbourTile([x, y + 1]);
-    // neighbor tile left
-    if (x > 0) __getNeighbourTile([x - 1, y]);
-
-    return aggr;
-  }
-
-  // changeAggregatedDomTiles(aggArea)
+  // changeAggregatedTiles(aggArea, color)
   // applies visible changes to aggregated DOM-tiles in accordance with aggArea
   // currently sets color = 0
-  changeAggregatedDomTiles(aggArea, color) {
+  changeAggregatedTiles(x, y, aggArea) {
+    const tile = this.tiles[x][y];
+    const type = tile.type;
+
     aggArea.forEach((tile) => {
+      const tileModel = this.tiles[tile.x][tile.y];
+      tileModel.type = 0;
+      tileModel.aggregation = type;
+
       const tileDOM = document.getElementById(`tile-${tile.x}-${tile.y}`);
-      tileDOM.style.backgroundColor = `var(--tile-${color}-clr)`;
+      tileDOM.style.backgroundColor = `var(--tile-0-clr)`;
     });
   }
 
@@ -168,14 +177,14 @@ class Field {
     Promise.all(promiseArray).then(() => {
       state.fieldLock = false;
       streetlightInstance.green();
-      console.log("promise alllllll");
+      const agg = this.getAggregationArea(0, 0, true);
     });
   }
 
-  // refreshColumns(aggArea)
+  // refreshColumn(columnNum, aggTiles)
   // 1) changes a column in model
   // 2) changes a column in DOM
-  // 3) return promise for tiles shift
+  // 3) returns a promise for tiles shift
   _refreshColumn(columnNum, aggTiles) {
     let modelColumn = this.tiles[columnNum];
     const gap = modelColumn.filter((tile) => tile.type === 0).length;
@@ -216,16 +225,21 @@ class Field {
     // add replenishment tiles to DOM column
     domColumn.prepend(...domReplenishment);
 
-    // 3) promise for reassign y-position of model tiles and top-property for DOM tiles
+    // 3) promise for reassign y-position of model tiles and top-property for DOM tiles ------------
+
     const currentColumn = this.tiles[columnNum];
 
     const shiftTiles = async () => {
       let whileCondition = true;
       while (whileCondition) {
         whileCondition = false;
+        await wait(200);
 
         tileNum = 0;
         for (let domTile of domColumn.children) {
+          if (currentColumn[tileNum] === undefined) {
+            console.log("line 244", currentColumn, tileNum);
+          }
           const currentPositionY = currentColumn[tileNum]["positionY"];
           if (currentPositionY - tileNum) {
             currentColumn[tileNum]["positionY"]++;
@@ -236,7 +250,6 @@ class Field {
           }rem`;
           tileNum++;
         }
-        await wait(200);
       }
     };
 
