@@ -177,7 +177,13 @@ class Field {
     Promise.all(promiseArray).then(() => {
       state.fieldLock = false;
       streetlightInstance.green();
-      const agg = this.getAggregationArea(0, 0, true);
+      const moves = this.getClickableTilesInThisField();
+      console.log(moves);
+      if (moves) {
+        streetlightInstance.green(moves);
+      } else {
+        streetlightInstance.red();
+      }
     });
   }
 
@@ -254,6 +260,22 @@ class Field {
     };
 
     return shiftTiles();
+  }
+
+  // check if field has any moves after refresh
+  getClickableTilesInThisField() {
+    let moves = 0;
+    for (let x = 0; x < this.numX; x++) {
+      for (let y = 0; y < this.numY; y++) {
+        if (
+          this.getAggregationArea(x, y, true).length >=
+          state.gameConfig.minAggregationSize
+        ) {
+          moves++;
+        }
+      }
+    }
+    return moves;
   }
 }
 
