@@ -4,8 +4,8 @@
     align-items: center;
     width: 18.5rem;
     height: 2rem;
-    border: .1rem solid black;
-    border-radius: .2rem;
+    border: 0.1rem solid black;
+    border-radius: 0.2rem;
     background-color: silver;
     box-sizing: border-box;
 }
@@ -16,18 +16,18 @@
     align-items: center;
     width: 1rem;
     height: 1rem;
-    margin: .5rem;
+    margin: 0.5rem;
     box-sizing: border-box;
 }
 
-#streetlight-light {    
+#streetlight-light {
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
     box-sizing: border-box;
 }
 
-#streetlight-text {    
+#streetlight-text {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -35,20 +35,16 @@
     height: 1rem;
     background-color: lightgreen;
     color: black;
-    font-size: .75rem;
+    font-size: 0.75rem;
     box-sizing: border-box;
 }
 
 .streetlight-yellow {
     background-color: yellow;
-    animation: animate 1s linear 1s infinite;
 }
-
-@keyframes animate {
-    0% {width: 1rem; height: 1rem}
-    50% {width: .5rem; height: .5rem}
-    100% {width: 1rem; height: 1rem}
-  }
-   
-.streetlight-red {background-color: red;}
-.streetlight-green {background-color: green;}
+.streetlight-red {
+    background-color: red;
+}
+.streetlight-green {
+    background-color: green;
+}

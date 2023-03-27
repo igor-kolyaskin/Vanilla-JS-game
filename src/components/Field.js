@@ -231,9 +231,9 @@ class Field {
           }rem`;
           tileNum++;
         }
-        await wait(250);
+        await wait(200);
       }
-      await wait(150);
+      // await wait(100);
     };
 
     shiftTiles().then(() => {
