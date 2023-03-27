@@ -157,25 +157,30 @@ class Field {
     aggArea.forEach((tile) => {
       if (!columnArray.includes(tile.x)) columnArray.push(+tile.x);
     });
-    columnArray
-      .sort((a, b) => a - b)
-      .forEach((columnNum) => {
-        const aggregatedTilesInThisColumn = aggArea
-          .filter((tile) => tile.x === columnNum)
-          .sort((a, b) => a.y - b.y)
-          .map((tile) => tile.y);
-        this._refreshColumn(columnNum, aggregatedTilesInThisColumn);
-      });
+
+    const promiseArray = columnArray.map((columnNum) => {
+      const aggregatedTilesInThisColumn = aggArea
+        .filter((tile) => tile.x === columnNum)
+        .map((tile) => tile.y);
+      return this._refreshColumn(columnNum, aggregatedTilesInThisColumn);
+    });
+
+    Promise.all(promiseArray).then(() => {
+      state.fieldLock = false;
+      streetlightInstance.green();
+      console.log("promise alllllll");
+    });
   }
 
   // refreshColumns(aggArea)
   // 1) changes a column in model
   // 2) changes a column in DOM
+  // 3) return promise for tiles shift
   _refreshColumn(columnNum, aggTiles) {
     let modelColumn = this.tiles[columnNum];
     const gap = modelColumn.filter((tile) => tile.type === 0).length;
 
-    // changes in model ------------------------------------------------------------------
+    // 1) changes in model ------------------------------------------------------------------
 
     const filteredModelColumn = modelColumn
       .filter((tile) => tile.type !== 0)
@@ -188,7 +193,7 @@ class Field {
     const refreshedModelColumn = modelReplenishment.concat(filteredModelColumn);
     this.tiles[columnNum] = [...refreshedModelColumn];
 
-    // changes in DOM ---------------------------------------------------------------------
+    // 2) changes in DOM ---------------------------------------------------------------------
 
     // remove aggregated tiles
     const domColumn = elements.domColumns[columnNum];
@@ -211,7 +216,7 @@ class Field {
     // add replenishment tiles to DOM column
     domColumn.prepend(...domReplenishment);
 
-    // reassign y-position of tiles
+    // 3) promise for reassign y-position of model tiles and top-property for DOM tiles
     const currentColumn = this.tiles[columnNum];
 
     const shiftTiles = async () => {
@@ -233,13 +238,9 @@ class Field {
         }
         await wait(200);
       }
-      // await wait(100);
     };
 
-    shiftTiles().then(() => {
-      state.fieldLock = false;
-      streetlightInstance.green();
-    });
+    return shiftTiles();
   }
 }
 
