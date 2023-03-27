@@ -1,12 +1,16 @@
 html {
     font-size: 16px;
-    --tile-0-clr: #0D233D;
-    --tile-1-clr: #349EE9;
-    --tile-2-clr: #A84197;
-    --tile-3-clr: #D2334A;
-    --tile-4-clr: #DCA223;
-    --tile-5-clr: #7DC23E;
+    --tile-0-clr: #0d233d;
+    --tile-1-clr: #349ee9;
+    --tile-2-clr: #a84197;
+    --tile-3-clr: #d2334a;
+    --tile-4-clr: #dca223;
+    --tile-5-clr: #7dc23e;
     --tile-6-clr: gray;
+    --tile-7-clr: violet;
+    --tile-8-clr: maroon;
+    --tile-9-clr: darkorange;
+    --tile-10-clr: blue;
 }
 
 .theme-main {
@@ -39,7 +43,7 @@ html {
     border: none;
     outline: none;
     background-color: var(--bgrnd-0-clr);
-    font-family: 'Roboto';
+    font-family: "Roboto";
     color: var(--font-clr);
     --tile-size: 4rem;
 }

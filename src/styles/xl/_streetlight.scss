@@ -41,10 +41,16 @@
 
 .streetlight-yellow {
     background-color: yellow;
+    pointer-events: none;
+    cursor: default;
 }
 .streetlight-red {
     background-color: red;
+    pointer-events: auto;
+    cursor: pointer;
 }
 .streetlight-green {
     background-color: green;
+    pointer-events: none;
+    cursor: default;
 }

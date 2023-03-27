@@ -2,7 +2,7 @@ const state = {
   fieldConfig: {
     numX: 4,
     numY: 6,
-    numColors: 5,
+    numColors: 8,
     tileSize: 4,
   },
   gameConfig: {
