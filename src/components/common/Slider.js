@@ -1,7 +1,9 @@
 class Slider {
-  constructor(label, config) {
-    this.label = label;
+  constructor(labelText, config) {
+    this.labelText = labelText;
     this.config = config;
+    this.inputElement = null;
+    this.labelElement = null;
   }
 
   render() {
@@ -13,6 +15,7 @@ class Slider {
     const sliderLabel = document.createElement("div");
     sliderLabel.setAttribute("id", `slider-label-${id}`);
     sliderLabel.innerText = `${this.label}: ${value}`;
+    this.labelElement = sliderLabel;
 
     const sliderWrapper = document.createElement("div");
     sliderWrapper.setAttribute("id", `slider-wrapper-${id}`);
@@ -25,11 +28,21 @@ class Slider {
     configArray.forEach((attr) => {
       slider.setAttribute(`${attr[0]}`, `${attr[1]}`);
     });
+    this.inputElement = slider;
 
     sliderWrapper.append(slider);
     sliderContainer.append(sliderLabel, sliderWrapper);
 
     return sliderContainer;
+  }
+
+  set value(num) {
+    this.inputElement.value = num;
+    this.labelElement.innerText = `${this.labelText}: ${num}`;
+  }
+
+  get value() {
+    return this.inputElement.value;
   }
 }
 

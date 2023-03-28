@@ -13,7 +13,9 @@ const Settings = () => {
     value: 6,
   };
   const slider = new Slider("columns", sliderConfig);
-  settingsWrapper.append(slider.render());
+  const sliderElement = slider.render();
+  slider.value = 7;
+  settingsWrapper.append(sliderElement);
 
   return settingsWrapper;
 };
