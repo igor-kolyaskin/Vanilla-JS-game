@@ -6,6 +6,7 @@
     height: 24rem;
     background-color: teal;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .column {
@@ -26,5 +27,5 @@
     height: var(--tile-size);
     border: 1px solid grey;
     box-sizing: border-box;
-    transition: top .4s ease-out;
+    transition: top 0.4s ease-out;
 }

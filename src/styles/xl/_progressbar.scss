@@ -1,0 +1,42 @@
+#progressbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 14.2rem;
+    height: 3rem;
+    border: 0.1rem solid black;
+    border-radius: 0.2rem;
+    background-color: silver;
+    box-sizing: border-box;
+}
+
+#progressbar-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12rem;
+    height: 1rem;
+    background-color: lightgreen;
+    color: black;
+    font-size: 0.75rem;
+    box-sizing: border-box;
+}
+
+#progressbar-bar-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14rem;
+    height: 2rem;
+    margin: 0.2rem;
+    box-sizing: border-box;
+}
+
+#progressbar-bar {
+    width: 12rem;
+    height: 1rem;
+    border-radius: 1rem;
+    background-color: orange;
+    box-sizing: border-box;
+}

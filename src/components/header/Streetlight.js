@@ -1,6 +1,3 @@
-// import wait from "../utils/wait";
-// import state from "../state/state";
-
 class Streetlight {
   constructor() {
     this.light = null;
@@ -26,7 +23,7 @@ class Streetlight {
     text.innerText = "Hello";
     this.text = text;
 
-    streetlight.append(lightContainer, text);
+    streetlight.append(text, lightContainer);
 
     return streetlight;
   }
