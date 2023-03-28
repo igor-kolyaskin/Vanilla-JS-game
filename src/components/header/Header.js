@@ -1,7 +1,7 @@
 import streetlightInstance from "./Streetlight";
 import progressBarInstance from "./ProgressBar";
 import onClickStreetlight from "../../listeners/onClickStreetlight";
-import modal from "../Modal";
+import onClickSettings from "../../listeners/onClickSettings";
 
 const Header = () => {
   const header = document.createElement("header");
@@ -17,7 +17,7 @@ const Header = () => {
 
   const btnSettings = document.createElement("button");
   btnSettings.setAttribute("id", "btn-settings");
-  btnSettings.addEventListener("click", () => modal.open());
+  btnSettings.addEventListener("click", onClickSettings);
 
   header.append(btnNewGame, streetlight, progressBar, btnSettings);
   streetlightInstance.green();
