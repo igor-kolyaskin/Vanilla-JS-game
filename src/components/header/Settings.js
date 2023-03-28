@@ -12,8 +12,8 @@ const Settings = () => {
     step: 1,
     value: 6,
   };
-  const slider = Slider("columns", sliderConfig);
-  settingsWrapper.append(slider);
+  const slider = new Slider("columns", sliderConfig);
+  settingsWrapper.append(slider.render());
 
   return settingsWrapper;
 };
