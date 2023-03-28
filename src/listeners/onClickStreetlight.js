@@ -6,7 +6,7 @@ function onClickStreetlight(event) {
   if (event.target.id !== "streetlight-light") return;
 
   streetlightInstance.yellow();
-  state.fieldLock = true;
+  state.lockField();
 
   const { numX, numY } = state.fieldConfig;
 

@@ -8,12 +8,20 @@ const state = {
   gameConfig: {
     minAggregationSize: 2,
   },
-  _fieldLock: false,
-  get fieldLock() {
-    return this._fieldLock;
+
+  game: {
+    _fieldLock: false,
   },
-  set fieldLock(isLocked) {
-    this._fieldLock = isLocked;
+
+  lockField() {
+    this.game._fieldLock = true;
+  },
+  unlockField() {
+    this.game._fieldLock = false;
+  },
+
+  get fieldLock() {
+    return this.game._fieldLock;
   },
 };
 export default state;

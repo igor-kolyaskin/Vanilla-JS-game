@@ -175,7 +175,7 @@ class Field {
     });
 
     Promise.all(promiseArray).then(() => {
-      state.fieldLock = false;
+      state.unlockField();
       streetlightInstance.green();
       const moves = this.getClickableTilesInThisField();
       console.log(moves);
@@ -183,6 +183,7 @@ class Field {
         streetlightInstance.green(moves);
       } else {
         streetlightInstance.red();
+        state.lockField();
       }
     });
   }

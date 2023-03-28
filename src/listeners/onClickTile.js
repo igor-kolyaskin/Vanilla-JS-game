@@ -5,7 +5,7 @@ import state from "../state/state";
 function onClickTile(event) {
   if (state.fieldLock) return;
   streetlightInstance.yellow();
-  state.fieldLock = true;
+  state.lockField();
 
   const targetId = event.target.id.split("-");
   const [caller, x, y] = targetId;
@@ -13,7 +13,7 @@ function onClickTile(event) {
 
   const aggArea = fieldInstance.getAggregationArea(x, y, true);
   if (aggArea.length < state.gameConfig.minAggregationSize) {
-    state.fieldLock = false;
+    state.unlockField();
     streetlightInstance.green();
     return;
   }
