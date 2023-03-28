@@ -28,7 +28,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "tingle.js": "^0.16.0"
   }
 }
