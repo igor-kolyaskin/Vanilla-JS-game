@@ -373,6 +373,41 @@ html {
   }
 }
 @media (min-width: 300px) {
+  .slider-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 16rem;
+    height: 4rem;
+    color: black;
+    font-size: 0.75rem;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 300px) {
+  .slider-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16rem;
+    height: 2.5rem;
+    background-color: tan;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 300px) {
+  .slider-min-max {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: khaki;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 300px) {
   #progressbar {
     display: flex;
     flex-direction: column;

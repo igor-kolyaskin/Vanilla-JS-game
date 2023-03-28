@@ -1,4 +1,6 @@
 import Slider from "../common/Slider";
+import onChangeSliderX from "../../listeners/onChangeSliderX";
+import state from "../../state/state";
 
 const Settings = () => {
   const settingsWrapper = document.createElement("section");
@@ -10,12 +12,14 @@ const Settings = () => {
     min: 4,
     max: 12,
     step: 1,
-    value: 6,
+    value: state.fieldConfig.numX,
   };
-  const slider = new Slider("columns", sliderConfig);
-  const sliderElement = slider.render();
-  slider.value = 7;
-  settingsWrapper.append(sliderElement);
+  const sliderX = new Slider("columns", sliderConfig);
+  const sliderXElement = sliderX.render();
+  sliderXElement.addEventListener("input", (event) =>
+    onChangeSliderX(event, sliderX)
+  );
+  settingsWrapper.append(sliderXElement);
 
   return settingsWrapper;
 };
