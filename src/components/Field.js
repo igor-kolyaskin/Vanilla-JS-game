@@ -13,17 +13,18 @@ class Field {
   }
 
   init({ numX, numY, numColors }) {
-    this.numX = numX;
-    this.numY = numY;
-    this.numColors = numColors;
+    this.numX = +numX;
+    this.numY = +numY;
+    this.numColors = +numColors;
 
-    this.tiles = Array(numX)
+    this.tiles = Array(+numX)
       .fill(0)
       .map((column, indexX) => {
-        return Array(numY)
+        return Array(+numY)
           .fill(0)
-          .map((tile, indexY) => this._createTile(indexX, indexY, 0));
+          .map((_, indexY) => this._createTile(indexX, indexY, 0));
       });
+    console.log(this.tiles);
   }
 
   _createTile(
@@ -43,14 +44,27 @@ class Field {
 
   // creates DOM-tree of tiles first time
   render() {
-    const field = document.createElement("main");
-    field.setAttribute("id", "field-container");
-    elements.fieldContainer = field;
+    let field;
+    if (elements.fieldContainer) {
+      field = elements.fieldContainer;
+      field.innerHTML = "";
+    } else {
+      field = document.createElement("main");
+      field.setAttribute("id", "field-container");
+      elements.fieldContainer = field;
+    }
 
     const domTiles = this._createDomTiles();
     field.append(...domTiles);
     return field;
   }
+
+  // TODO: could be joined with render()
+  // creates a new DOM-tree of tiles and replaces the old one
+  // rerender() {
+  //   const domTiles = this._createDomTiles();
+  //   field.append(...domTiles);
+  // }
 
   _getRandomTileType() {
     return Math.ceil(Math.random() * this.numColors);
