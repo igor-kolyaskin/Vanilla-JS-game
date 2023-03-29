@@ -1,14 +1,13 @@
 import "../src/styles/main.scss";
 import App from "./components/App";
-import field from "./components/Field";
+import fieldInstance from "./components/Field";
 import state from "./state/state";
 import gameInstance from "./bll/Game";
 
-const fieldConfig = state.fieldConfig;
-field.init(fieldConfig);
+fieldInstance.init(state.fieldConfig);
 const body = document.getElementById("body");
 body.append(App());
 body.classList.add("theme-main");
-body.style.setProperty("--tile-size", `${fieldConfig.tileSize}rem`);
+body.style.setProperty("--tile-size", `${state.fieldConfig.tileSize}rem`);
 
 gameInstance.startNewGame();

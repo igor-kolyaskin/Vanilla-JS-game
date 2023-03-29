@@ -5,7 +5,7 @@ import onClickTile from "../listeners/onClickTile";
 
 function App() {
   const app = document.createElement("div");
-  app.classList.add("app");
+  app.setAttribute("id", "app");
 
   const header = Header();
   const fieldDomElement = fieldInstance.render();

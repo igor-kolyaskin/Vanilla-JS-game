@@ -50,7 +50,7 @@ html {
 }
 
 @media (min-width: 300px) {
-  .app {
+  #app {
     display: flex;
     flex-wrap: wrap;
     width: 40rem;
