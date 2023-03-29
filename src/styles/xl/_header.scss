@@ -11,6 +11,8 @@
 #btn-new-game {
     width: 2rem;
     height: 2rem;
+    padding: 0;
+    border: none;
     margin: 0 1rem;
     background-color: palevioletred;
     box-sizing: border-box;
@@ -19,7 +21,11 @@
 #btn-settings {
     width: 2rem;
     height: 2rem;
+    padding: 0;
+    border: none;
     margin: 0 1rem;
-    background-color: mediumvioletred;
+    background-image: url("../assets/icons/setting.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
     box-sizing: border-box;
 }

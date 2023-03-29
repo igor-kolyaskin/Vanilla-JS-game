@@ -292,6 +292,8 @@ html {
   #btn-new-game {
     width: 2rem;
     height: 2rem;
+    padding: 0;
+    border: none;
     margin: 0 1rem;
     background-color: palevioletred;
     box-sizing: border-box;
@@ -301,8 +303,12 @@ html {
   #btn-settings {
     width: 2rem;
     height: 2rem;
+    padding: 0;
+    border: none;
     margin: 0 1rem;
-    background-color: mediumvioletred;
+    background-image: url("../assets/icons/setting.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
     box-sizing: border-box;
   }
 }
@@ -413,7 +419,7 @@ html {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 14.2rem;
+    width: 13rem;
     height: 3rem;
     border: 0.1rem solid black;
     border-radius: 0.2rem;

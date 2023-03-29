@@ -16,7 +16,6 @@ function onClickStreetlight(event) {
       aggArea.push({ x: x, y: y });
     }
   }
-  console.log("after red click", aggArea);
 
   fieldInstance.changeAggregatedTiles(0, 0, aggArea);
   fieldInstance.refreshColumns(aggArea);

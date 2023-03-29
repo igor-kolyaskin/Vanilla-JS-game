@@ -17,7 +17,6 @@ function onClickTile(event) {
     streetlightInstance.green();
     return;
   }
-  console.log(aggArea);
   fieldInstance.changeAggregatedTiles(x, y, aggArea);
   fieldInstance.refreshColumns(aggArea);
 }

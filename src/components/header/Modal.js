@@ -1,4 +1,5 @@
 import tingle from "tingle.js";
+import onClickApplySettings from "../../listeners/onClickApplySettings";
 
 const modal = new tingle.modal({
   footer: true,
@@ -19,4 +20,14 @@ const modal = new tingle.modal({
     return false; // nothing happens
   },
 });
+
+modal.addFooterBtn(
+  "Apply",
+  "tingle-btn tingle-btn--primary tingle-btn--pull-right",
+  function () {
+    onClickApplySettings();
+    modal.close();
+  }
+);
+
 export default modal;

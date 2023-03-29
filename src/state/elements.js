@@ -14,4 +14,10 @@ const elements = {
   set domColumns(arr) {
     this._domColumns = arr;
   },
+
+  _sliders: {},
+
+  _sliderLabels: {},
 };
+
+export default elements;

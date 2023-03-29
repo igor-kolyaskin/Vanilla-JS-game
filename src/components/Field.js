@@ -22,18 +22,38 @@ class Field {
       .map((column, indexX) => {
         return Array(numY)
           .fill(0)
-          .map((tile, indexY) => this._createTile(indexX, indexY));
+          .map((tile, indexY) => this._createTile(indexX, indexY, 0));
       });
   }
 
-  _createTile(x, y, aggregation = 0, position = y) {
-    const tileType = this._getRandomTileType();
+  _createTile(
+    x,
+    y,
+    type = this._getRandomTileType(),
+    aggregation = 0,
+    position = y
+  ) {
     return {
       id: `${x}-${y}`,
-      type: tileType,
+      type: type,
       aggregation: aggregation,
       positionY: position, // shows actual place along y-axis
     };
+  }
+
+  startNewGame() {
+    streetlightInstance.yellow();
+    state.lockField();
+
+    const aggArea = [];
+    for (let x = 0; x < this.numX; x++) {
+      for (let y = 0; y < this.numY; y++) {
+        aggArea.push({ x: x, y: y });
+      }
+    }
+
+    this.changeAggregatedTiles(0, 0, aggArea);
+    this.refreshColumns(aggArea);
   }
 
   // creates DOM-tree of tiles first time
@@ -44,7 +64,6 @@ class Field {
 
     const domTiles = this._createDomTiles();
     field.append(...domTiles);
-
     return field;
   }
 
@@ -178,7 +197,6 @@ class Field {
       state.unlockField();
       streetlightInstance.green();
       const moves = this.getClickableTilesInThisField();
-      console.log(moves);
       if (moves) {
         streetlightInstance.green(moves);
       } else {
@@ -204,7 +222,9 @@ class Field {
 
     const modelReplenishment = Array(gap)
       .fill(0)
-      .map((_, index) => this._createTile(columnNum, index, 0, index - gap));
+      .map((_, index) =>
+        this._createTile(columnNum, index, undefined, 0, index - gap)
+      );
 
     const refreshedModelColumn = modelReplenishment.concat(filteredModelColumn);
     this.tiles[columnNum] = [...refreshedModelColumn];
@@ -244,9 +264,9 @@ class Field {
 
         tileNum = 0;
         for (let domTile of domColumn.children) {
-          if (currentColumn[tileNum] === undefined) {
-            console.log("line 244", currentColumn, tileNum);
-          }
+          // if (currentColumn[tileNum] === undefined) {
+          //   console.log("line 244", currentColumn, tileNum);
+          // }
           const currentPositionY = currentColumn[tileNum]["positionY"];
           if (currentPositionY - tileNum) {
             currentColumn[tileNum]["positionY"]++;
