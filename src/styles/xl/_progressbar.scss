@@ -4,7 +4,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 13rem;
-    height: 3rem;
+    height: 4rem;
     border: 0.1rem solid black;
     border-radius: 0.2rem;
     background-color: silver;
@@ -25,18 +25,21 @@
 
 #progressbar-bar-cont {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 14rem;
-    height: 2rem;
+    width: 12rem;
+    height: 1.4rem;
     margin: 0.2rem;
+    border: 0.1rem solid maroon;
+    border-radius: 0.7rem;
+    background-color: tomato;
     box-sizing: border-box;
 }
 
 #progressbar-bar {
-    width: 12rem;
-    height: 1rem;
-    border-radius: 1rem;
-    background-color: orange;
+    width: 10rem;
+    height: 1.2rem;
+    border-radius: 0.6rem;
+    border: 0.1rem solid maroon;
     box-sizing: border-box;
 }

@@ -4,6 +4,7 @@ const state = {
     numY: 6,
     numColors: 8,
     tileSize: 4,
+    minAggregationSize: 2,
   },
 
   get fieldConfig() {
@@ -19,6 +20,7 @@ const state = {
     numY: 6,
     numColors: 8,
     tileSize: 4,
+    minAggregationSize: 2,
   },
 
   get fieldConfigTemp() {
@@ -29,23 +31,19 @@ const state = {
     this._fieldConfigTemp = { ...config };
   },
 
-  gameConfig: {
-    minAggregationSize: 2,
-  },
-
-  game: {
-    _fieldLock: false,
-  },
-
-  lockField() {
-    this.game._fieldLock = true;
-  },
-  unlockField() {
-    this.game._fieldLock = false;
+  _game: {
+    fieldLock: false,
   },
 
   get fieldLock() {
-    return this.game._fieldLock;
+    return this._game.fieldLock;
+  },
+
+  lockField() {
+    this._game.fieldLock = true;
+  },
+  unlockField() {
+    this._game.fieldLock = false;
   },
 };
 export default state;

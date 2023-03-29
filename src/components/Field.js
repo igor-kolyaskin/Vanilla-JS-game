@@ -41,21 +41,6 @@ class Field {
     };
   }
 
-  startNewGame() {
-    streetlightInstance.yellow();
-    state.lockField();
-
-    const aggArea = [];
-    for (let x = 0; x < this.numX; x++) {
-      for (let y = 0; y < this.numY; y++) {
-        aggArea.push({ x: x, y: y });
-      }
-    }
-
-    this.changeAggregatedTiles(0, 0, aggArea);
-    this.refreshColumns(aggArea);
-  }
-
   // creates DOM-tree of tiles first time
   render() {
     const field = document.createElement("main");
@@ -65,15 +50,6 @@ class Field {
     const domTiles = this._createDomTiles();
     field.append(...domTiles);
     return field;
-  }
-
-  // TODO: could be joined with render()
-  // creates a new DOM-tree of tiles and replaces the old one
-  rerender() {
-    const field = elements.fieldContainer;
-    field.innerHTML = "";
-    const domTiles = this._createDomTiles();
-    field.append(...domTiles);
   }
 
   _getRandomTileType() {
@@ -290,7 +266,7 @@ class Field {
       for (let y = 0; y < this.numY; y++) {
         if (
           this.getAggregationArea(x, y, true).length >=
-          state.gameConfig.minAggregationSize
+          state.fieldConfig.minAggregationSize
         ) {
           moves++;
         }

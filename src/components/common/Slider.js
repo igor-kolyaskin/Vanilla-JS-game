@@ -36,8 +36,8 @@ const Slider = (labelText, config) => {
   sliderWrapper.append(minValue, slider, maxValue);
   sliderContainer.append(sliderLabel, sliderWrapper);
 
-  elements._sliders = Object.assign(elements._sliders, { [id]: slider });
-  elements._sliderLables = Object.assign(elements._sliderLabels, {
+  elements.sliders = Object.assign(elements.sliders, { [id]: slider });
+  elements._sliderLables = Object.assign(elements.sliderLabels, {
     [id]: [sliderLabel, labelText],
   });
 

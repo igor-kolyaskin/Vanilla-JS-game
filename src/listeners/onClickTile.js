@@ -12,7 +12,7 @@ function onClickTile(event) {
   if (caller !== "tile") return;
 
   const aggArea = fieldInstance.getAggregationArea(x, y, true);
-  if (aggArea.length < state.gameConfig.minAggregationSize) {
+  if (aggArea.length < state.fieldConfig.minAggregationSize) {
     state.unlockField();
     streetlightInstance.green();
     return;
