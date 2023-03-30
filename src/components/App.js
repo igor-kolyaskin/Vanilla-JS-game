@@ -7,12 +7,16 @@ function App() {
   const app = document.createElement("div");
   app.setAttribute("id", "app");
 
+  const main = document.createElement("main");
+  main.setAttribute("id", "main");
+
   const header = Header();
   const fieldDomElement = fieldInstance.render();
   fieldDomElement.addEventListener("click", onClickTile);
   const score = Score();
 
-  app.append(header, fieldDomElement, score);
+  main.append(header, fieldDomElement);
+  app.append(main, score);
 
   return app;
 }

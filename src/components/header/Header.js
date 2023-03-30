@@ -1,5 +1,4 @@
 import streetlightInstance from "./Streetlight";
-import progressBarInstance from "./ProgressBar";
 import onClickStreetlight from "../../listeners/onClickStreetlight";
 import onClickSettings from "../../listeners/onClickSettings";
 
@@ -13,13 +12,11 @@ const Header = () => {
   const streetlight = streetlightInstance.render();
   streetlight.addEventListener("click", onClickStreetlight);
 
-  const progressBar = progressBarInstance.render();
-
   const btnSettings = document.createElement("button");
   btnSettings.setAttribute("id", "btn-settings");
   btnSettings.addEventListener("click", onClickSettings);
 
-  header.append(btnNewGame, streetlight, progressBar, btnSettings);
+  header.append(btnNewGame, streetlight, btnSettings);
   streetlightInstance.green();
 
   return header;

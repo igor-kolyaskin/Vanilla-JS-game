@@ -59,13 +59,6 @@ class Field {
     return field;
   }
 
-  // TODO: could be joined with render()
-  // creates a new DOM-tree of tiles and replaces the old one
-  // rerender() {
-  //   const domTiles = this._createDomTiles();
-  //   field.append(...domTiles);
-  // }
-
   _getRandomTileType() {
     return Math.ceil(Math.random() * this.numColors);
   }

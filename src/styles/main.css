@@ -52,10 +52,17 @@ html {
 @media (min-width: 300px) {
   #app {
     display: flex;
-    flex-wrap: wrap;
-    width: 40rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50rem;
     margin: 1rem auto;
     background-color: rgb(255, 159, 142);
+  }
+  #main {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    background-color: limegreen;
   }
   .tingle-modal * {
     box-sizing: border-box;
@@ -501,7 +508,7 @@ html {
 }
 @media (min-width: 300px) {
   #score {
-    width: 22rem;
+    width: 20rem;
     height: 8rem;
     margin: 1rem;
     background-color: darkgray;
