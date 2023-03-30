@@ -2,8 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 16rem;
-    height: 24rem;
+    width: 29.5rem;
+    height: 29.5rem;
+    margin: 0.5rem 0;
     background-color: teal;
     box-sizing: border-box;
     overflow: hidden;
@@ -11,8 +12,8 @@
 
 .column {
     position: relative;
-    width: 4rem;
-    height: 24rem;
+    width: var(--tile-size);
+    height: var(--column-height);
     background-color: olive;
     box-sizing: border-box;
 }

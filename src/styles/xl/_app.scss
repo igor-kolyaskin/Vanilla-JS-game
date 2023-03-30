@@ -9,6 +9,8 @@
 #main {
     display: flex;
     flex-direction: column;
-    width: 30rem;
+    justify-content: flex-start;
+    align-items: center;
+    width: 36rem;
     background-color: limegreen;
 }

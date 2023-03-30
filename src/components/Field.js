@@ -49,7 +49,7 @@ class Field {
       field = elements.fieldContainer;
       field.innerHTML = "";
     } else {
-      field = document.createElement("main");
+      field = document.createElement("div");
       field.setAttribute("id", "field-container");
       elements.fieldContainer = field;
     }
