@@ -9,8 +9,8 @@ const Settings = () => {
   const sliderConfigNumX = {
     id: "numX",
     type: "range",
-    min: 4,
-    max: 8,
+    min: 5,
+    max: 9,
     step: 1,
     value: state.fieldConfig.numX,
   };
@@ -19,8 +19,8 @@ const Settings = () => {
   const sliderConfigNumY = {
     id: "numY",
     type: "range",
-    min: 6,
-    max: 16,
+    min: 5,
+    max: 9,
     step: 1,
     value: state.fieldConfig.numY,
   };
@@ -29,8 +29,8 @@ const Settings = () => {
   const sliderConfigNumColors = {
     id: "numColors",
     type: "range",
-    min: 6,
-    max: 16,
+    min: 3,
+    max: 8,
     step: 1,
     value: state.fieldConfig.numColors,
   };

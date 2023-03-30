@@ -2,8 +2,8 @@ const state = {
   _fieldConfig: {
     numX: 4,
     numY: 6,
-    numColors: 8,
-    tileSize: 4,
+    numColors: 4,
+    tileSize: 3,
     minAggregationSize: 2,
   },
 
@@ -18,8 +18,8 @@ const state = {
   _fieldConfigTemp: {
     numX: 4,
     numY: 6,
-    numColors: 8,
-    tileSize: 4,
+    numColors: 4,
+    tileSize: 3,
     minAggregationSize: 2,
   },
 
