@@ -6,10 +6,10 @@
     height: 29.5rem;
     margin: 0.5rem 0;
     background-color: teal;
-    background: url("../assets/png/field_q1_small.png") 14.5rem 0 no-repeat,
-        url("../assets/png/field_q2_small.png") 0 0 no-repeat,
-        url("../assets/png/field_q3_small.png") 0 14.5rem no-repeat,
-        url("../assets/png/field_q4_small.png") 14.5rem 14.5rem no-repeat;
+    background: url("../assets/png/field_q1_small.png") calc(14.5rem - var(--shift-x)) var(--shift-y) no-repeat,
+        url("../assets/png/field_q2_small.png") var(--shift-x) var(--shift-y) no-repeat,
+        url("../assets/png/field_q3_small.png") var(--shift-x) calc(14.5rem - var(--shift-y)) no-repeat,
+        url("../assets/png/field_q4_small.png") calc(14.5rem - var(--shift-x)) calc(14.5rem - var(--shift-y)) no-repeat;
     box-sizing: border-box;
     overflow: hidden;
 }

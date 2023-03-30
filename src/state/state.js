@@ -1,6 +1,6 @@
 const state = {
   _fieldConfig: {
-    numX: 4,
+    numX: 5,
     numY: 6,
     numColors: 4,
     tileSize: 3,
@@ -16,7 +16,7 @@ const state = {
   },
 
   _fieldConfigTemp: {
-    numX: 4,
+    numX: 5,
     numY: 6,
     numColors: 4,
     tileSize: 3,

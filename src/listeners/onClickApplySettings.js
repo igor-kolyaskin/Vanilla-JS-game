@@ -7,8 +7,13 @@ function onClickApplySettings(event) {
   state.fieldConfig = { ...state.fieldConfigTemp };
   fieldInstance.init(state.fieldConfig);
   fieldInstance.render();
-  elements.body.style.setProperty("--num-x", `${state.fieldConfig.numX}`);
-  elements.body.style.setProperty("--num-y", `${state.fieldConfig.numY}`);
+
+  const { numX, numY } = state.fieldConfig;
+
+  elements.body.style.setProperty("--num-x", `${numX}`);
+  elements.body.style.setProperty("--num-y", `${numY}`);
+  elements.body.style.setProperty("--shift-x", `${0.5 + (9 - numX) * 1.5}rem`);
+  elements.body.style.setProperty("--shift-y", `${0.5 + (9 - numY) * 1.5}rem`);
 
   gameInstance.startNewGame();
 }
