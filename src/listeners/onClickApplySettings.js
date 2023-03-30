@@ -7,10 +7,8 @@ function onClickApplySettings(event) {
   state.fieldConfig = { ...state.fieldConfigTemp };
   fieldInstance.init(state.fieldConfig);
   fieldInstance.render();
-  elements.body.style.setProperty(
-    "--column-height",
-    `${state.fieldConfig.tileSize * state.fieldConfig.numY}rem`
-  );
+  elements.body.style.setProperty("--num-x", `${state.fieldConfig.numX}`);
+  elements.body.style.setProperty("--num-y", `${state.fieldConfig.numY}`);
 
   gameInstance.startNewGame();
 }

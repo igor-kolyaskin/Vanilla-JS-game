@@ -6,14 +6,18 @@
     height: 29.5rem;
     margin: 0.5rem 0;
     background-color: teal;
+    background: url("../assets/png/field_q1_small.png") 14.5rem 0 no-repeat,
+        url("../assets/png/field_q2_small.png") 0 0 no-repeat,
+        url("../assets/png/field_q3_small.png") 0 14.5rem no-repeat,
+        url("../assets/png/field_q4_small.png") 14.5rem 14.5rem no-repeat;
     box-sizing: border-box;
     overflow: hidden;
 }
 
 .column {
     position: relative;
-    width: var(--tile-size);
-    height: var(--column-height);
+    width: calc(var(--tile-size) * 1rem);
+    height: calc(var(--tile-size) * var(--num-y) * 1rem);
     background-color: olive;
     box-sizing: border-box;
 }
@@ -24,8 +28,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: var(--tile-size);
-    height: var(--tile-size);
+    width: calc(var(--tile-size) * 1rem);
+    height: calc(var(--tile-size) * 1rem);
     border: 1px solid grey;
     box-sizing: border-box;
     transition: top 0.4s ease-out;

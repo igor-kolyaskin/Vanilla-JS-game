@@ -6,13 +6,14 @@ import gameInstance from "./bll/Game";
 import elements from "./state/elements";
 
 fieldInstance.init(state.fieldConfig);
-const { tileSize, numY } = state.fieldConfig;
+const { tileSize, numX, numY } = state.fieldConfig;
 
 const body = document.getElementById("body");
 body.append(App());
 body.classList.add("theme-main");
-body.style.setProperty("--tile-size", `${tileSize}rem`);
-body.style.setProperty("--column-height", `${tileSize * numY}rem`);
+body.style.setProperty("--tile-size", `${tileSize}`);
+body.style.setProperty("--num-x", `${numX}`);
+body.style.setProperty("--num-y", `${numY}`);
 
 elements.body = body;
 

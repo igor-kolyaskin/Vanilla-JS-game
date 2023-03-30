@@ -45,5 +45,7 @@ html {
     background-color: var(--bgrnd-0-clr);
     font-family: "Roboto";
     color: var(--font-clr);
-    --tile-size: 3rem;
+    --tile-size: 3;
+    --num-x: 4;
+    --num-y: 6;
 }
