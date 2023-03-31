@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
 html {
   font-size: 16px;
   --tile-0-clr: #0d233d;
@@ -297,30 +298,34 @@ html {
     align-items: center;
     width: 100%;
     height: 8rem;
-    background-color: darkolivegreen;
+    background-color: #a1a1a1;
     box-sizing: border-box;
   }
 }
 @media (min-width: 300px) {
   #btn-new-game {
-    width: 2rem;
-    height: 2rem;
+    width: 4rem;
+    height: 4rem;
     padding: 0;
     border: none;
     margin: 0 1rem;
-    background-color: palevioletred;
+    background-image: url("../assets/icons/button_start.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-family: Pangolin, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    color: white;
     box-sizing: border-box;
   }
 }
 @media (min-width: 300px) {
   #btn-settings {
-    width: 2rem;
-    height: 2rem;
+    width: 4rem;
+    height: 4rem;
     padding: 0;
     border: none;
     margin: 0 1rem;
-    background-color: darkolivegreen;
-    background-image: url("../assets/icons/setting.png");
+    background-image: url("../assets/icons/button_gear.png");
     background-repeat: no-repeat;
     background-size: 100%;
     box-sizing: border-box;
@@ -478,15 +483,26 @@ html {
   }
 }
 @media (min-width: 300px) {
-  #field-container {
+  #field-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 29.5rem;
     height: 29.5rem;
     margin: 0.5rem 0;
-    background-color: teal;
     background: url("../assets/png/field_q1_small.png") calc(14.5rem - var(--shift-x)) var(--shift-y) no-repeat, url("../assets/png/field_q2_small.png") var(--shift-x) var(--shift-y) no-repeat, url("../assets/png/field_q3_small.png") var(--shift-x) calc(14.5rem - var(--shift-y)) no-repeat, url("../assets/png/field_q4_small.png") calc(14.5rem - var(--shift-x)) calc(14.5rem - var(--shift-y)) no-repeat;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 300px) {
+  #field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--num-x) * var(--tile-size) * 1rem);
+    height: calc(var(--num-y) * var(--tile-size) * 1rem);
+    margin: 0.5rem 0;
+    background-color: gold;
     box-sizing: border-box;
     overflow: hidden;
   }

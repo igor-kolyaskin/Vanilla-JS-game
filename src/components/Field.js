@@ -44,19 +44,26 @@ class Field {
 
   // creates DOM-tree of tiles first time
   render() {
-    let field;
-    if (elements.fieldContainer) {
-      field = elements.fieldContainer;
-      field.innerHTML = "";
+    let fieldWrapper, field;
+    if (elements.field) {
+      fieldWrapper = elements.fieldWrapper;
+      field = elements.field;
+      elements.field.innerHTML = "";
     } else {
       field = document.createElement("div");
-      field.setAttribute("id", "field-container");
-      elements.fieldContainer = field;
+      field.setAttribute("id", "field");
+      elements.field = field;
+
+      fieldWrapper = document.createElement("div");
+      fieldWrapper.setAttribute("id", "field-wrapper");
+      elements.fieldWrapper = fieldWrapper;
+
+      fieldWrapper.append(field);
     }
 
     const domTiles = this._createDomTiles();
     field.append(...domTiles);
-    return field;
+    return fieldWrapper;
   }
 
   _getRandomTileType() {

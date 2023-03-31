@@ -1,6 +1,7 @@
 const elements = {
-  fieldContainer: null,
   body: null,
+  fieldWrapper: null,
+  field: null,
   domColumns: [],
   sliders: {},
   sliderLabels: {},
