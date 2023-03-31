@@ -8,6 +8,7 @@ const Header = () => {
 
   const btnNewGame = document.createElement("button");
   btnNewGame.setAttribute("id", "btn-new-game");
+  btnNewGame.innerText = "Go!";
 
   const streetlight = streetlightInstance.render();
   streetlight.addEventListener("click", onClickStreetlight);
