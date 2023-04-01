@@ -97,7 +97,8 @@ class Field {
     const tile = document.createElement("div");
     tile.setAttribute("id", `tile-${x}-${y}`);
     tile.classList.add("tile");
-    tile.style.backgroundColor = `var(--tile-${type}-clr)`;
+    tile.style.backgroundImage = `url(../assets/png/tile_${type}.png)`;
+    // tile.style.backgroundColor = `var(--tile-${type}-clr)`;
     tile.style.top = `${state.fieldConfig.tileSize * top}rem`;
     // tile.innerText = type;
 

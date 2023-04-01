@@ -30,7 +30,7 @@ const Settings = () => {
     id: "numColors",
     type: "range",
     min: 3,
-    max: 8,
+    max: 6,
     step: 1,
     value: state.fieldConfig.numColors,
   };

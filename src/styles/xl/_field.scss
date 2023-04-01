@@ -27,7 +27,7 @@
     position: relative;
     width: calc(var(--tile-size) * 1rem);
     height: calc(var(--tile-size) * var(--num-y) * 1rem);
-    background-color: olive;
+    background-color: #0d233d;
     box-sizing: border-box;
 }
 
@@ -35,6 +35,8 @@
     position: absolute;
     width: calc(var(--tile-size) * 1rem);
     height: calc(var(--tile-size) * 1rem);
+    background-repeat: no-repeat;
+    background-size: 96%;
     box-sizing: border-box;
     transition: top 0.4s ease-out;
 }
