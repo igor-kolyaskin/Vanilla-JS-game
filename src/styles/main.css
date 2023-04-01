@@ -52,6 +52,9 @@ html {
   --num-y: 6;
   --shift-x: 6.5rem;
   --shift-y: 5rem;
+  --blast-size-x: 0;
+  --blast-size-y: 0;
+  --tile-blast-bgn-clr: rgba(0, 0, 0, 0);
 }
 
 @media (min-width: 300px) {
@@ -519,15 +522,34 @@ html {
 @media (min-width: 300px) {
   .tile {
     position: absolute;
-    left: 0;
+    width: calc(var(--tile-size) * 1rem);
+    height: calc(var(--tile-size) * 1rem);
+    box-sizing: border-box;
+    transition: top 0.4s ease-out;
+  }
+}
+@media (min-width: 300px) {
+  .tile-blast {
     display: flex;
     justify-content: center;
     align-items: center;
     width: calc(var(--tile-size) * 1rem);
     height: calc(var(--tile-size) * 1rem);
-    border: 1px solid grey;
+    background-color: var(--tile-blast-bgn-clr);
     box-sizing: border-box;
-    transition: top 0.4s ease-out;
+    overflow: hidden;
+    transition: background-color 0.5s linear;
+  }
+}
+@media (min-width: 300px) {
+  .blast {
+    width: var(--blast-size-x);
+    height: var(--blast-size-y);
+    background-color: solid rgba(0, 0, 0, 0.8);
+    border: 0.1rem solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: width 0.5s ease-out, height 0.5s ease-out;
   }
 }
 @media (min-width: 300px) {

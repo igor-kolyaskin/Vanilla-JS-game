@@ -1,7 +1,7 @@
 import state from "../state/state";
 import fieldInstance from "../components/field/Field";
 import gameInstance from "../bll/Game";
-import elements from "../state/elements";
+import setVariablesCSS from "../utils/setVariablesCSS";
 
 function onClickApplySettings(event) {
   state.fieldConfig = { ...state.fieldConfigTemp };
@@ -9,11 +9,13 @@ function onClickApplySettings(event) {
   fieldInstance.render();
 
   const { numX, numY } = state.fieldConfig;
-
-  elements.body.style.setProperty("--num-x", `${numX}`);
-  elements.body.style.setProperty("--num-y", `${numY}`);
-  elements.body.style.setProperty("--shift-x", `${0.5 + (9 - numX) * 1.5}rem`);
-  elements.body.style.setProperty("--shift-y", `${0.5 + (9 - numY) * 1.5}rem`);
+  const variablesCSS = {
+    "--num-x": `${numX}`,
+    "--num-y": `${numY}`,
+    "--shift-x": `${0.5 + (9 - numX) * 1.5}rem`,
+    "--shift-y": `${0.5 + (9 - numY) * 1.5}rem`,
+  };
+  setVariablesCSS(variablesCSS);
 
   gameInstance.startNewGame();
 }

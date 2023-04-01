@@ -3,6 +3,7 @@ import streetlightInstance from "../components/header/Streetlight";
 import state from "../state/state";
 import wait from "../utils/wait";
 import elements from "../state/elements";
+import setVariablesCSS from "../utils/setVariablesCSS";
 
 function onClickTile(event) {
   if (state.fieldLock) return;
@@ -23,23 +24,23 @@ function onClickTile(event) {
   const handleClickTile = async (aggArea) => {
     fieldInstance.appendBlastToTile(aggArea);
 
-    elements.body.style.setProperty("--blast-size-x", "0");
-    elements.body.style.setProperty("--blast-size-y", "0");
+    let variablesCSS = {
+      "--blast-size-x": "0",
+      "--blast-size-y": "0",
+    };
+    setVariablesCSS(variablesCSS);
     await wait(0);
 
-    elements.body.style.setProperty("--blast-size-x", "3rem");
-    elements.body.style.setProperty("--blast-size-y", "3rem");
-    elements.body.style.setProperty(
-      "--tile-blast-bgn-clr",
-      "rgba(0, 0, 0, .4)"
-    );
-
+    variablesCSS = {
+      "--blast-size-x": "3rem",
+      "--blast-size-y": "3rem",
+      "--tile-blast-bgn-clr": "rgba(0, 0, 0, .4)",
+    };
+    setVariablesCSS(variablesCSS);
     await wait(500);
 
-    elements.body.style.setProperty(
-      "--tile-blast-bgn-clr",
-      "rgba(0, 0, 0, 0.1)"
-    );
+    variablesCSS = { "--tile-blast-bgn-clr": "rgba(0, 0, 0, .1)" };
+    setVariablesCSS(variablesCSS);
 
     fieldInstance.changeAggregatedTiles(x, y, aggArea);
     fieldInstance.refreshColumns(aggArea);
