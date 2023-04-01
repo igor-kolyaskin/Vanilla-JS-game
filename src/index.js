@@ -1,6 +1,6 @@
 import "../src/styles/main.scss";
 import App from "./components/App";
-import fieldInstance from "./components/Field";
+import fieldInstance from "./components/field/Field";
 import state from "./state/state";
 import gameInstance from "./bll/Game";
 import elements from "./state/elements";

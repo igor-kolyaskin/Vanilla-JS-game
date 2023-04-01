@@ -1,8 +1,9 @@
-import elements from "../state/elements";
-import wait from "../utils/wait";
-import state from "../state/state";
-import streetlightInstance from "../components/header/Streetlight";
-import deepCloneTiles from "../utils/deepCloneTiles";
+import elements from "../../state/elements";
+import wait from "../../utils/wait";
+import state from "../../state/state";
+import streetlightInstance from "../header/Streetlight";
+import deepCloneTiles from "../../utils/deepCloneTiles";
+import TileBlast from "./TileBlast";
 
 class Field {
   constructor() {
@@ -24,7 +25,6 @@ class Field {
           .fill(0)
           .map((_, indexY) => this._createTile(indexX, indexY, 0));
       });
-    console.log(this.tiles);
   }
 
   _createTile(
@@ -99,7 +99,7 @@ class Field {
     tile.classList.add("tile");
     tile.style.backgroundColor = `var(--tile-${type}-clr)`;
     tile.style.top = `${state.fieldConfig.tileSize * top}rem`;
-    tile.innerText = type;
+    // tile.innerText = type;
 
     return tile;
   }
@@ -164,6 +164,15 @@ class Field {
 
       const tileDOM = document.getElementById(`tile-${tile.x}-${tile.y}`);
       tileDOM.style.backgroundColor = `var(--tile-0-clr)`;
+    });
+  }
+
+  // attachBlastToTile(aggArea)
+  // attaches to all tiles a div with animated cirle
+  appendBlastToTile(aggArea) {
+    aggArea.forEach((tile) => {
+      const tileDOM = document.getElementById(`tile-${tile.x}-${tile.y}`);
+      tileDOM.append(TileBlast());
     });
   }
 

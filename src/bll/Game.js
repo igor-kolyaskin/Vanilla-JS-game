@@ -1,4 +1,4 @@
-import fieldInstance from "../components/Field";
+import fieldInstance from "../components/field/Field";
 import streetlightInstance from "../components/header/Streetlight";
 import state from "../state/state";
 

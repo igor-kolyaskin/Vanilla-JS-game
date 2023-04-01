@@ -1,5 +1,5 @@
 import state from "../state/state";
-import fieldInstance from "../components/Field";
+import fieldInstance from "../components/field/Field";
 import gameInstance from "../bll/Game";
 import elements from "../state/elements";
 

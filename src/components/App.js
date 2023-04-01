@@ -1,5 +1,5 @@
 import Header from "./header/Header";
-import fieldInstance from "./Field";
+import fieldInstance from "./field/Field";
 import Score from "./score/Score";
 import onClickTile from "../listeners/onClickTile";
 

@@ -1,0 +1,21 @@
+.tile-blast {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--tile-size) * 1rem);
+    height: calc(var(--tile-size) * 1rem);
+    background-color: var(--tile-blast-bgn-clr);
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: background-color 0.5s linear;
+}
+
+.blast {
+    width: var(--blast-size-x);
+    height: var(--blast-size-y);
+    background-color: solid rgba(0, 0, 0, 0.8);
+    border: 0.1rem solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: width 0.5s ease-out, height 0.5s ease-out;
+}
