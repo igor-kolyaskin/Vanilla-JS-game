@@ -59,6 +59,7 @@ class Streetlight {
     this.textNumber.style.display = "inherit";
     this.textSpinner.style.display = "none";
     this.textWord.style.display = "inherit";
+    this.refreshButton.innerText = "";
   }
 
   red() {
@@ -69,6 +70,7 @@ class Streetlight {
     this.textWord.style.display = "none";
     this.textNumber.style.display = "none";
     this.textSpinner.style.display = "none";
+    this.refreshButton.innerText = "Обновите поле";
   }
 
   yellow() {
@@ -80,6 +82,7 @@ class Streetlight {
     this.textNumber.style.display = "none";
     this.textWord.style.display = "inherit";
     this.textSpinner.style.display = "inherit";
+    this.refreshButton.innerText = "";
   }
 }
 
