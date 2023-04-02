@@ -1,10 +1,8 @@
 class ProgressBar {
   constructor() {
-    this.bar = null;
-    this.text = null;
+    this.barGreen = null;
   }
 
-  // creates DOM-element
   render() {
     const progressBar = document.createElement("section");
     progressBar.setAttribute("id", "progressbar");
@@ -14,6 +12,7 @@ class ProgressBar {
 
     const progressBarGreen = document.createElement("div");
     progressBarGreen.setAttribute("id", "progressbar-green");
+    this.barGreen = progressBarGreen;
 
     progressBarMask.append(progressBarGreen);
 

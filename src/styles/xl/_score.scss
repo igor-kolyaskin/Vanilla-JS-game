@@ -1,8 +1,8 @@
 #score {
     display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
-    // align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     width: 16rem;
     height: 16rem;
     background-color: #a1a1a1;
@@ -11,6 +11,33 @@
     background-repeat: no-repeat;
     color: white;
     font-family: Pangolin, Helvetica, sans-serif;
-    font-size: 1rem;
     box-sizing: border-box;
 }
+
+#moves-display,
+#scores-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+    height: 6.8rem;
+    box-sizing: border-box;
+}
+
+#moves-display {
+    margin-top: 2rem;
+    font-size: 4rem;
+}
+
+#scores-display {
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+
+// #scores-title {
+//     font-size: 1.5rem;
+// }
+
+// #scores-number {
+//     font-size: 1.5rem;
+// }
