@@ -62,7 +62,7 @@ html {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 50rem;
+    width: 46rem;
     margin: 1rem auto;
     background-color: rgb(255, 159, 142);
   }
@@ -71,8 +71,32 @@ html {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 36rem;
-    background-color: limegreen;
+    width: 30rem;
+    background-color: #a1a1a1;
+  }
+  .lds-dual-ring {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 2px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   .tingle-modal * {
     box-sizing: border-box;
@@ -297,107 +321,135 @@ html {
 @media (min-width: 300px) {
   #header {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
-    height: 8rem;
+    height: 5rem;
     background-color: #a1a1a1;
     box-sizing: border-box;
   }
 }
 @media (min-width: 300px) {
-  #btn-new-game {
+  .header-button {
     width: 4rem;
     height: 4rem;
     padding: 0;
     border: none;
-    margin: 0 1rem;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 300px) {
+  #btn-new-game {
+    margin: 0.5rem 0 0 1rem;
     background-image: url("../assets/icons/button_start.png");
     background-repeat: no-repeat;
     background-size: 100%;
     font-family: Pangolin, Helvetica, sans-serif;
     font-size: 1.5rem;
     color: white;
-    box-sizing: border-box;
   }
 }
 @media (min-width: 300px) {
   #btn-settings {
-    width: 4rem;
-    height: 4rem;
-    padding: 0;
-    border: none;
-    margin: 0 1rem;
+    margin: 0.5rem 1rem 0 0;
     background-image: url("../assets/icons/button_gear.png");
     background-repeat: no-repeat;
     background-size: 100%;
-    box-sizing: border-box;
   }
 }
 @media (min-width: 300px) {
   #streetlight {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 18.5rem;
-    height: 2rem;
-    border: 0.1rem solid black;
-    border-radius: 0.2rem;
-    background-color: silver;
+    width: 18rem;
+    height: 5rem;
+    background-color: #a1a1a1;
+    background-image: url("../assets/png/header-display.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: Pangolin, Helvetica, sans-serif;
+    font-size: 1rem;
     box-sizing: border-box;
   }
 }
 @media (min-width: 300px) {
-  #streetlight-lt-cont {
+  #refresh-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1rem;
-    height: 1rem;
+    width: 12rem;
+    height: 2.5rem;
     margin: 0.5rem;
+    padding: 0;
+    border: none;
+    background-image: url("../assets/png/refresh-button.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     box-sizing: border-box;
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
   }
-}
-@media (min-width: 300px) {
-  #streetlight-light {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    box-sizing: border-box;
+  #refresh-button.refresh-button-active {
+    opacity: 1;
+    pointer-events: all;
+    cursor: pointer;
   }
 }
 @media (min-width: 300px) {
   #streetlight-text {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     width: 16rem;
     height: 1rem;
-    background-color: lightgreen;
-    color: black;
-    font-size: 0.75rem;
+    background-color: transparent;
+    margin-top: 0.5rem;
     box-sizing: border-box;
   }
 }
 @media (min-width: 300px) {
-  .streetlight-yellow {
-    background-color: yellow;
-    pointer-events: none;
-    cursor: default;
+  .street-text-parts {
+    display: flex;
+    align-items: center;
+    height: 1rem;
+    background-color: transparent;
+    box-sizing: border-box;
   }
 }
 @media (min-width: 300px) {
-  .streetlight-red {
-    background-color: red;
-    pointer-events: auto;
-    cursor: pointer;
+  #streetlight-text-message {
+    justify-content: flex-start;
+    width: 8rem;
+  }
+  #streetlight-text-message.street-message-long {
+    width: 15rem;
   }
 }
 @media (min-width: 300px) {
-  .streetlight-green {
-    background-color: green;
-    pointer-events: none;
-    cursor: default;
+  #streetlight-text-number {
+    display: inherit;
+    justify-content: center;
+    font-size: 1.2rem;
+    width: 3rem;
+  }
+}
+@media (min-width: 300px) {
+  .street-text-spinner {
+    display: none;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: transparent;
+  }
+}
+@media (min-width: 300px) {
+  #streetlight-text-word {
+    justify-content: flex-start;
+    width: 3rem;
   }
 }
 @media (min-width: 300px) {
@@ -436,56 +488,6 @@ html {
   }
 }
 @media (min-width: 300px) {
-  #progressbar {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 13rem;
-    height: 4rem;
-    border: 0.1rem solid black;
-    border-radius: 0.2rem;
-    background-color: silver;
-    box-sizing: border-box;
-  }
-}
-@media (min-width: 300px) {
-  #progressbar-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 12rem;
-    height: 1rem;
-    background-color: lightgreen;
-    color: black;
-    font-size: 0.75rem;
-    box-sizing: border-box;
-  }
-}
-@media (min-width: 300px) {
-  #progressbar-bar-cont {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 12rem;
-    height: 1.4rem;
-    margin: 0.2rem;
-    border: 0.1rem solid maroon;
-    border-radius: 0.7rem;
-    background-color: tomato;
-    box-sizing: border-box;
-  }
-}
-@media (min-width: 300px) {
-  #progressbar-bar {
-    width: 10rem;
-    height: 1.2rem;
-    border-radius: 0.6rem;
-    border: 0.1rem solid maroon;
-    box-sizing: border-box;
-  }
-}
-@media (min-width: 300px) {
   #field-wrapper {
     display: flex;
     justify-content: center;
@@ -515,7 +517,7 @@ html {
     position: relative;
     width: calc(var(--tile-size) * 1rem);
     height: calc(var(--tile-size) * var(--num-y) * 1rem);
-    background-color: olive;
+    background-color: #0d233d;
     box-sizing: border-box;
   }
 }
@@ -524,6 +526,8 @@ html {
     position: absolute;
     width: calc(var(--tile-size) * 1rem);
     height: calc(var(--tile-size) * 1rem);
+    background-repeat: no-repeat;
+    background-size: 96%;
     box-sizing: border-box;
     transition: top 0.4s ease-out;
   }
@@ -553,11 +557,72 @@ html {
   }
 }
 @media (min-width: 300px) {
+  #sidebar {
+    position: relative;
+    width: 16.5rem;
+    height: 32rem;
+    margin: 0.2rem 0;
+    background-color: #a1a1a1;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 300px) {
   #score {
-    width: 20rem;
-    height: 8rem;
-    margin: 1rem;
-    background-color: darkgray;
+    display: flex;
+    width: 16rem;
+    height: 16rem;
+    background-color: #a1a1a1;
+    background-image: url("../assets/png/score.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: Pangolin, Helvetica, sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 300px) {
+  #bonuses {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 8rem;
+    height: 14rem;
+    margin-top: 2rem;
+    background-color: #a1a1a1;
+    color: white;
+    font-family: Pangolin, Helvetica, sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 300px) {
+  .bonus {
+    display: flex;
+    width: 6rem;
+    height: 6rem;
+    background-color: #a1a1a1;
+    background-image: url("../assets/png/bonus.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: Pangolin, Helvetica, sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 300px) {
+  #progressbar {
+    position: absolute;
+    right: 0;
+    top: 18rem;
+    width: 4rem;
+    height: 12rem;
+    background-color: #a1a1a1;
+    background-image: url("../assets/png/progress-display.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     box-sizing: border-box;
   }
 }/*# sourceMappingURL=main.css.map */

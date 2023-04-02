@@ -1,6 +1,6 @@
 import Header from "./header/Header";
 import fieldInstance from "./field/Field";
-import Score from "./score/Score";
+import SideBar from "./sidebar/SideBar";
 import onClickTile from "../listeners/onClickTile";
 
 function App() {
@@ -13,10 +13,10 @@ function App() {
   const header = Header();
   const fieldDomElement = fieldInstance.render();
   fieldDomElement.addEventListener("click", onClickTile);
-  const score = Score();
+  const sidebar = SideBar();
 
   main.append(header, fieldDomElement);
-  app.append(main, score);
+  app.append(main, sidebar);
 
   return app;
 }

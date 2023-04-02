@@ -1,45 +1,16 @@
 #progressbar {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 13rem;
-    height: 4rem;
-    border: 0.1rem solid black;
-    border-radius: 0.2rem;
-    background-color: silver;
-    box-sizing: border-box;
-}
-
-#progressbar-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 12rem;
-    height: 1rem;
-    background-color: lightgreen;
-    color: black;
-    font-size: 0.75rem;
-    box-sizing: border-box;
-}
-
-#progressbar-bar-cont {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 12rem;
-    height: 1.4rem;
-    margin: 0.2rem;
-    border: 0.1rem solid maroon;
-    border-radius: 0.7rem;
-    background-color: tomato;
-    box-sizing: border-box;
-}
-
-#progressbar-bar {
-    width: 10rem;
-    height: 1.2rem;
-    border-radius: 0.6rem;
-    border: 0.1rem solid maroon;
+    position: absolute;
+    right: 0;
+    top: 18rem;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: flex-start;
+    // align-items: center;
+    width: 4rem;
+    height: 12rem;
+    background-color: #a1a1a1;
+    background-image: url("../assets/png/progress-display.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     box-sizing: border-box;
 }

@@ -1,0 +1,30 @@
+#bonuses {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 8rem;
+    height: 14rem;
+    margin-top: 2rem;
+    background-color: #a1a1a1;
+    color: white;
+    font-family: Pangolin, Helvetica, sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+.bonus {
+    display: flex;
+    // flex-direction: column;
+    // justify-content: flex-start;
+    // align-items: center;
+    width: 6rem;
+    height: 6rem;
+    background-color: #a1a1a1;
+    background-image: url("../assets/png/bonus.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: Pangolin, Helvetica, sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
