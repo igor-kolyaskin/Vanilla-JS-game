@@ -8,6 +8,7 @@ const Header = () => {
 
   const btnNewGame = document.createElement("button");
   btnNewGame.setAttribute("id", "btn-new-game");
+  btnNewGame.classList.add("header-button");
   btnNewGame.innerText = "Go!";
 
   const streetlight = streetlightInstance.render();
@@ -15,6 +16,7 @@ const Header = () => {
 
   const btnSettings = document.createElement("button");
   btnSettings.setAttribute("id", "btn-settings");
+  btnSettings.classList.add("header-button");
   btnSettings.addEventListener("click", onClickSettings);
 
   header.append(btnNewGame, streetlight, btnSettings);
