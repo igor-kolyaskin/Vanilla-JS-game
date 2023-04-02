@@ -617,12 +617,40 @@ html {
     position: absolute;
     right: 0;
     top: 18rem;
-    width: 4rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 3.6rem;
     height: 12rem;
     background-color: #a1a1a1;
     background-image: url("../assets/png/progress-display.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 300px) {
+  #progressbar-mask {
+    position: relative;
+    left: 0.8rem;
+    width: 1.3rem;
+    height: 10.75rem;
+    background: linear-gradient(90deg, rgb(3, 38, 85), rgb(0, 16, 37) 100%);
+    border-left: 0.1rem solid #184e90;
+    border-radius: 0.65rem;
+    box-sizing: content-box;
+    overflow: hidden;
+  }
+}
+@media (min-width: 300px) {
+  #progressbar-green {
+    position: relative;
+    left: 0;
+    top: 1rem;
+    width: 1.3rem;
+    height: 10.75rem;
+    background: linear-gradient(90deg, rgb(78, 218, 12), rgb(32, 172, 0) 26%, rgb(190, 255, 51) 100%);
+    border-radius: 0.65rem;
     box-sizing: border-box;
   }
 }/*# sourceMappingURL=main.css.map */
