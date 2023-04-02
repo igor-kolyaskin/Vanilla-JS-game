@@ -1,3 +1,4 @@
+import getRightWordClick from "../../utils/getRightWordClick";
 import Spinner from "../common/Spinner";
 class Streetlight {
   constructor() {
@@ -55,7 +56,7 @@ class Streetlight {
     this.textMessage.classList.remove("street-message-long");
     this.textMessage.innerText = `На этом поле ещё`;
     this.textNumber.innerText = `${turnNumber}`;
-    this.textWord.innerText = `кликов`;
+    this.textWord.innerText = getRightWordClick(turnNumber);
     this.textNumber.style.display = "inherit";
     this.textSpinner.style.display = "none";
     this.textWord.style.display = "inherit";
