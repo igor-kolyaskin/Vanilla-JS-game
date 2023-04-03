@@ -2,8 +2,8 @@ import fieldInstance from "../components/field/Field";
 import streetlightInstance from "../components/header/Streetlight";
 import state from "../state/state";
 import wait from "../utils/wait";
-import elements from "../state/elements";
 import setVariablesCSS from "../utils/setVariablesCSS";
+import game from "../bll/Game";
 
 function onClickTile(event) {
   if (state.fieldLock) return;
@@ -44,6 +44,8 @@ function onClickTile(event) {
 
     fieldInstance.changeAggregatedTiles(x, y, aggArea);
     fieldInstance.refreshColumns(aggArea);
+
+    game.incrementMoves();
   };
   handleClickTile(aggArea);
 }

@@ -1,6 +1,7 @@
 import fieldInstance from "../components/field/Field";
 import streetlightInstance from "../components/header/Streetlight";
 import state from "../state/state";
+import score from "../components/sidebar/Score";
 
 class Game {
   startNewGame() {
@@ -22,6 +23,12 @@ class Game {
 
     fieldInstance.changeAggregatedTiles(0, 0, aggArea);
     fieldInstance.refreshColumns(aggArea);
+  }
+
+  incrementMoves() {
+    const currentMoves = state.game.moves;
+    state.updateGame({ key: "moves", value: currentMoves + 1 });
+    score.updateMovesIndication();
   }
 }
 

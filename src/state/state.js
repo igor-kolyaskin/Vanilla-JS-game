@@ -33,6 +33,8 @@ const state = {
 
   _game: {
     fieldLock: false,
+    score: 0,
+    moves: 0,
   },
 
   get fieldLock() {
@@ -44,6 +46,15 @@ const state = {
   },
   unlockField() {
     this._game.fieldLock = false;
+  },
+
+  get game() {
+    return this._game;
+  },
+
+  updateGame(payload) {
+    const { key, value } = payload;
+    this._game[key] = value;
   },
 };
 export default state;

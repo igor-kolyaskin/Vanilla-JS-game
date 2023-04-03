@@ -1,3 +1,4 @@
+import state from "../../state/state";
 class Score {
   constructor() {
     this.movesDilplay = null;
@@ -10,7 +11,7 @@ class Score {
 
     const movesDilplay = document.createElement("div");
     movesDilplay.setAttribute("id", "moves-display");
-    movesDilplay.innerText = "37";
+    movesDilplay.innerText = "0";
     this.movesDilplay = movesDilplay;
 
     const scoresDisplay = document.createElement("div");
@@ -30,6 +31,9 @@ class Score {
     score.append(movesDilplay, scoresDisplay);
 
     return score;
+  }
+  updateMovesIndication() {
+    this.movesDilplay.innerText = state.game.moves;
   }
 }
 
