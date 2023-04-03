@@ -47,6 +47,7 @@ function onClickTile(event) {
 
     game.incrementMoves();
     game.incrementScore(aggArea.length);
+    game.setGameStatus();
   };
   handleClickTile(aggArea);
 }

@@ -1,7 +1,7 @@
 import elements from "../../state/elements";
 
-const Slider = (labelText, config) => {
-  const { id, value, min, max } = config;
+const Slider = (config) => {
+  const { id, value, min, max, labelText } = config;
 
   const sliderContainer = document.createElement("section");
   sliderContainer.setAttribute("id", `slider-container-${id}`);
@@ -27,6 +27,7 @@ const Slider = (labelText, config) => {
   const configArray = Object.entries({
     ...config,
     id: `slider-${id}`,
+    type: "range",
   });
   configArray.forEach((attr) => {
     slider.setAttribute(`${attr[0]}`, `${attr[1]}`);

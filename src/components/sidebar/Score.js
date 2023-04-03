@@ -11,7 +11,7 @@ class Score {
 
     const movesDilplay = document.createElement("div");
     movesDilplay.setAttribute("id", "moves-display");
-    movesDilplay.innerText = "0";
+    movesDilplay.innerText = state.game.movesToWin;
     this.movesDilplay = movesDilplay;
 
     const scoresDisplay = document.createElement("div");
@@ -34,7 +34,7 @@ class Score {
   }
 
   updateMovesIndication() {
-    this.movesDilplay.innerText = state.game.moves;
+    this.movesDilplay.innerText = state.game.movesToWin - state.game.moves;
   }
 
   updateScoreIndication() {
