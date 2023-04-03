@@ -16,7 +16,8 @@
 }
 #btn-new-game {
     margin: 0.5rem 0 0 1rem;
-    background-image: url("../assets/icons/button_start.png");
+    background-color: transparent;
+    background-image: url("../assets/png/button_go.png");
     background-repeat: no-repeat;
     background-size: 100%;
     font-family: Pangolin, Helvetica, sans-serif;
@@ -26,7 +27,8 @@
 
 #btn-settings {
     margin: 0.5rem 1rem 0 0;
-    background-image: url("../assets/icons/button_gear.png");
+    background-color: transparent;
+    background-image: url("../assets/png/button-settings.png");
     background-repeat: no-repeat;
     background-size: 100%;
 }
