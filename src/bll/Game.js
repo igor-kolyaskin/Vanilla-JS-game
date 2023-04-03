@@ -1,7 +1,9 @@
 import fieldInstance from "../components/field/Field";
 import streetlightInstance from "../components/header/Streetlight";
+import progressBar from "../components/sidebar/ProgressBar";
 import state from "../state/state";
 import score from "../components/sidebar/Score";
+import scoreTable from "../constants/scoreTable";
 
 class Game {
   startNewGame() {
@@ -29,6 +31,16 @@ class Game {
     const currentMoves = state.game.moves;
     state.updateGame({ key: "moves", value: currentMoves + 1 });
     score.updateMovesIndication();
+  }
+
+  incrementScore(scr) {
+    const currentScore = state.game.score;
+    const scoreIncrement = scoreTable[scr]
+      ? scoreTable[scr]
+      : scoreTable["max"];
+    state.updateGame({ key: "score", value: currentScore + scoreIncrement });
+    score.updateScoreIndication();
+    progressBar.updateProgressBar();
   }
 }
 

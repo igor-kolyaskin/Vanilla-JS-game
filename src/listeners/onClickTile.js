@@ -46,6 +46,7 @@ function onClickTile(event) {
     fieldInstance.refreshColumns(aggArea);
 
     game.incrementMoves();
+    game.incrementScore(aggArea.length);
   };
   handleClickTile(aggArea);
 }

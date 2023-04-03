@@ -1,3 +1,4 @@
+import state from "../../state/state";
 class ProgressBar {
   constructor() {
     this.barGreen = null;
@@ -19,6 +20,15 @@ class ProgressBar {
     progressBar.append(progressBarMask);
 
     return progressBar;
+  }
+
+  updateProgressBar() {
+    const { score, scoreToWin } = state.game;
+    this.barGreen.style.top = `${
+      10.75 *
+      (1 - (score <= 0 ? 0 : score > scoreToWin ? 1 : score / scoreToWin))
+    }rem`;
+    console.log(score, scoreToWin);
   }
 }
 

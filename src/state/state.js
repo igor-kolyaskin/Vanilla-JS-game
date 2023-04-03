@@ -35,6 +35,8 @@ const state = {
     fieldLock: false,
     score: 0,
     moves: 0,
+    scoreToWin: 30,
+    movesToWin: 6,
   },
 
   get fieldLock() {

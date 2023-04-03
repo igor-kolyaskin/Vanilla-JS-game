@@ -23,7 +23,7 @@ class Score {
 
     const scoresNumber = document.createElement("div");
     scoresNumber.setAttribute("id", "scores-number");
-    scoresNumber.innerText = "221";
+    scoresNumber.innerText = "0";
     this.scoresNumber = scoresNumber;
 
     scoresDisplay.append(scoresTitle, scoresNumber);
@@ -32,8 +32,13 @@ class Score {
 
     return score;
   }
+
   updateMovesIndication() {
     this.movesDilplay.innerText = state.game.moves;
+  }
+
+  updateScoreIndication() {
+    this.scoresNumber.innerText = state.game.score;
   }
 }
 

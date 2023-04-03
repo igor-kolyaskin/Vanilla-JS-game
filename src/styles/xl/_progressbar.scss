@@ -29,10 +29,11 @@
 #progressbar-green {
     position: relative;
     left: 0.15rem;
-    top: 1rem;
+    top: 10.75rem;
     width: 1rem;
     height: 10.75rem;
     background: linear-gradient(90deg, rgb(78, 218, 12), rgb(32, 172, 0) 26%, rgb(190, 255, 51) 100%);
     border-radius: 0.65rem;
     box-sizing: border-box;
+    transition: top 0.5s ease-in-out;
 }
