@@ -5,6 +5,7 @@ import state from "./state/state";
 import gameInstance from "./bll/Game";
 import elements from "./state/elements";
 import setVariablesCSS from "./utils/setVariablesCSS";
+import message from "./components/Message";
 
 fieldInstance.init(state.fieldConfig);
 const { tileSize, numX, numY } = state.fieldConfig;
@@ -12,6 +13,8 @@ const { tileSize, numX, numY } = state.fieldConfig;
 const body = document.getElementById("body");
 body.append(App());
 body.classList.add("theme-main");
+body.addEventListener("click", () => message.close());
+
 elements.body = body;
 
 const variablesCSS = {

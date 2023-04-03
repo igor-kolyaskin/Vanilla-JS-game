@@ -1,5 +1,6 @@
 import Header from "./header/Header";
 import fieldInstance from "./field/Field";
+import messageInstance from "./Message";
 import SideBar from "./sidebar/SideBar";
 import onClickTile from "../listeners/onClickTile";
 
@@ -11,11 +12,13 @@ function App() {
   main.setAttribute("id", "main");
 
   const header = Header();
-  const fieldDomElement = fieldInstance.render();
-  fieldDomElement.addEventListener("click", onClickTile);
+  const field = fieldInstance.render();
+  field.addEventListener("click", onClickTile);
   const sidebar = SideBar();
 
-  main.append(header, fieldDomElement);
+  const message = messageInstance.render();
+
+  main.append(header, field, message);
   app.append(main, sidebar);
 
   return app;
