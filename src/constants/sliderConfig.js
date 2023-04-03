@@ -6,7 +6,6 @@ const sliderConfig = [
     min: 5,
     max: 9,
     step: 1,
-    value: state.fieldConfig.numX,
     labelText: "columns",
   },
   {
@@ -14,7 +13,6 @@ const sliderConfig = [
     min: 5,
     max: 9,
     step: 1,
-    value: state.fieldConfig.numY,
     labelText: "rows",
   },
   {
@@ -22,7 +20,6 @@ const sliderConfig = [
     min: 3,
     max: 6,
     step: 1,
-    value: state.fieldConfig.numColors,
     labelText: "colors",
   },
 ];

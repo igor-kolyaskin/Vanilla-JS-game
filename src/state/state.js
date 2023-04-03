@@ -45,10 +45,10 @@ const state = {
   },
 
   lockField() {
-    this._game.fieldLock = true;
+    this._game = { ...this._game, fieldLock: true };
   },
   unlockField() {
-    this._game.fieldLock = false;
+    this._game = { ...this._game, fieldLock: false };
   },
 
   get game() {

@@ -194,7 +194,9 @@ class Field {
     });
 
     Promise.all(promiseArray).then(() => {
-      state.unlockField();
+      if (state.game.status !== "win" && state.game.status !== "losing") {
+        state.unlockField();
+      }
       streetlightInstance.green();
       const moves = this.getClickableTilesInThisField();
       if (moves) {

@@ -2,7 +2,7 @@ import fieldInstance from "../components/field/Field";
 import streetlightInstance from "../components/header/Streetlight";
 import progressBar from "../components/sidebar/ProgressBar";
 import state from "../state/state";
-import score from "../components/sidebar/Score";
+import scoreInstance from "../components/sidebar/Score";
 import scoreTable from "../constants/scoreTable";
 import messageInstance from "../components/Message";
 
@@ -31,7 +31,7 @@ class Game {
   incrementMoves() {
     const currentMoves = state.game.moves;
     state.updateGame({ key: "moves", value: currentMoves + 1 });
-    score.updateMovesIndication();
+    scoreInstance.updateMovesIndication();
   }
 
   incrementScore(scr) {
@@ -40,23 +40,29 @@ class Game {
       ? scoreTable[scr]
       : scoreTable["max"];
     state.updateGame({ key: "score", value: currentScore + scoreIncrement });
-    score.updateScoreIndication();
+    scoreInstance.updateScoreIndication();
     progressBar.updateProgressBar();
   }
 
   resetToStart() {
-    const { score, moves, scoreToWin, movesToWin, status } = state.game;
-    state.updateGame({ key: "moves", value: movesToWin });
     state.updateGame({ key: "moves", value: 0 });
+    state.updateGame({ key: "score", value: 0 });
+    state.unlockField();
+    scoreInstance.updateScoreIndication();
+    scoreInstance.updateMovesIndication();
+    progressBar.updateProgressBar();
   }
 
   setGameStatus() {
-    const { score, moves, scoreToWin, movesToWin, status } = state.game;
-    console.log(moves, "moves");
+    const { score, moves, scoreToWin, movesToWin } = state.game;
     if (score >= scoreToWin) {
       messageInstance.open("win");
+      state.updateGame({ key: "status", value: "win" });
+      state.lockField();
     } else if (moves >= movesToWin) {
       messageInstance.open("losing");
+      state.updateGame({ key: "status", value: "losing" });
+      state.lockField();
     } else {
       console.log("continue");
     }

@@ -25,7 +25,6 @@ class Message {
   }
 
   open(textType) {
-    console.log(textType);
     this.messageElement.style.visibility = "visible";
     this.messageText.innerText = getMessageText(textType);
   }
