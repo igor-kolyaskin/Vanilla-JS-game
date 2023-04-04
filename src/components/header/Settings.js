@@ -1,7 +1,7 @@
 import Slider from "../common/Slider";
 import onChangeSlider from "../../listeners/onChangeSlider";
 import sliderConfig from "../../constants/sliderConfig";
-import state from "../../state/state";
+import state from "../../store/state";
 
 const Settings = () => {
   const settingsWrapper = document.createElement("section");

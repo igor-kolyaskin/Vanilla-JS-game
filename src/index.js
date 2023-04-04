@@ -1,9 +1,9 @@
 import "../src/styles/main.scss";
 import App from "./components/App";
 import fieldInstance from "./components/field/Field";
-import state from "./state/state";
+import state from "./store/state";
 import gameInstance from "./bll/Game";
-import elements from "./state/elements";
+import elements from "./store/elements";
 import setVariablesCSS from "./utils/setVariablesCSS";
 import message from "./components/Message";
 

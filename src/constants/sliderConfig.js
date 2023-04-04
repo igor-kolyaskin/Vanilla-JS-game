@@ -1,5 +1,3 @@
-import state from "../state/state";
-
 const sliderConfig = [
   {
     id: "numX",
@@ -7,7 +5,6 @@ const sliderConfig = [
     max: 9,
     step: 1,
     labelText: "Количество столбцов",
-    "data-cluster": "fieldConfig",
   },
   {
     id: "numY",
@@ -15,7 +12,6 @@ const sliderConfig = [
     max: 9,
     step: 1,
     labelText: "Количество рядов",
-    "data-cluster": "fieldConfig",
   },
   {
     id: "numColors",
@@ -23,7 +19,6 @@ const sliderConfig = [
     max: 6,
     step: 1,
     labelText: "Количество цветов",
-    "data-cluster": "fieldConfig",
   },
   {
     id: "scoreToWin",
@@ -31,7 +26,13 @@ const sliderConfig = [
     max: 300,
     step: 10,
     labelText: "Сумма очков для победы",
-    "data-cluster": "game",
+  },
+  {
+    id: "movesToWin",
+    min: 3,
+    max: 30,
+    step: 1,
+    labelText: "Максимальное количество ходов",
   },
 ];
 

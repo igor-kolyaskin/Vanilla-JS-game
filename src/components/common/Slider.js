@@ -1,4 +1,4 @@
-import elements from "../../state/elements";
+import elements from "../../store/elements";
 
 const Slider = (config) => {
   const { id, value, min, max, labelText } = config;

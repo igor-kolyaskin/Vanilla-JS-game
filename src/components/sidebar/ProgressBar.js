@@ -1,4 +1,4 @@
-import state from "../../state/state";
+import state from "../../store/state";
 class ProgressBar {
   constructor() {
     this.barGreen = null;
@@ -23,7 +23,7 @@ class ProgressBar {
   }
 
   updateProgressBar() {
-    const { score, scoreToWin } = state.game;
+    const { score, scoreToWin } = state.fieldConfig;
     this.barGreen.style.top = `${
       10.75 *
       (1 - (score <= 0 ? 0 : score > scoreToWin ? 1 : score / scoreToWin))

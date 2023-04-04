@@ -1,4 +1,4 @@
-import state from "../../state/state";
+import state from "../../store/state";
 class Score {
   constructor() {
     this.movesDilplay = null;
@@ -11,7 +11,7 @@ class Score {
 
     const movesDilplay = document.createElement("div");
     movesDilplay.setAttribute("id", "moves-display");
-    movesDilplay.innerText = state.game.movesToWin;
+    movesDilplay.innerText = state.fieldConfig.movesToWin;
     this.movesDilplay = movesDilplay;
 
     const scoresDisplay = document.createElement("div");
@@ -34,11 +34,12 @@ class Score {
   }
 
   updateMovesIndication() {
-    this.movesDilplay.innerText = state.game.movesToWin - state.game.moves;
+    this.movesDilplay.innerText =
+      state.fieldConfig.movesToWin - state.fieldConfig.moves;
   }
 
   updateScoreIndication() {
-    this.scoresNumber.innerText = state.game.score;
+    this.scoresNumber.innerText = state.fieldConfig.score;
   }
 }
 

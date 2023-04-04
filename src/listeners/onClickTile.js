@@ -1,14 +1,14 @@
 import fieldInstance from "../components/field/Field";
 import streetlightInstance from "../components/header/Streetlight";
-import state from "../state/state";
+import state from "../store/state";
 import wait from "../utils/wait";
 import setVariablesCSS from "../utils/setVariablesCSS";
 import game from "../bll/Game";
 
 function onClickTile(event) {
-  if (state.fieldLock) return;
+  if (state.fieldConfig.fieldLock) return;
   streetlightInstance.yellow();
-  state.lockField();
+  state.updateState({ key: "fieldLock", value: true });
 
   const targetId = event.target.id.split("-");
   const [caller, x, y] = targetId;
@@ -16,7 +16,7 @@ function onClickTile(event) {
 
   const aggArea = fieldInstance.getAggregationArea(x, y, true);
   if (aggArea.length < state.fieldConfig.minAggregationSize) {
-    state.unlockField();
+    state.updateState({ key: "fieldLock", value: false });
     streetlightInstance.green();
     return;
   }

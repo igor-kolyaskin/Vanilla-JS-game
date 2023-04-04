@@ -1,5 +1,6 @@
 import tingle from "tingle.js";
 import onClickApplySettings from "../../listeners/onClickApplySettings";
+import state from "../../store/state";
 
 const modal = new tingle.modal({
   footer: true,
@@ -9,6 +10,7 @@ const modal = new tingle.modal({
   cssClass: ["custom-class-1", "custom-class-2"],
   onOpen: function () {
     console.log("modal open");
+    state.fieldConfigTemp = { ...state.fieldConfig };
   },
   onClose: function () {
     console.log("modal closed");

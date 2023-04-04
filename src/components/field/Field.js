@@ -1,6 +1,6 @@
-import elements from "../../state/elements";
+import elements from "../../store/elements";
 import wait from "../../utils/wait";
-import state from "../../state/state";
+import state from "../../store/state";
 import streetlightInstance from "../header/Streetlight";
 import deepCloneTiles from "../../utils/deepCloneTiles";
 import TileBlast from "./TileBlast";
@@ -194,8 +194,11 @@ class Field {
     });
 
     Promise.all(promiseArray).then(() => {
-      if (state.game.status !== "win" && state.game.status !== "losing") {
-        state.unlockField();
+      if (
+        state.fieldConfig.status !== "win" &&
+        state.fieldConfig.status !== "losing"
+      ) {
+        state.updateState({ key: "fieldLock", value: false });
       }
       streetlightInstance.green();
       const moves = this.getClickableTilesInThisField();
@@ -203,7 +206,7 @@ class Field {
         streetlightInstance.green(moves);
       } else {
         streetlightInstance.red();
-        state.lockField();
+        state.updateState({ key: "fieldLock", value: true });
       }
     });
   }

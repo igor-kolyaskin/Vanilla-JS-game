@@ -1,13 +1,13 @@
-import state from "../state/state";
+import state from "../store/state";
 import fieldInstance from "../components/field/Field";
 import gameInstance from "../bll/Game";
 import setVariablesCSS from "../utils/setVariablesCSS";
+import scoreInstance from "../components/sidebar/Score";
 
 function onClickApplySettings(event) {
   state.fieldConfig = { ...state.fieldConfigTemp };
-  console.log("form apply ", state._gameTemp);
-  state.game = { ...state._gameTemp };
   fieldInstance.init(state.fieldConfig);
+  scoreInstance.updateMovesIndication();
   fieldInstance.render();
 
   const { numX, numY } = state.fieldConfig;

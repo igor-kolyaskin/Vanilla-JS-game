@@ -1,8 +1,8 @@
 import game from "../bll/Game";
-import state from "../state/state";
+import state from "../store/state";
 
 const onClickNewGame = () => {
-  state.updateGame({ key: "status", value: "play" });
+  state.updateState({ key: "status", value: "play" });
 
   game.resetToStart();
   game.refreshField();
