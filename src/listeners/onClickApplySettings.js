@@ -5,6 +5,8 @@ import setVariablesCSS from "../utils/setVariablesCSS";
 
 function onClickApplySettings(event) {
   state.fieldConfig = { ...state.fieldConfigTemp };
+  console.log("form apply ", state._gameTemp);
+  state.game = { ...state._gameTemp };
   fieldInstance.init(state.fieldConfig);
   fieldInstance.render();
 

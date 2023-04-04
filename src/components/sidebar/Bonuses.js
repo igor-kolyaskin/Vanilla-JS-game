@@ -7,7 +7,8 @@ const Bonuses = () => {
 
   const bonusOne = Bonus(1);
   const bonusTwo = Bonus(2);
-  bonusOne.addEventListener("click", () => console.log(state._game));
+  bonusOne.addEventListener("click", () => console.log(state._fieldConfig));
+  bonusTwo.addEventListener("click", () => console.log(state._game));
 
   bonuses.append(bonusOne, bonusTwo);
 

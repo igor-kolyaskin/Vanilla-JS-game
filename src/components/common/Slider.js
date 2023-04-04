@@ -38,7 +38,7 @@ const Slider = (config) => {
   sliderContainer.append(sliderLabel, sliderWrapper);
 
   elements.sliders = Object.assign(elements.sliders, { [id]: slider });
-  elements._sliderLables = Object.assign(elements.sliderLabels, {
+  elements.sliderLabels = Object.assign(elements.sliderLabels, {
     [id]: [sliderLabel, labelText],
   });
 

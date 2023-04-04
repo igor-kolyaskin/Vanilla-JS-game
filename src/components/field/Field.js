@@ -262,13 +262,10 @@ class Field {
       let whileCondition = true;
       while (whileCondition) {
         whileCondition = false;
-        await wait(200);
+        await wait(100);
 
         tileNum = 0;
         for (let domTile of domColumn.children) {
-          // if (currentColumn[tileNum] === undefined) {
-          //   console.log("line 244", currentColumn, tileNum);
-          // }
           const currentPositionY = currentColumn[tileNum]["positionY"];
           if (currentPositionY - tileNum) {
             currentColumn[tileNum]["positionY"]++;
