@@ -203,6 +203,7 @@ class Field {
 
     const tile = this.tiles[x][y];
     tile.aggregation = aggregation;
+    tile.type = type;
   }
 
   // refreshColumns(aggArea)

@@ -2,7 +2,7 @@ const state = {
   _fieldConfig: {
     numX: 5,
     numY: 6,
-    numColors: 4,
+    numColors: 3,
     tileSize: 3,
     minAggregationSize: 2,
     fieldLock: false,

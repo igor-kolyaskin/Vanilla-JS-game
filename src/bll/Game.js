@@ -58,7 +58,6 @@ class Game {
     const { score, moves, scoreToWin, movesToWin } = state.fieldConfig;
     if (score >= scoreToWin) {
       messageInstance.open("win");
-      console.log("you won!");
       state.updateState({ key: "status", value: "win" });
       state.updateState({ key: "fieldLock", value: true });
     } else if (moves >= movesToWin) {
