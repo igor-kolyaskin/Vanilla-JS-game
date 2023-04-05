@@ -3,7 +3,17 @@ import wait from "../utils/wait";
 import setVariablesCSS from "../utils/setVariablesCSS";
 import game from "../bll/Game";
 
-const handleClickTile = async (x, y, aggArea) => {
+const handleClickTile = async (x, y, tileColor, aggArea) => {
+  // if aggregation area >= 5, and this tile isn't Bang (color === 10) itself, then
+  // this tile is exluded from area and gets special properties
+  // it will be super blast tile
+  if (aggArea.length >= 5 && tileColor !== '10.png")') {
+    fieldInstance.setPropertiesToTile(x, y, 10, 0);
+    aggArea = aggArea.filter((tile) => !(tile.x === +x && tile.y === +y));
+  }
+
+  // blast properties is added to all remaining tiles in aggregation area
+  // it's for disappearing
   fieldInstance.appendBlastToTile(aggArea);
 
   let variablesCSS = {

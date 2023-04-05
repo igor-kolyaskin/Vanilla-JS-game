@@ -106,6 +106,7 @@ class Field {
   }
 
   // getAggregationArea(x, y, clone)
+  // if clone === true, this method works with deep copy of model
   // 1) sets type = 0 for aggregated tiles in model
   // 2) returns array of aggregated tiles' coordinates
   getAggregationArea(x, y, clone) {
@@ -151,7 +152,24 @@ class Field {
     return agg;
   }
 
-  // changeAggregatedTiles(aggArea, color)
+  // getBangArea(x, y)
+  // creates aggregation area after click on Bang tile (type === 10)
+  // 1) sets type = 0 for aggregated tiles in model
+  // 2) returns array of aggregated tiles' coordinates
+  getSquareBangArea(x, y) {
+    let agg = [];
+    for (let i = -1; i < 2; i++) {
+      if (+x + i < 0 || +x + i > this.numX - 1) continue;
+      for (let j = -1; j < 2; j++) {
+        if (+y + j < 0 || +y + j > this.numY - 1) continue;
+        agg.push({ x: +x + i, y: +y + j });
+      }
+    }
+
+    return agg;
+  }
+
+  // changeAggregatedTiles(x, y, aggArea)
   // applies visible changes to aggregated DOM-tiles in accordance with aggArea
   // currently sets color = 0
   changeAggregatedTiles(x, y, aggArea) {
@@ -175,6 +193,16 @@ class Field {
       const tileDOM = document.getElementById(`tile-${tile.x}-${tile.y}`);
       tileDOM.append(TileBlast());
     });
+  }
+
+  // setPropertiesToTile(x, y, type, aggregation)
+  // sets properties to certain tile in model and in DOM
+  setPropertiesToTile(x, y, type, aggregation) {
+    const tileDOM = document.getElementById(`tile-${x}-${y}`);
+    tileDOM.style.backgroundImage = `url(../assets/png/tile_${type}.png)`;
+
+    const tile = this.tiles[x][y];
+    tile.aggregation = aggregation;
   }
 
   // refreshColumns(aggArea)
