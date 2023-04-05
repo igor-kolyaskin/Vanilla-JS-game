@@ -3,12 +3,14 @@ import fieldInstance from "../components/field/Field";
 import gameInstance from "../bll/Game";
 import setVariablesCSS from "../utils/setVariablesCSS";
 import scoreInstance from "../components/sidebar/Score";
+import progressBarInstance from "../components/sidebar/ProgressBar";
 
 function onClickApplySettings(event) {
   state.fieldConfig = { ...state.fieldConfigTemp };
   fieldInstance.init(state.fieldConfig);
   scoreInstance.updateMovesIndication();
   fieldInstance.render();
+  progressBarInstance.updateScoreMaxValue();
 
   const { numX, numY } = state.fieldConfig;
   const variablesCSS = {

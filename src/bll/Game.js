@@ -41,7 +41,7 @@ class Game {
       : scoreTable["max"];
     state.updateState({ key: "score", value: currentScore + scoreIncrement });
     scoreInstance.updateScoreIndication();
-    progressBar.updateProgressBar();
+    progressBar.updateGreenBarPosition();
   }
 
   resetToStart() {
@@ -50,7 +50,7 @@ class Game {
     state.updateState({ key: "fieldLock", value: false });
     scoreInstance.updateScoreIndication();
     scoreInstance.updateMovesIndication();
-    progressBar.updateProgressBar();
+    progressBar.updateGreenBarPosition();
   }
 
   setGameStatus() {
