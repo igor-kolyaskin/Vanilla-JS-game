@@ -9,6 +9,7 @@ import messageInstance from "../components/Message";
 class Game {
   startNewGame() {
     this.refreshField();
+    this.resetToStart();
   }
 
   refreshField() {
