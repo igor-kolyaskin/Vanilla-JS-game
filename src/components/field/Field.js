@@ -97,7 +97,7 @@ class Field {
     const tile = document.createElement("div");
     tile.setAttribute("id", `tile-${x}-${y}`);
     tile.classList.add("tile");
-    tile.style.backgroundImage = `url(../assets/png/tile_${type}.png)`;
+    tile.style.backgroundImage = `url(./assets/png/tile_${type}.png)`;
     // tile.style.backgroundColor = `var(--tile-${type}-clr)`;
     tile.style.top = `${state.fieldConfig.tileSize * top}rem`;
     // tile.innerText = type;
@@ -199,7 +199,7 @@ class Field {
   // sets properties to certain tile in model and in DOM
   setPropertiesToTile(x, y, type, aggregation) {
     const tileDOM = document.getElementById(`tile-${x}-${y}`);
-    tileDOM.style.backgroundImage = `url(../assets/png/tile_${type}.png)`;
+    tileDOM.style.backgroundImage = `url(./assets/png/tile_${type}.png)`;
 
     const tile = this.tiles[x][y];
     tile.aggregation = aggregation;

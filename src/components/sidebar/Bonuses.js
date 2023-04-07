@@ -7,14 +7,14 @@ const Bonuses = () => {
 
   const confingBonus1 = {
     id: 1,
-    iconUrl: 'url("../assets/png/color-bang-icon.png")',
+    iconUrl: 'url("./assets/png/color-bang-icon.png")',
     tooltipText: "color-bang",
     amount: 3,
   };
 
   const confingBonus2 = {
     id: 2,
-    iconUrl: 'url("../assets/png/colulmn-bang-icon.png")',
+    iconUrl: 'url("./assets/png/colulmn-bang-icon.png")',
     tooltipText: "column-bang",
     amount: 5,
   };
