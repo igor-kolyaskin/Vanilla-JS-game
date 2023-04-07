@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve",
-    "test": "jest"
+    "test": "jest",
+    "test-cov": "jest --coverage"
   },
   "keywords": [],
   "author": "",
