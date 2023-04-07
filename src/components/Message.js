@@ -1,4 +1,4 @@
-import getMessageText from "../utils/getMessageText";
+import getMessageText from "../utils/getModalMessageText";
 
 class Message {
   constructor() {

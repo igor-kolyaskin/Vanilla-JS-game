@@ -229,13 +229,22 @@ class Field {
       ) {
         state.updateState({ key: "fieldLock", value: false });
       }
-      streetlightInstance.green();
+      // streetlightInstance.showMessageNumberOfRemainingTiles();
       const moves = this.getClickableTilesInThisField();
       if (moves) {
-        streetlightInstance.green(moves);
+        if (
+          state.fieldConfig.status === "win" ||
+          state.fieldConfig.status === "losing"
+        ) {
+          streetlightInstance.showMessagePressButtonGo();
+        } else {
+          streetlightInstance.showMessageNumberOfRemainingTiles(moves);
+          console.log("state.status", state.fieldConfig.status);
+        }
       } else {
-        streetlightInstance.red();
+        streetlightInstance.showMessageNoClicableTiles();
         state.updateState({ key: "fieldLock", value: true });
+        console.log("showMessageNoClicableTiles");
       }
     });
   }

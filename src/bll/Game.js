@@ -13,7 +13,7 @@ class Game {
   }
 
   refreshField() {
-    streetlightInstance.yellow();
+    streetlightInstance.showMessageWaitNumberRemainingTiles();
     state.updateState({ key: "fieldLock", value: true });
 
     const { numX, numY } = state.fieldConfig;
@@ -60,10 +60,12 @@ class Game {
       messageInstance.open("win");
       state.updateState({ key: "status", value: "win" });
       state.updateState({ key: "fieldLock", value: true });
+      streetlightInstance.showMessagePressButtonGo();
     } else if (moves >= movesToWin) {
       messageInstance.open("losing");
       state.updateState({ key: "status", value: "losing" });
       state.updateState({ key: "fieldLock", value: true });
+      streetlightInstance.showMessagePressButtonGo();
     } else {
       console.log("continue");
     }

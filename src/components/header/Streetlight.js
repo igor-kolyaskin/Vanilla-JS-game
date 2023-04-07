@@ -51,39 +51,120 @@ class Streetlight {
     return streetlight;
   }
 
-  green(turnNumber = "?") {
-    this.refreshButton.classList.remove("refresh-button-active");
-    this.textMessage.classList.remove("street-message-long");
-    this.textMessage.innerText = `На этом поле ещё`;
-    this.textNumber.innerText = `${turnNumber}`;
-    this.textWord.innerText = getRightWordClick(turnNumber);
-    this.textNumber.style.display = "inherit";
-    this.textSpinner.style.display = "none";
-    this.textWord.style.display = "inherit";
-    this.refreshButton.innerText = "";
+  showMessageNumberOfRemainingTiles(turnNumber) {
+    const message = {
+      isClassRefresh: false,
+      textRefresh: "",
+      isClassLong: false,
+      textMessage: "На этом поле ещё",
+      textNumber: `${turnNumber}`,
+      styleNumber: "inherit",
+      textWord: getRightWordClick(turnNumber),
+      styleWord: "inherit",
+      styleSpinner: "none",
+    };
+
+    this._showMessage(message);
   }
 
-  red() {
-    this.refreshButton.classList.add("refresh-button-active");
-    this.textMessage.classList.add("street-message-long");
-    this.textMessage.innerText = "На этом поле не осталось кликов";
-    this.textNumber.style.display = "none";
-    this.textWord.style.display = "none";
-    this.textNumber.style.display = "none";
-    this.textSpinner.style.display = "none";
-    this.refreshButton.innerText = "Обновите поле";
+  showMessageNoClicableTiles() {
+    const message = {
+      isClassRefresh: true,
+      textRefresh: "Обновите поле",
+      isClassLong: true,
+      textMessage: "На этом поле не осталось кликов",
+      textNumber: "",
+      styleNumber: "none",
+      textWord: "",
+      styleWord: "none",
+      styleSpinner: "none",
+    };
+
+    this._showMessage(message);
   }
 
-  yellow() {
-    this.refreshButton.classList.remove("refresh-button-active");
-    this.textMessage.classList.remove("street-message-long");
-    this.textMessage.innerText = `На этом поле ещё`;
-    this.textNumber.innerText = `wait`;
-    this.textWord.innerText = `кликов`;
-    this.textNumber.style.display = "none";
-    this.textWord.style.display = "inherit";
-    this.textSpinner.style.display = "inherit";
-    this.refreshButton.innerText = "";
+  showMessageWaitNumberRemainingTiles() {
+    const message = {
+      isClassRefresh: false,
+      textRefresh: "",
+      isClassLong: false,
+      textMessage: "На этом поле ещё",
+      textNumber: "wait",
+      styleNumber: "none",
+      textWord: "кликов",
+      styleWord: "inherit",
+      styleSpinner: "inherit",
+    };
+
+    this._showMessage(message);
+  }
+
+  showMessagePressButtonGo() {
+    const message = {
+      isClassRefresh: false,
+      textRefresh: "",
+      isClassLong: true,
+      textMessage: "Для продолжения нажмите Go!",
+      textNumber: "",
+      styleNumber: "none",
+      textWord: "",
+      styleWord: "none",
+      styleSpinner: "none",
+    };
+
+    this._showMessage(message);
+  }
+
+  showMessageLittleBlockDoesNotBurn() {
+    const message = {
+      isClassRefresh: false,
+      textRefresh: "",
+      isClassLong: false,
+      textMessage: "Маленькие блоки не сгорают",
+      textNumber: "",
+      styleNumber: "none",
+      textWord: "",
+      styleWord: "none",
+      styleSpinner: "none",
+    };
+
+    this._showMessage(message);
+  }
+
+  _showMessage(message) {
+    const {
+      isClassRefresh,
+      textRefresh,
+      isClassLong,
+      textMessage,
+      textNumber,
+      styleNumber,
+      textWord,
+      styleWord,
+      styleSpinner,
+    } = message;
+
+    if (isClassRefresh) {
+      this.refreshButton.classList.add("refresh-button-active");
+    } else {
+      this.refreshButton.classList.remove("refresh-button-active");
+    }
+    this.refreshButton.innerText = textRefresh;
+
+    if (isClassLong) {
+      this.textMessage.classList.add("street-message-long");
+    } else {
+      this.textMessage.classList.remove("street-message-long");
+    }
+    this.textMessage.innerText = textMessage;
+
+    this.textNumber.innerText = textNumber;
+    this.textNumber.style.display = styleNumber;
+
+    this.textWord.innerText = textWord;
+    this.textWord.style.display = styleWord;
+
+    this.textSpinner.style.display = styleSpinner;
   }
 }
 

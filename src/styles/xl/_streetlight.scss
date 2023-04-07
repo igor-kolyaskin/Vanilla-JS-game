@@ -59,8 +59,8 @@
 }
 
 #streetlight-text-message {
-    justify-content: flex-start;
-    width: 8rem;
+    justify-content: center;
+    width: auto;
     &.street-message-long {
         width: 15rem;
     }

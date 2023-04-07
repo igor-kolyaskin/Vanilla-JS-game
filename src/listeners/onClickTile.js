@@ -5,13 +5,14 @@ import handleClickTile from "../bll/handleClickTile";
 
 function onClickTile(event) {
   if (state.fieldConfig.fieldLock) return;
-  streetlightInstance.yellow();
-  state.updateState({ key: "fieldLock", value: true });
 
   const tileColor = event.target.style.backgroundImage.split("_")[1];
   const targetId = event.target.id.split("-");
   const [caller, x, y] = targetId;
   if (caller !== "tile") return;
+
+  streetlightInstance.showMessageWaitNumberRemainingTiles();
+  state.updateState({ key: "fieldLock", value: true });
 
   let aggArea;
   if (tileColor === '10.png")') {
@@ -19,9 +20,10 @@ function onClickTile(event) {
   } else {
     aggArea = fieldInstance.getAggregationArea(x, y, true);
   }
+
   if (aggArea.length < state.fieldConfig.minAggregationSize) {
     state.updateState({ key: "fieldLock", value: false });
-    streetlightInstance.green();
+    streetlightInstance.showMessageLittleBlockDoesNotBurn();
     return;
   }
 

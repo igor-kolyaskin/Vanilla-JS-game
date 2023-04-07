@@ -22,7 +22,7 @@ const Header = () => {
   btnSettings.addEventListener("click", onClickSettings);
 
   header.append(btnNewGame, streetlight, btnSettings);
-  streetlightInstance.green();
+  streetlightInstance.showMessageLittleBlockDoesNotBurn();
 
   return header;
 };

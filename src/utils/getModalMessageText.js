@@ -1,4 +1,4 @@
-import messages from "../constants/messages";
+import messages from "../constants/modalMessages";
 
 const getMessageText = (textType) => {
   return messages[textType] || "text not found";
