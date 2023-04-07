@@ -1,3 +1,7 @@
+import getRightWordClick from "./getRightWordClick";
+
+getRightWordClick;
+
 const getStreetlightMessage = (text, turnNumber = 0) => {
   const messages = {
     remainingTiles: {
@@ -61,7 +65,7 @@ const getStreetlightMessage = (text, turnNumber = 0) => {
     },
   };
 
-  return messages(text);
+  return messages[text];
 };
 
 export default getStreetlightMessage;

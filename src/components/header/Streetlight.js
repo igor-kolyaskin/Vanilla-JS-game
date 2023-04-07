@@ -1,4 +1,5 @@
 import getRightWordClick from "../../utils/getRightWordClick";
+import getStreetlightMessage from "../../utils/getStreetlightMessage";
 import Spinner from "../common/Spinner";
 class Streetlight {
   constructor() {
@@ -9,7 +10,6 @@ class Streetlight {
     this.textWord = null;
   }
 
-  // creates DOM-element
   render() {
     const streetlight = document.createElement("section");
     streetlight.setAttribute("id", "streetlight");
@@ -51,87 +51,8 @@ class Streetlight {
     return streetlight;
   }
 
-  showMessageNumberOfRemainingTiles(turnNumber) {
-    const message = {
-      isClassRefresh: false,
-      textRefresh: "",
-      isClassLong: false,
-      textMessage: "На этом поле ещё",
-      textNumber: `${turnNumber}`,
-      styleNumber: "inherit",
-      textWord: getRightWordClick(turnNumber),
-      styleWord: "inherit",
-      styleSpinner: "none",
-    };
-
-    this._showMessage(message);
-  }
-
-  showMessageNoClicableTiles() {
-    const message = {
-      isClassRefresh: true,
-      textRefresh: "Обновите поле",
-      isClassLong: true,
-      textMessage: "На этом поле не осталось кликов",
-      textNumber: "",
-      styleNumber: "none",
-      textWord: "",
-      styleWord: "none",
-      styleSpinner: "none",
-    };
-
-    this._showMessage(message);
-  }
-
-  showMessageWaitNumberRemainingTiles() {
-    const message = {
-      isClassRefresh: false,
-      textRefresh: "",
-      isClassLong: false,
-      textMessage: "На этом поле ещё",
-      textNumber: "wait",
-      styleNumber: "none",
-      textWord: "кликов",
-      styleWord: "inherit",
-      styleSpinner: "inherit",
-    };
-
-    this._showMessage(message);
-  }
-
-  showMessagePressButtonGo() {
-    const message = {
-      isClassRefresh: false,
-      textRefresh: "",
-      isClassLong: true,
-      textMessage: "Для продолжения нажмите Go!",
-      textNumber: "",
-      styleNumber: "none",
-      textWord: "",
-      styleWord: "none",
-      styleSpinner: "none",
-    };
-
-    this._showMessage(message);
-  }
-
-  showMessageLittleBlockDoesNotBurn() {
-    const message = {
-      isClassRefresh: false,
-      textRefresh: "",
-      isClassLong: false,
-      textMessage: "Маленькие блоки не сгорают",
-      textNumber: "",
-      styleNumber: "none",
-      textWord: "",
-      styleWord: "none",
-      styleSpinner: "none",
-    };
-
-    this._showMessage(message);
-  }
-
-  _showMessage(message) {
+  showMessage(text, turnNumber) {
+    const message = getStreetlightMessage(text, turnNumber);
     const {
       isClassRefresh,
       textRefresh,

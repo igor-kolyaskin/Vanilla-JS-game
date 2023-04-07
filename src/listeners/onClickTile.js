@@ -11,7 +11,7 @@ function onClickTile(event) {
   const [caller, x, y] = targetId;
   if (caller !== "tile") return;
 
-  streetlightInstance.showMessageWaitNumberRemainingTiles();
+  streetlightInstance.showMessage("wait");
   state.updateState({ key: "fieldLock", value: true });
 
   let aggArea;
@@ -23,7 +23,7 @@ function onClickTile(event) {
 
   if (aggArea.length < state.fieldConfig.minAggregationSize) {
     state.updateState({ key: "fieldLock", value: false });
-    streetlightInstance.showMessageLittleBlockDoesNotBurn();
+    streetlightInstance.showMessage("blockIsTooSmall");
     return;
   }
 
