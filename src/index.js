@@ -6,6 +6,7 @@ import gameInstance from "./bll/Game";
 import elements from "./store/elements";
 import setVariablesCSS from "./utils/setVariablesCSS";
 import message from "./components/Message";
+import onClickApplySettings from "./listeners/onClickApplySettings";
 
 const config = localStorage.getItem("config");
 if (config) {
@@ -16,7 +17,6 @@ if (config) {
   state.updateState({ key: "scoreToWin", value: scoreToWin });
   state.updateState({ key: "movesToWin", value: movesToWin });
 }
-
 fieldInstance.init(state.fieldConfig);
 const { tileSize, numX, numY } = state.fieldConfig;
 
@@ -31,6 +31,8 @@ const variablesCSS = {
   "--tile-size": `${tileSize}`,
   "--num-x": `${numX}`,
   "--num-y": `${numY}`,
+  "--shift-x": `${0.5 + (9 - numX) * 1.5}rem`,
+  "--shift-y": `${0.5 + (9 - numY) * 1.5}rem`,
 };
 setVariablesCSS(variablesCSS);
 
