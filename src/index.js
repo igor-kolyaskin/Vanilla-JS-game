@@ -7,6 +7,16 @@ import elements from "./store/elements";
 import setVariablesCSS from "./utils/setVariablesCSS";
 import message from "./components/Message";
 
+const config = localStorage.getItem("config");
+if (config) {
+  const { numX, numY, numColors, scoreToWin, movesToWin } = JSON.parse(config);
+  state.updateState({ key: "numX", value: numX });
+  state.updateState({ key: "numY", value: numY });
+  state.updateState({ key: "numColors", value: numColors });
+  state.updateState({ key: "scoreToWin", value: scoreToWin });
+  state.updateState({ key: "movesToWin", value: movesToWin });
+}
+
 fieldInstance.init(state.fieldConfig);
 const { tileSize, numX, numY } = state.fieldConfig;
 

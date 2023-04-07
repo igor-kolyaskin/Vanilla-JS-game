@@ -22,6 +22,9 @@ function onClickApplySettings(event) {
   setVariablesCSS(variablesCSS);
 
   gameInstance.startNewGame();
+
+  const config = JSON.stringify(state.fieldConfig);
+  localStorage.setItem("config", config);
 }
 
 export default onClickApplySettings;

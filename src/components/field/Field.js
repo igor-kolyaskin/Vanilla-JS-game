@@ -238,7 +238,6 @@ class Field {
           streetlightInstance.showMessage("pressButtonGo");
         } else {
           streetlightInstance.showMessage("remainingTiles", moves);
-          console.log("state.status", state.fieldConfig.status);
         }
       } else {
         streetlightInstance.showMessage("noClicableTiles");
