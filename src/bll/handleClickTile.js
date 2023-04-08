@@ -1,7 +1,6 @@
 import fieldInstance from "../components/field/Field";
-import wait from "../utils/wait";
-import setVariablesCSS from "../utils/setVariablesCSS";
 import game from "../bll/Game";
+import { wait, setVariablesCSS } from "../utils";
 
 const handleClickTile = async (x, y, tileColor, aggArea) => {
   // if aggregation area >= 5, and this tile isn't Bang (color === 10) itself, then

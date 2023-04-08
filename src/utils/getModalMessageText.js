@@ -1,7 +1,7 @@
 import messages from "../constants/modalMessages";
 
-const getMessageText = (textType) => {
+const getModalMessageText = (textType) => {
   return messages[textType] || "text not found";
 };
 
-export default getMessageText;
+export default getModalMessageText;

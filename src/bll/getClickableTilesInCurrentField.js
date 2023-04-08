@@ -1,5 +1,5 @@
 import state from "../store/state";
-import getStandardAggregationArea from "../utils/getStandardAggregationArea";
+import { getStandardAggregationArea } from "../utils";
 
 const getClickableTilesInCurrentField = (tiles) => {
   const { numX, numY } = state.fieldConfig;

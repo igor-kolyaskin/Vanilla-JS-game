@@ -1,10 +1,10 @@
 import fieldInstance from "../components/field/Field";
 import streetlightInstance from "../components/header/Streetlight";
-import progressBar from "../components/sidebar/ProgressBar";
-import state from "../store/state";
-import scoreInstance from "../components/sidebar/Score";
-import scoreTable from "../constants/scoreTable";
 import messageInstance from "../components/Message";
+import progressBar from "../components/sidebar/ProgressBar";
+import scoreInstance from "../components/sidebar/Score";
+import state from "../store/state";
+import scoreTable from "../constants/scoreTable";
 
 class Game {
   startNewGame() {

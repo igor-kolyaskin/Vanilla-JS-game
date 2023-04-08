@@ -1,8 +1,10 @@
 import fieldInstance from "../components/field/Field";
-import deepCloneTiles from "../utils/deepCloneTiles";
 import state from "../store/state";
-import getStandardAggregationArea from "../utils/getStandardAggregationArea";
-import getSquareBangArea from "../utils/getSquareBangArea";
+import {
+  deepCloneTiles,
+  getSquareBangArea,
+  getStandardAggregationArea,
+} from "../utils";
 
 const getAggregationArea = (x, y, tileColor) => {
   const tiles = deepCloneTiles(fieldInstance.tiles);
