@@ -106,23 +106,6 @@ class Field {
     return tile;
   }
 
-  // getBangArea(x, y)
-  // creates aggregation area after click on Bang tile (type === 10)
-  // 1) sets type = 0 for aggregated tiles in model
-  // 2) returns array of aggregated tiles' coordinates
-  getSquareBangArea(x, y) {
-    let agg = [];
-    for (let i = -1; i < 2; i++) {
-      if (+x + i < 0 || +x + i > this.numX - 1) continue;
-      for (let j = -1; j < 2; j++) {
-        if (+y + j < 0 || +y + j > this.numY - 1) continue;
-        agg.push({ x: +x + i, y: +y + j });
-      }
-    }
-
-    return agg;
-  }
-
   // changeAggregatedTiles(x, y, aggArea)
   // applies visible changes to aggregated DOM-tiles in accordance with aggArea
   // currently sets color = 0

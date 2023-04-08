@@ -2,6 +2,7 @@ import fieldInstance from "../components/field/Field";
 import deepCloneTiles from "../utils/deepCloneTiles";
 import state from "../store/state";
 import getStandardAggregationArea from "../utils/getStandardAggregationArea";
+import getSquareBangArea from "../utils/getSquareBangArea";
 
 const getAggregationArea = (x, y, tileColor) => {
   const tiles = deepCloneTiles(fieldInstance.tiles);
@@ -9,7 +10,7 @@ const getAggregationArea = (x, y, tileColor) => {
 
   let aggArea;
   if (tileColor === '10.png")') {
-    aggArea = fieldInstance.getSquareBangArea(x, y);
+    aggArea = getSquareBangArea(x, y, numX, numY);
   } else {
     aggArea = getStandardAggregationArea(x, y, numX, numY, tiles);
   }
