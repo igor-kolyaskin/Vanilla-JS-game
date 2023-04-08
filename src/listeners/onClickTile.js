@@ -2,6 +2,7 @@ import fieldInstance from "../components/field/Field";
 import streetlightInstance from "../components/header/Streetlight";
 import state from "../store/state";
 import handleClickTile from "../bll/handleClickTile";
+import getAggregationArea from "../bll/getAggregationArea";
 
 function onClickTile(event) {
   if (state.fieldConfig.fieldLock) return;
@@ -14,12 +15,7 @@ function onClickTile(event) {
   streetlightInstance.showMessage("wait");
   state.updateState({ key: "fieldLock", value: true });
 
-  let aggArea;
-  if (tileColor === '10.png")') {
-    aggArea = fieldInstance.getSquareBangArea(x, y);
-  } else {
-    aggArea = fieldInstance.getAggregationArea(x, y, true);
-  }
+  const aggArea = getAggregationArea(x, y, tileColor);
 
   if (aggArea.length < state.fieldConfig.minAggregationSize) {
     state.updateState({ key: "fieldLock", value: false });

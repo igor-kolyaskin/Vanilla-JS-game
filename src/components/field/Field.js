@@ -4,6 +4,7 @@ import state from "../../store/state";
 import streetlightInstance from "../header/Streetlight";
 import deepCloneTiles from "../../utils/deepCloneTiles";
 import TileBlast from "./TileBlast";
+import getClickableTilesInCurrentField from "../../bll/getClickableTilesInCurrentField";
 
 class Field {
   constructor() {
@@ -105,53 +106,6 @@ class Field {
     return tile;
   }
 
-  // getAggregationArea(x, y, clone)
-  // if clone === true, this method works with deep copy of model
-  // 1) sets type = 0 for aggregated tiles in model
-  // 2) returns array of aggregated tiles' coordinates
-  getAggregationArea(x, y, clone) {
-    const tiles = clone ? deepCloneTiles(this.tiles) : this.tiles;
-    const clickedTile = tiles[x][y];
-    const type = clickedTile.type;
-
-    let agg = [{ x: +x, y: +y }];
-    clickedTile.aggregation = type;
-    clickedTile.type = 0;
-    let prevLength = 1;
-
-    const _getNeighbourTiles = (x, y, targetType) => {
-      const aggr = [];
-      const __getNeighbourTile = ([a, b]) => {
-        const tile = tiles[a][b];
-        if (tile.type === targetType && !tile.aggregation) {
-          tile.aggregation = targetType;
-          tile.type = 0;
-          aggr.push({ x: a, y: b });
-        }
-      };
-
-      // neighbor tile top
-      if (y > 0) __getNeighbourTile([x, y - 1]);
-      // neighbor tile right
-      if (x < this.numX - 1) __getNeighbourTile([x + 1, y]);
-      // neighbor tile bottom
-      if (y < this.numY - 1) __getNeighbourTile([x, y + 1]);
-      // neighbor tile left
-      if (x > 0) __getNeighbourTile([x - 1, y]);
-
-      return aggr;
-    };
-
-    while (true) {
-      agg.forEach((tile) => {
-        agg = [...agg, ..._getNeighbourTiles(+tile.x, +tile.y, type)];
-      });
-      if (prevLength === agg.length) break;
-      prevLength = agg.length;
-    }
-    return agg;
-  }
-
   // getBangArea(x, y)
   // creates aggregation area after click on Bang tile (type === 10)
   // 1) sets type = 0 for aggregated tiles in model
@@ -229,7 +183,8 @@ class Field {
       ) {
         state.updateState({ key: "fieldLock", value: false });
       }
-      const moves = this.getClickableTilesInThisField();
+      const moves = getClickableTilesInCurrentField(deepCloneTiles(this.tiles));
+
       if (moves) {
         if (
           state.fieldConfig.status === "win" ||
@@ -318,22 +273,6 @@ class Field {
     };
 
     return shiftTiles();
-  }
-
-  // check if field has any moves after refresh
-  getClickableTilesInThisField() {
-    let moves = 0;
-    for (let x = 0; x < this.numX; x++) {
-      for (let y = 0; y < this.numY; y++) {
-        if (
-          this.getAggregationArea(x, y, true).length >=
-          state.fieldConfig.minAggregationSize
-        ) {
-          moves++;
-        }
-      }
-    }
-    return moves;
   }
 }
 
