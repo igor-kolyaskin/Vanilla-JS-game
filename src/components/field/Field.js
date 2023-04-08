@@ -3,6 +3,7 @@ import wait from "../../utils/wait";
 import state from "../../store/state";
 import streetlightInstance from "../header/Streetlight";
 import deepCloneTiles from "../../utils/deepCloneTiles";
+import getRandomTileType from "../../utils/getRandomTileType";
 import TileBlast from "./TileBlast";
 import getClickableTilesInCurrentField from "../../bll/getClickableTilesInCurrentField";
 
@@ -31,7 +32,7 @@ class Field {
   _createTile(
     x,
     y,
-    type = this._getRandomTileType(),
+    type = getRandomTileType(this.numColors),
     aggregation = 0,
     position = y
   ) {
@@ -65,10 +66,6 @@ class Field {
     const domTiles = this._createDomTiles();
     field.append(...domTiles);
     return fieldWrapper;
-  }
-
-  _getRandomTileType() {
-    return Math.ceil(Math.random() * this.numColors);
   }
 
   _createDomTiles() {
