@@ -5,6 +5,7 @@ import getRightWordClick from "./getRightWordClick";
 import getSquareBangArea from "./getSquareBangArea";
 import getStandardAggregationArea from "./getStandardAggregationArea";
 import getStreetlightMessage from "./getStreetlightMessage";
+import getTwinTileArea from "./getTwinTileArea";
 import setVariablesCSS from "./setVariablesCSS";
 import wait from "./wait";
 
@@ -16,6 +17,7 @@ export {
   getSquareBangArea,
   getStandardAggregationArea,
   getStreetlightMessage,
+  getTwinTileArea,
   setVariablesCSS,
   wait,
 };
