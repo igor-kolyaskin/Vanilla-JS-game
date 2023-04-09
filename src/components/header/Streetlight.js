@@ -1,4 +1,3 @@
-import getRightWordClick from "../../utils/getRightWordClick";
 import getStreetlightMessage from "../../utils/getStreetlightMessage";
 import Spinner from "../common/Spinner";
 class Streetlight {

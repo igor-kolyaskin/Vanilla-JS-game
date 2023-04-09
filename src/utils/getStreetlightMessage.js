@@ -1,7 +1,5 @@
 import getRightWordClick from "./getRightWordClick";
 
-getRightWordClick;
-
 const getStreetlightMessage = (text, turnNumber = 0) => {
   const messages = {
     remainingTiles: {
