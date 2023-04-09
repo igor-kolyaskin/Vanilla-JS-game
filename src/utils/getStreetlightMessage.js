@@ -1,6 +1,6 @@
 import getRightWordClick from "./getRightWordClick";
 
-const getStreetlightMessage = (text, turnNumber = 0) => {
+const getStreetlightMessage = (text, turnNumber) => {
   const messages = {
     remainingTiles: {
       isClassRefresh: false,
