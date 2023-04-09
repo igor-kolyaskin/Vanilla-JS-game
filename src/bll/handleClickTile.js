@@ -6,7 +6,11 @@ const handleClickTile = async (x, y, tileColor, aggArea) => {
   // if aggregation area >= 5, and this tile isn't Bang (color === 10) itself, then
   // this tile is exluded from area and gets special properties
   // it will be super blast tile
-  if (aggArea.length >= 5 && tileColor !== '10.png")') {
+  if (
+    aggArea.length >= 5 &&
+    tileColor !== '10.png")' &&
+    tileColor !== '11.png")'
+  ) {
     fieldInstance.setPropertiesToTile(x, y, 10, 0);
     aggArea = aggArea.filter((tile) => !(tile.x === +x && tile.y === +y));
   }
