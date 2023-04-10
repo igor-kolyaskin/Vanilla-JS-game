@@ -20,7 +20,6 @@
     width: calc(var(--num-x) * var(--tile-size) * 1rem);
     height: calc(var(--num-y) * var(--tile-size) * 1rem);
     margin: 0.5rem 0;
-    box-sizing: border-box;
     overflow: hidden;
 }
 

@@ -2,15 +2,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
 
 @import "./common/body";
-@import "./common/html";
+@import "./common/tingle";
+@import "./common/header";
+@import "./common/streetlight";
+@import "./common/spinner";
+@import "./common/tile-blast";
+@import "./common/message";
+@import "./common/slider";
 
-@media (min-width: 300px) {
+@media (min-width: 1201px) {
     @import "./xl/main-xl";
 }
 
-// @media (min-width: 1000px) and (max-width: 1200px) {
-//     @import "./l/main-l";
-// }
+@media (min-width: 1000px) and (max-width: 1200px) {
+    @import "./l/main-l";
+}
 
 // @media (min-width: 350px) and (max-width: 999px) {
 //     @import "./s/main-s";
