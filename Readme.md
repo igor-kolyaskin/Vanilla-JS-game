@@ -1,5 +1,7 @@
 # Игра Blast
 
+https://brut-de-brut.github.io/Blast/dist
+
 ## **Описание игры**
 
 ### **Начальные условия**
