@@ -9,15 +9,24 @@
 @import "./common/tile-blast";
 @import "./common/message";
 @import "./common/slider";
+@import "./common/field";
 
 @media (min-width: 1201px) {
     @import "./xl/main-xl";
 }
 
-@media (min-width: 1000px) and (max-width: 1200px) {
+@media (min-width: 993px) and (max-width: 1200px) {
     @import "./l/main-l";
 }
 
-// @media (min-width: 350px) and (max-width: 999px) {
-//     @import "./s/main-s";
-// }
+@media (min-width: 769px) and (max-width: 992px) {
+    @import "./m/main-m";
+}
+
+@media (min-width: 611px) and (max-width: 768px) {
+    @import "./s/main-s";
+}
+
+@media (min-width: 350px) and (max-width: 610px) {
+    @import "./xs/main-xs";
+}

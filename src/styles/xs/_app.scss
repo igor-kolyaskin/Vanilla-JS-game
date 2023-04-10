@@ -1,0 +1,17 @@
+#app {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 46rem;
+    margin: 1rem auto;
+    background-color: #a1a1a1;
+}
+#main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 30rem;
+    background-color: #a1a1a1;
+}
