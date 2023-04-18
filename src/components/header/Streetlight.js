@@ -1,5 +1,7 @@
+/* eslint-disable no-undef */
 import getStreetlightMessage from "../../utils/getStreetlightMessage";
 import Spinner from "../common/Spinner";
+
 class Streetlight {
   constructor() {
     this.refreshButton = null;

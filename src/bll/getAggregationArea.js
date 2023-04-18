@@ -12,9 +12,9 @@ const getAggregationArea = (x, y, tileColor) => {
   const { numX, numY } = state.fieldConfig;
 
   let aggArea;
-  if (tileColor === '10.png")') {
+  if (tileColor === "10.png\")") {
     aggArea = getSquareBangArea(x, y, numX, numY);
-  } else if (tileColor === '11.png")') {
+  } else if (tileColor === "11.png\")") {
     aggArea = getTwinTileArea(x, y, numX, numY, tiles);
   } else {
     aggArea = getStandardAggregationArea(x, y, numX, numY, tiles);

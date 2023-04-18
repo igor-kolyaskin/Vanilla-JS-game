@@ -1,9 +1,5 @@
 const deepCloneTiles = (tiles) => {
-  const clonedTiles = tiles.map((column) => {
-    return column.map((tile) => {
-      return { ...tile };
-    });
-  });
+  const clonedTiles = tiles.map((column) => column.map((tile) => ({ ...tile })));
   return clonedTiles;
 };
 

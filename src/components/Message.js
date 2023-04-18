@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import getMessageText from "../utils/getModalMessageText";
 
 class Message {

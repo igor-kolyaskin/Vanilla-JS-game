@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import streetlightInstance from "./Streetlight";
 import onClickStreetlight from "../../listeners/onClickStreetlight";
 import onClickSettings from "../../listeners/onClickSettings";

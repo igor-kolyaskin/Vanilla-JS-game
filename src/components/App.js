@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import Header from "./header/Header";
 import fieldInstance from "./field/Field";
 import messageInstance from "./Message";

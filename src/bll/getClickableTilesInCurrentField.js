@@ -4,13 +4,13 @@ import { getStandardAggregationArea } from "../utils";
 const getClickableTilesInCurrentField = (tiles) => {
   const { numX, numY } = state.fieldConfig;
   let moves = 0;
-  for (let x = 0; x < numX; x++) {
-    for (let y = 0; y < numY; y++) {
+  for (let x = 0; x < numX; x += 1) {
+    for (let y = 0; y < numY; y += 1) {
       if (
-        getStandardAggregationArea(x, y, numX, numY, tiles).length >=
-        state.fieldConfig.minAggregationSize
+        getStandardAggregationArea(x, y, numX, numY, tiles).length
+        >= state.fieldConfig.minAggregationSize
       ) {
-        moves++;
+        moves += 1;
       }
     }
   }

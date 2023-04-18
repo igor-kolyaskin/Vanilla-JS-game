@@ -3,6 +3,7 @@ import scoreInstance from "./Score";
 import Bonuses from "./Bonuses";
 
 const SideBar = () => {
+  // eslint-disable-next-line no-undef
   const aside = document.createElement("aside");
   aside.setAttribute("id", "sidebar");
 

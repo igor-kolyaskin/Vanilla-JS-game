@@ -5,7 +5,7 @@ import setVariablesCSS from "../utils/setVariablesCSS";
 import scoreInstance from "../components/sidebar/Score";
 import progressBarInstance from "../components/sidebar/ProgressBar";
 
-function onClickApplySettings(event) {
+function onClickApplySettings() {
   state.fieldConfig = { ...state.fieldConfigTemp };
   fieldInstance.init(state.fieldConfig);
   scoreInstance.updateMovesIndication();
@@ -24,6 +24,7 @@ function onClickApplySettings(event) {
   gameInstance.startNewGame();
 
   const config = JSON.stringify(state.fieldConfig);
+  // eslint-disable-next-line no-undef
   localStorage.setItem("config", config);
 }
 

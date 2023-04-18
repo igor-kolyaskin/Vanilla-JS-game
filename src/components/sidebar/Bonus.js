@@ -1,5 +1,8 @@
+/* eslint-disable no-undef */
 const Bonus = (config) => {
-  const { id, iconUrl, tooltipText, amount } = config;
+  const {
+    id, iconUrl, tooltipText, amount,
+  } = config;
 
   const bonus = document.createElement("div");
   bonus.setAttribute("id", `bonus-${id}`);
