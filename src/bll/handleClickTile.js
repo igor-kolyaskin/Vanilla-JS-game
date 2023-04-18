@@ -2,17 +2,18 @@ import fieldInstance from "../components/field/Field";
 import game from "./Game";
 import { wait, setVariablesCSS } from "../utils";
 
-const handleClickTile = async (x, y, tileColor, aggArea) => {
+const handleClickTile = async (x, y, tileColor, aggregationArea) => {
   // if aggregation area >= 5, and this tile isn't Bang (color === 10) itself, then
   // this tile is exluded from area and gets special properties
   // it will be super blast tile
+  let aggArea = aggregationArea;
   if (
-    aggArea.length >= 5
+    aggregationArea.length >= 5
     && tileColor !== "10.png\")"
     && tileColor !== "11.png\")"
   ) {
     fieldInstance.setPropertiesToTile(x, y, 10, 0);
-    aggArea = aggArea.filter((tile) => !(tile.x === +x && tile.y === +y));
+    aggArea = aggregationArea.filter((tile) => !(tile.x === +x && tile.y === +y));
   }
 
   // blast properties is added to all remaining tiles in aggregation area
