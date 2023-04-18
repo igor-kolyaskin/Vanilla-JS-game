@@ -3,9 +3,8 @@ import getModalMessageText from "./getModalMessageText";
 import getRandomTileType from "./getRandomTileType";
 import getRightWordClick from "./getRightWordClick";
 import getSquareBangArea from "./getSquareBangArea";
-import getStandardAggregationArea from "./getStandardAggregationArea";
+import getCommonAggregationArea from "./getCommonAggregationArea";
 import getStreetlightMessage from "./getStreetlightMessage";
-import getTwinTileArea from "./getTwinTileArea";
 import setVariablesCSS from "./setVariablesCSS";
 import wait from "./wait";
 
@@ -15,9 +14,8 @@ export {
   getRandomTileType,
   getRightWordClick,
   getSquareBangArea,
-  getStandardAggregationArea,
+  getCommonAggregationArea,
   getStreetlightMessage,
-  getTwinTileArea,
   setVariablesCSS,
   wait,
 };

@@ -1,6 +1,6 @@
 import deepCloneTiles from "./deepCloneTiles";
 
-const getStandardAggregationArea = (x, y, numX, numY, tiles_) => {
+const getCommonAggregationArea = (x, y, numX, numY, tiles_, aggType) => {
   const tiles = deepCloneTiles(tiles_);
   const clickedTile = tiles[x][y];
   const { type } = clickedTile;
@@ -14,7 +14,15 @@ const getStandardAggregationArea = (x, y, numX, numY, tiles_) => {
     const aggr = [];
     const __getNeighbourTile = ([a, b]) => {
       const tile = tiles[a][b];
-      if (tile.type === targetType && !tile.aggregation) {
+      let aggContition;
+      switch (aggType) {
+        case "twin": aggContition = (tile.type === 1 || tile.type === 3) && !tile.aggregation;
+          break;
+        case "standard": aggContition = tile.type === targetType && !tile.aggregation;
+          break;
+        default: aggContition = tile.type === targetType && !tile.aggregation;
+      }
+      if (aggContition) {
         tile.aggregation = targetType;
         tile.type = 0;
         aggr.push({ x: a, y: b });
@@ -45,4 +53,4 @@ const getStandardAggregationArea = (x, y, numX, numY, tiles_) => {
   return agg;
 };
 
-export default getStandardAggregationArea;
+export default getCommonAggregationArea;
