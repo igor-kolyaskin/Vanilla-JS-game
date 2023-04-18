@@ -24,11 +24,9 @@ class Field {
 
     this.tiles = Array(+numX)
       .fill(0)
-      .map((column, indexX) => {
-        return Array(+numY)
-          .fill(0)
-          .map((_, indexY) => this._createTile(indexX, indexY, 0));
-      });
+      .map((column, indexX) => Array(+numY)
+        .fill(0)
+        .map((_, indexY) => this._createTile(indexX, indexY, 0)));
   }
 
   _createTile(
@@ -36,7 +34,7 @@ class Field {
     y,
     type = getRandomTileType(this.numColors),
     aggregation = 0,
-    position = y
+    position = y,
   ) {
     return {
       id: `${x}-${y}`,
@@ -48,7 +46,7 @@ class Field {
 
   // creates DOM-tree of tiles first time
   render() {
-    let fieldWrapper, field;
+    let fieldWrapper; let field;
     if (elements.field) {
       fieldWrapper = elements.fieldWrapper;
       field = elements.field;
@@ -93,7 +91,7 @@ class Field {
   }
 
   _createDomTile(x, y, top = y) {
-    const type = this.tiles[x][y]["type"];
+    const { type } = this.tiles[x][y];
     const tile = document.createElement("div");
     tile.setAttribute("id", `tile-${x}-${y}`);
     tile.classList.add("tile");
@@ -110,14 +108,14 @@ class Field {
   // currently sets color = 0
   changeAggregatedTiles(x, y, aggArea) {
     const tile = this.tiles[x][y];
-    const type = tile.type;
+    const { type } = tile;
 
-    aggArea.forEach((tile) => {
-      const tileModel = this.tiles[tile.x][tile.y];
+    aggArea.forEach((tl) => {
+      const tileModel = this.tiles[tl.x][tl.y];
       tileModel.type = 0;
       tileModel.aggregation = type;
 
-      const tileDOM = document.getElementById(`tile-${tile.x}-${tile.y}`);
+      const tileDOM = document.getElementById(`tile-${tl.x}-${tl.y}`);
       tileDOM.style.backgroundColor = "var(--tile-0-clr)";
     });
   }
@@ -160,8 +158,8 @@ class Field {
 
     Promise.all(promiseArray).then(() => {
       if (
-        state.fieldConfig.status !== "win" &&
-        state.fieldConfig.status !== "losing"
+        state.fieldConfig.status !== "win"
+        && state.fieldConfig.status !== "losing"
       ) {
         state.updateState({ key: "fieldLock", value: false });
       }
@@ -169,8 +167,8 @@ class Field {
 
       if (moves) {
         if (
-          state.fieldConfig.status === "win" ||
-          state.fieldConfig.status === "losing"
+          state.fieldConfig.status === "win"
+          || state.fieldConfig.status === "losing"
         ) {
           streetlightInstance.showMessage("pressButtonGo");
         } else {
@@ -188,7 +186,7 @@ class Field {
   // 2) changes a column in DOM
   // 3) returns a promise for tiles shift
   _refreshColumn(columnNum, aggTiles) {
-    let modelColumn = this.tiles[columnNum];
+    const modelColumn = this.tiles[columnNum];
     const gap = modelColumn.filter((tile) => tile.type === 0).length;
 
     // 1) changes in model ------------------------------------------------------------------
@@ -199,9 +197,7 @@ class Field {
 
     const modelReplenishment = Array(gap)
       .fill(0)
-      .map((_, index) =>
-        this._createTile(columnNum, index, undefined, 0, index - gap)
-      );
+      .map((_, index) => this._createTile(columnNum, index, undefined, 0, index - gap));
 
     const refreshedModelColumn = modelReplenishment.concat(filteredModelColumn);
     this.tiles[columnNum] = [...refreshedModelColumn];
@@ -210,15 +206,14 @@ class Field {
 
     // remove aggregated tiles
     const domColumn = elements.domColumns[columnNum];
-    aggTiles.forEach((tile) =>
-      document.getElementById(`tile-${columnNum}-${tile}`).remove()
-    );
+    aggTiles.forEach((tile) => document.getElementById(`tile-${columnNum}-${tile}`).remove());
 
     // change id
     let tileNum = gap;
+    // eslint-disable-next-line no-restricted-syntax, prefer-const
     for (let domTile of domColumn.children) {
       domTile.setAttribute("id", `tile-${columnNum}-${tileNum}`);
-      tileNum++;
+      tileNum += 1;
     }
 
     // create replenishment for DOM
@@ -237,19 +232,21 @@ class Field {
       let whileCondition = true;
       while (whileCondition) {
         whileCondition = false;
+        // eslint-disable-next-line no-await-in-loop
         await wait(100);
 
         tileNum = 0;
+        // eslint-disable-next-line no-restricted-syntax, prefer-const
         for (let domTile of domColumn.children) {
-          const currentPositionY = currentColumn[tileNum]["positionY"];
+          const currentPositionY = currentColumn[tileNum].positionY;
           if (currentPositionY - tileNum) {
-            currentColumn[tileNum]["positionY"]++;
+            currentColumn[tileNum].positionY += 1;
             whileCondition = true;
           }
           domTile.style.top = `${
-            currentColumn[tileNum]["positionY"] * state.fieldConfig.tileSize
+            currentColumn[tileNum].positionY * state.fieldConfig.tileSize
           }rem`;
-          tileNum++;
+          tileNum += 1;
         }
       }
     };

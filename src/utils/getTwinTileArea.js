@@ -3,7 +3,7 @@ import deepCloneTiles from "./deepCloneTiles";
 const getTwinTileArea = (x, y, numX, numY, tiles_) => {
   const tiles = deepCloneTiles(tiles_);
   const clickedTile = tiles[x][y];
-  const type = clickedTile.type;
+  const { type } = clickedTile;
 
   let agg = [{ x: +x, y: +y }];
   clickedTile.aggregation = type;
@@ -33,7 +33,9 @@ const getTwinTileArea = (x, y, numX, numY, tiles_) => {
     return aggr;
   };
 
+  // eslint-disable-next-line no-constant-condition
   while (true) {
+    // eslint-disable-next-line no-loop-func
     agg.forEach((tile) => {
       agg = [...agg, ..._getNeighbourTiles(+tile.x, +tile.y, type)];
     });
