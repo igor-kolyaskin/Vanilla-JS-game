@@ -1,4 +1,4 @@
-import "../src/styles/main.scss";
+import "./styles/main.scss";
 import App from "./components/App";
 import fieldInstance from "./components/field/Field";
 import state from "./store/state";
@@ -6,11 +6,13 @@ import gameInstance from "./bll/Game";
 import elements from "./store/elements";
 import setVariablesCSS from "./utils/setVariablesCSS";
 import message from "./components/Message";
-import onClickApplySettings from "./listeners/onClickApplySettings";
 
+// eslint-disable-next-line no-undef
 const config = localStorage.getItem("config");
 if (config) {
-  const { numX, numY, numColors, scoreToWin, movesToWin } = JSON.parse(config);
+  const {
+    numX, numY, numColors, scoreToWin, movesToWin,
+  } = JSON.parse(config);
   state.updateState({ key: "numX", value: numX });
   state.updateState({ key: "numY", value: numY });
   state.updateState({ key: "numColors", value: numColors });
@@ -20,6 +22,7 @@ if (config) {
 fieldInstance.init(state.fieldConfig);
 const { tileSize, numX, numY } = state.fieldConfig;
 
+// eslint-disable-next-line no-undef
 const body = document.getElementById("body");
 body.append(App());
 body.classList.add("theme-main");

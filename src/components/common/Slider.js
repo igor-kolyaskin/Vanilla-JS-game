@@ -1,7 +1,10 @@
+/* eslint-disable no-undef */
 import elements from "../../store/elements";
 
 const Slider = (config) => {
-  const { id, value, min, max, labelText } = config;
+  const {
+    id, value, min, max, labelText,
+  } = config;
 
   const sliderContainer = document.createElement("section");
   sliderContainer.setAttribute("id", `slider-container-${id}`);

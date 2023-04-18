@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 function TileBlast() {
   const tileBlast = document.createElement("div");
   tileBlast.classList.add("tile-blast");

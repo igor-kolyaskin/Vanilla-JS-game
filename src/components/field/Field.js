@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-undef */
 import elements from "../../store/elements";
 import wait from "../../utils/wait";
 import state from "../../store/state";
@@ -116,7 +118,7 @@ class Field {
       tileModel.aggregation = type;
 
       const tileDOM = document.getElementById(`tile-${tile.x}-${tile.y}`);
-      tileDOM.style.backgroundColor = `var(--tile-0-clr)`;
+      tileDOM.style.backgroundColor = "var(--tile-0-clr)";
     });
   }
 

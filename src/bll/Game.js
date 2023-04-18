@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import fieldInstance from "../components/field/Field";
 import streetlightInstance from "../components/header/Streetlight";
 import messageInstance from "../components/Message";
@@ -19,8 +20,8 @@ class Game {
     const { numX, numY } = state.fieldConfig;
 
     const aggArea = [];
-    for (let x = 0; x < numX; x++) {
-      for (let y = 0; y < numY; y++) {
+    for (let x = 0; x < numX; x += 1) {
+      for (let y = 0; y < numY; y += 1) {
         aggArea.push({ x: x, y: y });
       }
     }
@@ -39,7 +40,7 @@ class Game {
     const currentScore = state.fieldConfig.score;
     const scoreIncrement = scoreTable[scr]
       ? scoreTable[scr]
-      : scoreTable["max"];
+      : scoreTable.max;
     state.updateState({ key: "score", value: currentScore + scoreIncrement });
     scoreInstance.updateScoreIndication();
     progressBar.updateGreenBarPosition();
@@ -55,7 +56,9 @@ class Game {
   }
 
   setGameStatus() {
-    const { score, moves, scoreToWin, movesToWin } = state.fieldConfig;
+    const {
+      score, moves, scoreToWin, movesToWin,
+    } = state.fieldConfig;
     if (score >= scoreToWin) {
       messageInstance.open("win");
       state.updateState({ key: "status", value: "win" });

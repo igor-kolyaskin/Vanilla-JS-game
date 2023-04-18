@@ -1,21 +1,21 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const webpack = require('webpack');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   entry: {
-    main: path.resolve(__dirname, './src/index.js'),
+    main: path.resolve(__dirname, "./src/index.js"),
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, "./dist"),
+    filename: "[name].bundle.js",
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, './'),
+      directory: path.join(__dirname, "./"),
     },
     historyApiFallback: true,
     // contentBase: path.resolve(__dirname, './dist'),
@@ -26,17 +26,17 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'webpack Boilerplate',
-      template: path.resolve(__dirname, './src/template.html'), // шаблон
-      filename: 'index.html', // название выходного файла
+      title: "webpack Boilerplate",
+      template: path.resolve(__dirname, "./src/template.html"), // шаблон
+      filename: "index.html", // название выходного файла
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, './src/assets'),
-          to: './assets',
+          from: path.resolve(__dirname, "./src/assets"),
+          to: "./assets",
         },
       ],
     }),
@@ -47,19 +47,19 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: ["babel-loader"],
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-        type: 'asset/inline',
+        type: "asset/inline",
       },
       {
         test: /\.(scss|css)$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },
     ],
   },

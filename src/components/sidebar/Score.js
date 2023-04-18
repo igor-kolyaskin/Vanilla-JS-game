@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 import state from "../../store/state";
+
 class Score {
   constructor() {
     this.movesDilplay = null;
@@ -34,8 +36,7 @@ class Score {
   }
 
   updateMovesIndication() {
-    this.movesDilplay.innerText =
-      state.fieldConfig.movesToWin - state.fieldConfig.moves;
+    this.movesDilplay.innerText = state.fieldConfig.movesToWin - state.fieldConfig.moves;
   }
 
   updateScoreIndication() {

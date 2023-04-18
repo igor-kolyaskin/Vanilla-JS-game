@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 import state from "../../store/state";
+
 class ProgressBar {
   constructor() {
     this.barGreen = null;
@@ -35,8 +37,9 @@ class ProgressBar {
   updateGreenBarPosition() {
     const { score, scoreToWin } = state.fieldConfig;
     this.barGreen.style.top = `${
-      10.75 *
-      (1 - (score <= 0 ? 0 : score > scoreToWin ? 1 : score / scoreToWin))
+      10.75
+      // eslint-disable-next-line no-nested-ternary
+      * (1 - (score <= 0 ? 0 : score > scoreToWin ? 1 : score / scoreToWin))
     }rem`;
   }
 
