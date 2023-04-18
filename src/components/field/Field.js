@@ -38,8 +38,8 @@ class Field {
   ) {
     return {
       id: `${x}-${y}`,
-      type: type,
-      aggregation: aggregation,
+      type,
+      aggregation,
       positionY: position, // shows actual place along y-axis
     };
   }

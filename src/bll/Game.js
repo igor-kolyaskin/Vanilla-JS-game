@@ -22,7 +22,7 @@ class Game {
     const aggArea = [];
     for (let x = 0; x < numX; x += 1) {
       for (let y = 0; y < numY; y += 1) {
-        aggArea.push({ x: x, y: y });
+        aggArea.push({ x, y });
       }
     }
 
