@@ -69,8 +69,6 @@ class Game {
       state.updateState({ key: "status", value: "losing" });
       state.updateState({ key: "fieldLock", value: true });
       streetlightInstance.showMessage("pressButtonGo");
-    } else {
-      console.log("continue");
     }
   }
 }

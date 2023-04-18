@@ -1,4 +1,3 @@
-import state from "../../store/state";
 import Bonus from "./Bonus";
 
 const Bonuses = () => {
@@ -21,7 +20,7 @@ const Bonuses = () => {
   };
   const bonusOne = Bonus(confingBonus1);
   const bonusTwo = Bonus(confingBonus2);
-  bonusOne.addEventListener("click", () => console.log(state._fieldConfig));
+  // bonusOne.addEventListener("click", () => console.log(state._fieldConfig));
 
   bonuses.append(bonusOne, bonusTwo);
 

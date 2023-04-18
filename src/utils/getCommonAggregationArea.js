@@ -1,11 +1,11 @@
 import deepCloneTiles from "./deepCloneTiles";
 
-const getCommonAggregationArea = (x, y, numX, numY, tiles_, aggType) => {
+const getCommonAggregationArea = (coordX, coordY, numX, numY, tiles_, aggType) => {
   const tiles = deepCloneTiles(tiles_);
-  const clickedTile = tiles[x][y];
+  const clickedTile = tiles[coordX][coordY];
   const { type } = clickedTile;
 
-  let agg = [{ x: +x, y: +y }];
+  let agg = [{ x: +coordX, y: +coordY }];
   clickedTile.aggregation = type;
   clickedTile.type = 0;
   let prevLength = 1;
