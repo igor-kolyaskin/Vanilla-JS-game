@@ -14,11 +14,11 @@ if (config) {
     numX, numY, numColors, scoreToWin, movesToWin,
   } = JSON.parse(config);
   const stateUpdates = [
-    { numX: numX },
-    { numY: numY },
-    { numColors: numColors },
-    { scoreToWin: scoreToWin },
-    { movesToWin: movesToWin },
+    { numX },
+    { numY },
+    { numColors },
+    { scoreToWin },
+    { movesToWin },
   ];
   state.updateState(stateUpdates);
 }
