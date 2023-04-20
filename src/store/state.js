@@ -15,9 +15,7 @@ const state = {
   },
 
   updateState(payloadArray) {
-    payloadArray.forEach(({ key, value }) => {
-      this._fieldConfig[key] = value;
-    });
+    this._fieldConfig = Object.assign(this._fieldConfig, ...payloadArray);
   },
 
   get fieldConfig() {

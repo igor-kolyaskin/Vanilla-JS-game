@@ -15,7 +15,7 @@ class Game {
 
   refreshField() {
     streetlightInstance.showMessage("wait");
-    const stateUpdates = [{ key: "fieldLock", value: true }];
+    const stateUpdates = [{ fieldLock: true }];
     state.updateState(stateUpdates);
 
     const { numX, numY } = state.fieldConfig;
@@ -33,7 +33,7 @@ class Game {
 
   incrementMoves() {
     const currentMoves = state.fieldConfig.moves;
-    const stateUpdates = [{ key: "moves", value: currentMoves + 1 }];
+    const stateUpdates = [{ moves: currentMoves + 1 }];
     state.updateState(stateUpdates);
     scoreInstance.updateMovesIndication();
   }
@@ -42,7 +42,7 @@ class Game {
     const currentScore = state.fieldConfig.score;
     const scoreIncrement = scoreTable[scr] ? scoreTable[scr] : scoreTable.max;
     const stateUpdates = [
-      { key: "score", value: currentScore + scoreIncrement },
+      { score: currentScore + scoreIncrement },
     ];
     state.updateState(stateUpdates);
     scoreInstance.updateScoreIndication();
@@ -51,9 +51,9 @@ class Game {
 
   resetToStart() {
     const stateUpdates = [
-      { key: "moves", value: 0 },
-      { key: "score", value: 0 },
-      { key: "fieldLock", value: false },
+      { moves: 0 },
+      { score: 0 },
+      { fieldLock: false },
     ];
     state.updateState(stateUpdates);
     scoreInstance.updateScoreIndication();
@@ -68,16 +68,16 @@ class Game {
     if (score >= scoreToWin) {
       messageInstance.open("win");
       const stateUpdates = [
-        { key: "status", value: "win" },
-        { key: "fieldLock", value: true },
+        { status: "win" },
+        { fieldLock: true },
       ];
       state.updateState(stateUpdates);
       streetlightInstance.showMessage("pressButtonGo");
     } else if (moves >= movesToWin) {
       messageInstance.open("losing");
       const stateUpdates = [
-        { key: "status", value: "losing" },
-        { key: "fieldLock", value: true },
+        { status: "losing" },
+        { fieldLock: true },
       ];
       state.updateState(stateUpdates);
       streetlightInstance.showMessage("pressButtonGo");

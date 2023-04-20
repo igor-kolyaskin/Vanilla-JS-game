@@ -12,13 +12,13 @@ function onClickTile(event) {
   if (caller !== "tile") return;
 
   streetlightInstance.showMessage("wait");
-  let stateUpdates = [{ key: "fieldLock", value: true }];
+  let stateUpdates = [{ fieldLock: true }];
   state.updateState(stateUpdates);
 
   const aggArea = getAggregationArea(x, y, tileColor);
 
   if (aggArea.length < state.fieldConfig.minAggregationSize) {
-    stateUpdates = [{ key: "fieldLock", value: false }];
+    stateUpdates = [{ fieldLock: false }];
     state.updateState(stateUpdates);
     streetlightInstance.showMessage("blockIsTooSmall");
     return;

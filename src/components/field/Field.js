@@ -162,7 +162,7 @@ class Field {
         state.fieldConfig.status !== "win"
         && state.fieldConfig.status !== "losing"
       ) {
-        const stateUpdates = [{ key: "fieldLock", value: false }];
+        const stateUpdates = [{ fieldLock: false }];
         state.updateState(stateUpdates);
       }
       const moves = getClickableTilesInCurrentField(deepCloneTiles(this.tiles));
@@ -178,7 +178,7 @@ class Field {
         }
       } else {
         streetlightInstance.showMessage("noClicableTiles");
-        const stateUpdates = [{ key: "fieldLock", value: true }];
+        const stateUpdates = [{ fieldLock: true }];
         state.updateState(stateUpdates);
       }
     });
