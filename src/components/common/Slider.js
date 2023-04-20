@@ -1,44 +1,68 @@
-/* eslint-disable no-undef */
 import elements from "../../store/elements";
+import Element from "./Element";
 
 const Slider = (config) => {
   const {
     id, value, min, max, labelText,
   } = config;
 
-  const sliderContainer = document.createElement("section");
-  sliderContainer.setAttribute("id", `slider-container-${id}`);
-  sliderContainer.classList.add("slider-container");
+  const configSliderLabel = {
+    tag: "div",
+    attributes: [["id", `slider-label-${id}`]],
+    classes: [],
+    children: [],
+    innerText: `${labelText}: ${value}`,
+  };
+  const sliderLabel = Element(configSliderLabel);
 
-  const sliderLabel = document.createElement("div");
-  sliderLabel.setAttribute("id", `slider-label-${id}`);
-  sliderLabel.innerText = `${labelText}: ${value}`;
+  const configMinValue = {
+    tag: "div",
+    attributes: [],
+    classes: ["slider-min-max"],
+    children: [],
+    innerText: min,
+  };
+  const minValue = Element(configMinValue);
 
-  const minValue = document.createElement("div");
-  minValue.classList.add("slider-min-max");
-  minValue.innerText = min;
+  const configMaxValue = {
+    tag: "div",
+    attributes: [],
+    classes: ["slider-min-max"],
+    children: [],
+    innerText: max,
+  };
+  const maxValue = Element(configMaxValue);
 
-  const maxValue = document.createElement("div");
-  maxValue.classList.add("slider-min-max");
-  maxValue.innerText = max;
+  const configSlider = {
+    tag: "input",
+    attributes: Object.entries({
+      ...config,
+      id: `slider-${id}`,
+      type: "range",
+    }),
+    classes: ["slider"],
+    children: [],
+    innerText: null,
+  };
+  const slider = Element(configSlider);
 
-  const sliderWrapper = document.createElement("div");
-  sliderWrapper.setAttribute("id", `slider-wrapper-${id}`);
-  sliderWrapper.classList.add("slider-wrapper");
+  const configSliderWrapper = {
+    tag: "div",
+    attributes: [["id", `slider-wrapper-${id}`]],
+    classes: ["slider-wrapper"],
+    children: [minValue, slider, maxValue],
+    innerText: null,
+  };
+  const sliderWrapper = Element(configSliderWrapper);
 
-  const slider = document.createElement("input");
-  const configArray = Object.entries({
-    ...config,
-    id: `slider-${id}`,
-    type: "range",
-  });
-  configArray.forEach((attr) => {
-    slider.setAttribute(`${attr[0]}`, `${attr[1]}`);
-  });
-  slider.classList.add("slider");
-
-  sliderWrapper.append(minValue, slider, maxValue);
-  sliderContainer.append(sliderLabel, sliderWrapper);
+  const configSliderContainer = {
+    tag: "section",
+    attributes: [["id", `slider-container-${id}`]],
+    classes: ["slider-container"],
+    children: [sliderLabel, sliderWrapper],
+    innerText: null,
+  };
+  const sliderContainer = Element(configSliderContainer);
 
   elements.sliders = Object.assign(elements.sliders, { [id]: slider });
   elements.sliderLabels = Object.assign(elements.sliderLabels, {

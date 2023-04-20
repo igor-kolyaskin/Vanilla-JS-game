@@ -1,7 +1,5 @@
-import elements from "../../store/elements";
-
 const Element = ({
-  tag, attributes, classes, listeners, children, addToElementsAs,
+  tag, attributes, classes, children, innerText,
 }) => {
   // eslint-disable-next-line no-undef
   const element = document.createElement(tag);
@@ -14,15 +12,12 @@ const Element = ({
     element.classList.add(cls);
   });
 
-  listeners.forEach((listener) => {
-    element.addEventListener(...listener);
-  });
-
   children.forEach((child) => {
     element.append(child);
   });
 
-  if (addToElementsAs) elements[addToElementsAs] = element;
+  if (innerText !== null) element.innerText = innerText;
+
   return element;
 };
 

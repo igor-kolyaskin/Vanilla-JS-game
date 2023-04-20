@@ -17,9 +17,8 @@ function App() {
     tag: "main",
     attributes: [["id", "main"]],
     classes: [],
-    listeners: [],
     children: [header, field, message],
-    addToElementsAs: "",
+    innerText: null,
   };
   const main = Element(configMain);
 
@@ -27,9 +26,8 @@ function App() {
     tag: "div",
     attributes: [["id", "app"]],
     classes: [],
-    listeners: [],
     children: [main, sidebar],
-    addToElementsAs: "",
+    innerText: null,
   };
   const app = Element(configApp);
 
