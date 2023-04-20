@@ -5,7 +5,13 @@ import messageInstance from "../components/Message";
 import progressBar from "../components/sidebar/ProgressBar";
 import scoreInstance from "../components/sidebar/Score";
 import state from "../store/state";
-import scoreTable from "../constants/scoreTable";
+import {
+  scoreTable,
+  constRefreshField,
+  constResetToStart,
+  statusWinProperties,
+  statusLosingProperties,
+} from "../constants/constantsGames";
 
 class Game {
   startNewGame() {
@@ -14,9 +20,8 @@ class Game {
   }
 
   refreshField() {
-    const refreshFieldMessageText = "wait";
+    const { refreshFieldMessageText, stateUpdates, firstTileCoordinates } = constRefreshField;
     streetlightInstance.showMessage(refreshFieldMessageText);
-    const stateUpdates = [{ fieldLock: true }];
     state.updateState(stateUpdates);
 
     const { numX, numY } = state.fieldConfig;
@@ -27,7 +32,6 @@ class Game {
         aggArea.push({ x, y });
       }
     }
-    const firstTileCoordinates = [0, 0];
     fieldInstance.changeAggregatedTiles(...firstTileCoordinates, aggArea);
     fieldInstance.refreshColumns(aggArea);
   }
@@ -49,8 +53,7 @@ class Game {
   }
 
   resetToStart() {
-    const stateUpdates = [{ moves: 0 }, { score: 0 }, { fieldLock: false }];
-    state.updateState(stateUpdates);
+    state.updateState(constResetToStart);
     scoreInstance.updateScoreIndication();
     scoreInstance.updateMovesIndication();
     progressBar.updateGreenBarPosition();
@@ -60,21 +63,8 @@ class Game {
     const {
       score, moves, scoreToWin, movesToWin,
     } = state.fieldConfig;
-    if (score >= scoreToWin) {
-      const statusProperties = {
-        messageText: "win",
-        stateUpdates: [{ status: "win" }, { fieldLock: true }],
-        streetLightMessage: "pressButtonGo",
-      };
-      this._applyStatusProperties(statusProperties);
-    } else if (moves >= movesToWin) {
-      const statusProperties = {
-        messageText: "losing",
-        stateUpdates: [{ status: "losing" }, { fieldLock: true }],
-        streetLightMessage: "pressButtonGo",
-      };
-      this._applyStatusProperties(statusProperties);
-    }
+    if (score >= scoreToWin) this._applyStatusProperties(statusWinProperties);
+    else if (moves >= movesToWin) this._applyStatusProperties(statusLosingProperties);
   }
 
   _applyStatusProperties({ messageText, stateUpdates, streetLightMessage }) {
