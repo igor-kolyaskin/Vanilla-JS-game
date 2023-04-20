@@ -15,7 +15,7 @@ class Game {
 
   refreshField() {
     streetlightInstance.showMessage("wait");
-    state.updateState({ key: "fieldLock", value: true });
+    state.updateState([{ key: "fieldLock", value: true }]);
 
     const { numX, numY } = state.fieldConfig;
 
@@ -32,7 +32,7 @@ class Game {
 
   incrementMoves() {
     const currentMoves = state.fieldConfig.moves;
-    state.updateState({ key: "moves", value: currentMoves + 1 });
+    state.updateState([{ key: "moves", value: currentMoves + 1 }]);
     scoreInstance.updateMovesIndication();
   }
 
@@ -41,15 +41,15 @@ class Game {
     const scoreIncrement = scoreTable[scr]
       ? scoreTable[scr]
       : scoreTable.max;
-    state.updateState({ key: "score", value: currentScore + scoreIncrement });
+    state.updateState([{ key: "score", value: currentScore + scoreIncrement }]);
     scoreInstance.updateScoreIndication();
     progressBar.updateGreenBarPosition();
   }
 
   resetToStart() {
-    state.updateState({ key: "moves", value: 0 });
-    state.updateState({ key: "score", value: 0 });
-    state.updateState({ key: "fieldLock", value: false });
+    state.updateState([{ key: "moves", value: 0 }]);
+    state.updateState([{ key: "score", value: 0 }]);
+    state.updateState([{ key: "fieldLock", value: false }]);
     scoreInstance.updateScoreIndication();
     scoreInstance.updateMovesIndication();
     progressBar.updateGreenBarPosition();
@@ -61,13 +61,13 @@ class Game {
     } = state.fieldConfig;
     if (score >= scoreToWin) {
       messageInstance.open("win");
-      state.updateState({ key: "status", value: "win" });
-      state.updateState({ key: "fieldLock", value: true });
+      state.updateState([{ key: "status", value: "win" }]);
+      state.updateState([{ key: "fieldLock", value: true }]);
       streetlightInstance.showMessage("pressButtonGo");
     } else if (moves >= movesToWin) {
       messageInstance.open("losing");
-      state.updateState({ key: "status", value: "losing" });
-      state.updateState({ key: "fieldLock", value: true });
+      state.updateState([{ key: "status", value: "losing" }]);
+      state.updateState([{ key: "fieldLock", value: true }]);
       streetlightInstance.showMessage("pressButtonGo");
     }
   }

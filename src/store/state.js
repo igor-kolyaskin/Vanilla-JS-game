@@ -14,10 +14,16 @@ const state = {
     status: "start",
   },
 
-  updateState(payload) {
-    const { key, value } = payload;
-    this._fieldConfig[key] = value;
+  updateState(payloadArray) {
+    payloadArray.forEach(({ key, value }) => {
+      this._fieldConfig[key] = value;
+    });
   },
+
+  // updateState(payload) {
+  //   const { key, value } = payload;
+  //   this._fieldConfig[key] = value;
+  // },
 
   get fieldConfig() {
     return this._fieldConfig;
