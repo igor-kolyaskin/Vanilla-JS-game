@@ -14,7 +14,8 @@ class Game {
   }
 
   refreshField() {
-    streetlightInstance.showMessage("wait");
+    const refreshFieldMessageText = "wait";
+    streetlightInstance.showMessage(refreshFieldMessageText);
     const stateUpdates = [{ fieldLock: true }];
     state.updateState(stateUpdates);
 
@@ -26,8 +27,8 @@ class Game {
         aggArea.push({ x, y });
       }
     }
-
-    fieldInstance.changeAggregatedTiles(0, 0, aggArea);
+    const firstTileCoordinates = [0, 0];
+    fieldInstance.changeAggregatedTiles(...firstTileCoordinates, aggArea);
     fieldInstance.refreshColumns(aggArea);
   }
 
