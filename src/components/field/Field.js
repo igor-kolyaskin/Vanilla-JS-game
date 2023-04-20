@@ -46,7 +46,8 @@ class Field {
 
   // creates DOM-tree of tiles first time
   render() {
-    let fieldWrapper; let field;
+    let fieldWrapper;
+    let field;
     if (elements.field) {
       fieldWrapper = elements.fieldWrapper;
       field = elements.field;
@@ -161,7 +162,8 @@ class Field {
         state.fieldConfig.status !== "win"
         && state.fieldConfig.status !== "losing"
       ) {
-        state.updateState([{ key: "fieldLock", value: false }]);
+        const stateUpdates = [{ key: "fieldLock", value: false }];
+        state.updateState(stateUpdates);
       }
       const moves = getClickableTilesInCurrentField(deepCloneTiles(this.tiles));
 
@@ -176,7 +178,8 @@ class Field {
         }
       } else {
         streetlightInstance.showMessage("noClicableTiles");
-        state.updateState([{ key: "fieldLock", value: true }]);
+        const stateUpdates = [{ key: "fieldLock", value: true }];
+        state.updateState(stateUpdates);
       }
     });
   }

@@ -13,11 +13,14 @@ if (config) {
   const {
     numX, numY, numColors, scoreToWin, movesToWin,
   } = JSON.parse(config);
-  state.updateState([{ key: "numX", value: numX }]);
-  state.updateState([{ key: "numY", value: numY }]);
-  state.updateState([{ key: "numColors", value: numColors }]);
-  state.updateState([{ key: "scoreToWin", value: scoreToWin }]);
-  state.updateState([{ key: "movesToWin", value: movesToWin }]);
+  const stateUpdates = [
+    { key: "numX", value: numX },
+    { key: "numY", value: numY },
+    { key: "numColors", value: numColors },
+    { key: "scoreToWin", value: scoreToWin },
+    { key: "movesToWin", value: movesToWin },
+  ];
+  state.updateState(stateUpdates);
 }
 fieldInstance.init(state.fieldConfig);
 const { tileSize, numX, numY } = state.fieldConfig;

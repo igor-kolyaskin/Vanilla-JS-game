@@ -20,11 +20,6 @@ const state = {
     });
   },
 
-  // updateState(payload) {
-  //   const { key, value } = payload;
-  //   this._fieldConfig[key] = value;
-  // },
-
   get fieldConfig() {
     return this._fieldConfig;
   },
