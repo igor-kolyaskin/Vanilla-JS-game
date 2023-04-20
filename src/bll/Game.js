@@ -41,20 +41,14 @@ class Game {
   incrementScore(scr) {
     const currentScore = state.fieldConfig.score;
     const scoreIncrement = scoreTable[scr] ? scoreTable[scr] : scoreTable.max;
-    const stateUpdates = [
-      { score: currentScore + scoreIncrement },
-    ];
+    const stateUpdates = [{ score: currentScore + scoreIncrement }];
     state.updateState(stateUpdates);
     scoreInstance.updateScoreIndication();
     progressBar.updateGreenBarPosition();
   }
 
   resetToStart() {
-    const stateUpdates = [
-      { moves: 0 },
-      { score: 0 },
-      { fieldLock: false },
-    ];
+    const stateUpdates = [{ moves: 0 }, { score: 0 }, { fieldLock: false }];
     state.updateState(stateUpdates);
     scoreInstance.updateScoreIndication();
     scoreInstance.updateMovesIndication();
@@ -66,22 +60,26 @@ class Game {
       score, moves, scoreToWin, movesToWin,
     } = state.fieldConfig;
     if (score >= scoreToWin) {
-      messageInstance.open("win");
-      const stateUpdates = [
-        { status: "win" },
-        { fieldLock: true },
-      ];
-      state.updateState(stateUpdates);
-      streetlightInstance.showMessage("pressButtonGo");
+      const statusProperties = {
+        messageText: "win",
+        stateUpdates: [{ status: "win" }, { fieldLock: true }],
+        streetLightMessage: "pressButtonGo",
+      };
+      this._applyStatusProperties(statusProperties);
     } else if (moves >= movesToWin) {
-      messageInstance.open("losing");
-      const stateUpdates = [
-        { status: "losing" },
-        { fieldLock: true },
-      ];
-      state.updateState(stateUpdates);
-      streetlightInstance.showMessage("pressButtonGo");
+      const statusProperties = {
+        messageText: "losing",
+        stateUpdates: [{ status: "losing" }, { fieldLock: true }],
+        streetLightMessage: "pressButtonGo",
+      };
+      this._applyStatusProperties(statusProperties);
     }
+  }
+
+  _applyStatusProperties({ messageText, stateUpdates, streetLightMessage }) {
+    streetlightInstance.showMessage(streetLightMessage);
+    state.updateState(stateUpdates);
+    messageInstance.open(messageText);
   }
 }
 
