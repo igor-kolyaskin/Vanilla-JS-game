@@ -3,18 +3,24 @@ import Slider from "../common/Slider";
 import onChangeSlider from "../../listeners/onChangeSlider";
 import sliderConfig from "../../constants/sliderConfig";
 import state from "../../store/state";
+import Element from "../common/Element";
 
 const Settings = () => {
-  const settingsWrapper = document.createElement("section");
-  settingsWrapper.setAttribute("id", "settings-wrapper");
-
   const sliderArray = sliderConfig.map((sl) => Slider({
     ...sl,
     value: state.fieldConfig[sl.id],
   }));
 
+  const configSettingsWrapper = {
+    tag: "section",
+    attributes: [["id", "settings-wrapper"]],
+    classes: [],
+    children: [...sliderArray],
+    innerText: null,
+  };
+  const settingsWrapper = Element(configSettingsWrapper);
+
   settingsWrapper.addEventListener("input", onChangeSlider);
-  settingsWrapper.append(...sliderArray);
 
   return settingsWrapper;
 };

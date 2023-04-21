@@ -1,0 +1,25 @@
+{
+  "d": {
+    "results": [
+      {
+        "__metadata": {
+          "id": "https://vhslsdwdwd.sls.rot.hec.sap.biz/sap/opu/odata/GSSLS/GW_USER_SEARCH_SRV/Users('C5261686')",
+          "uri": "https://vhslsdwdwd.sls.rot.hec.sap.biz/sap/opu/odata/GSSLS/GW_USER_SEARCH_SRV/Users('C5261686')",
+          "type": "/GSSLS/GW_USER_SEARCH_SRV.User"
+        },
+        "SapUserId": "C5261686",
+        "SapName": "C5261686",
+        "FirstName": "SLS Sol",
+        "LastName": "Dummy User",
+        "FirstName_UC": "SLS SOL",
+        "LastName_UC": "DUMMY USER",
+        "UsernameStatus": "U",
+        "IsLocked": false,
+        "SmtpMail": "solsupplieruser@gmail.com",
+        "FullName": "SLS Sol Dummy User",
+        "NameSurnameUc": "SLS SOL DUMMY USER",
+        "SurnameNameUc": "DUMMY USER SLS SOL"
+      }
+    ]
+  }
+}

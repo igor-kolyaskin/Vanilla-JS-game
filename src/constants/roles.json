@@ -1,0 +1,10 @@
+{
+  "d": {
+    "__metadata": {
+      "id": "https://vhslsdwdwd.sls.rot.hec.sap.biz/sap/opu/odata/GSSLS/PROJECT_SRV/MyUIActions(UniqueId='',ProjectId='',PrjItemId='',ContentGrp='',SlsLang='',UiAction='TST_VIEW')",
+      "uri": "https://vhslsdwdwd.sls.rot.hec.sap.biz/sap/opu/odata/GSSLS/PROJECT_SRV/MyUIActions(UniqueId='',ProjectId='',PrjItemId='',ContentGrp='',SlsLang='',UiAction='TST_VIEW')",
+      "type": "GSSLS_PROJECT_SRV.MyUIAction"
+    },
+    "IsAllowed": false
+  }
+}
