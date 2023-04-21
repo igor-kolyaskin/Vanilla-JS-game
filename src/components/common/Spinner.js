@@ -1,9 +1,15 @@
-const Spinner = (classArray) => {
-  // eslint-disable-next-line no-undef
-  const spinner = document.createElement("div");
-  spinner.classList.add("lds-dual-ring", ...classArray);
+import Element from "./Element";
 
-  return spinner;
+const Spinner = () => {
+  const configSpinner = {
+    tag: "div",
+    attributes: [],
+    classes: ["lds-dual-ring", "street-text-parts", "street-text-spinner"],
+    children: [],
+    innerText: null,
+  };
+
+  return Element(configSpinner);
 };
 
 export default Spinner;
