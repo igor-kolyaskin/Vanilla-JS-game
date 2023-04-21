@@ -34,6 +34,6 @@ export default Element;
 //   attributes: [["id", "streetlight"]],
 //   classes: ["slider-min-max"],
 //   children: [this.text, this.refreshButton],
-//   innerText: "innerText";
+//   innerText: "innerText",
 // };
 // const element = Element(configElement);

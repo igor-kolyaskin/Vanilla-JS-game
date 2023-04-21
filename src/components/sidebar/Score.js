@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
 import state from "../../store/state";
+import Element from "../common/Element";
 
 class Score {
   constructor() {
@@ -8,29 +8,40 @@ class Score {
   }
 
   render() {
-    const score = document.createElement("section");
-    score.setAttribute("id", "score");
+    const configMovesDilplay = {
+      tag: "div",
+      attributes: [["id", "moves-display"]],
+      innerText: state.fieldConfig.movesToWin,
+    };
+    this.movesDilplay = Element(configMovesDilplay);
 
-    const movesDilplay = document.createElement("div");
-    movesDilplay.setAttribute("id", "moves-display");
-    movesDilplay.innerText = state.fieldConfig.movesToWin;
-    this.movesDilplay = movesDilplay;
+    const configScoresTitle = {
+      tag: "div",
+      attributes: [["id", "scores-title"]],
+      innerText: "очки:",
+    };
+    const scoresTitle = Element(configScoresTitle);
 
-    const scoresDisplay = document.createElement("div");
-    scoresDisplay.setAttribute("id", "scores-display");
+    const configScoresNumber = {
+      tag: "div",
+      attributes: [["id", "scores-number"]],
+      innerText: "0",
+    };
+    this.scoresNumber = Element(configScoresNumber);
 
-    const scoresTitle = document.createElement("div");
-    scoresTitle.setAttribute("id", "scores-title");
-    scoresTitle.innerText = "очки:";
+    const configScoresDisplay = {
+      tag: "div",
+      attributes: [["id", "scores-display"]],
+      children: [scoresTitle, this.scoresNumber],
+    };
+    const scoresDisplay = Element(configScoresDisplay);
 
-    const scoresNumber = document.createElement("div");
-    scoresNumber.setAttribute("id", "scores-number");
-    scoresNumber.innerText = "0";
-    this.scoresNumber = scoresNumber;
-
-    scoresDisplay.append(scoresTitle, scoresNumber);
-
-    score.append(movesDilplay, scoresDisplay);
+    const configScore = {
+      tag: "section",
+      attributes: [["id", "score"]],
+      children: [this.movesDilplay, scoresDisplay],
+    };
+    const score = Element(configScore);
 
     return score;
   }
