@@ -28,3 +28,12 @@ const Element = ({
 };
 
 export default Element;
+
+// const configElement = {
+//   tag: "section",
+//   attributes: [["id", "streetlight"]],
+//   classes: ["slider-min-max"],
+//   children: [this.text, this.refreshButton],
+//   innerText: "innerText";
+// };
+// const element = Element(configElement);
