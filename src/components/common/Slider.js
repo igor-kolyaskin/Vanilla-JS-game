@@ -9,26 +9,20 @@ const Slider = (config) => {
   const configSliderLabel = {
     tag: "div",
     attributes: [["id", `slider-label-${id}`]],
-    classes: [],
-    children: [],
     innerText: `${labelText}: ${value}`,
   };
   const sliderLabel = Element(configSliderLabel);
 
   const configMinValue = {
     tag: "div",
-    attributes: [],
     classes: ["slider-min-max"],
-    children: [],
     innerText: min,
   };
   const minValue = Element(configMinValue);
 
   const configMaxValue = {
     tag: "div",
-    attributes: [],
     classes: ["slider-min-max"],
-    children: [],
     innerText: max,
   };
   const maxValue = Element(configMaxValue);
@@ -41,8 +35,6 @@ const Slider = (config) => {
       type: "range",
     }),
     classes: ["slider"],
-    children: [],
-    innerText: null,
   };
   const slider = Element(configSlider);
 
@@ -51,7 +43,6 @@ const Slider = (config) => {
     attributes: [["id", `slider-wrapper-${id}`]],
     classes: ["slider-wrapper"],
     children: [minValue, slider, maxValue],
-    innerText: null,
   };
   const sliderWrapper = Element(configSliderWrapper);
 
@@ -60,7 +51,6 @@ const Slider = (config) => {
     attributes: [["id", `slider-container-${id}`]],
     classes: ["slider-container"],
     children: [sliderLabel, sliderWrapper],
-    innerText: null,
   };
   const sliderContainer = Element(configSliderContainer);
 

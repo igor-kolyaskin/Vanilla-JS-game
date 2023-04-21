@@ -4,19 +4,25 @@ const Element = ({
   // eslint-disable-next-line no-undef
   const element = document.createElement(tag);
 
-  attributes.forEach((attribute) => {
-    element.setAttribute(...attribute);
-  });
+  if (attributes) {
+    attributes.forEach((attribute) => {
+      element.setAttribute(...attribute);
+    });
+  }
 
-  classes.forEach((cls) => {
-    element.classList.add(cls);
-  });
+  if (classes) {
+    classes.forEach((cls) => {
+      element.classList.add(cls);
+    });
+  }
 
-  children.forEach((child) => {
-    element.append(child);
-  });
+  if (children) {
+    children.forEach((child) => {
+      element.append(child);
+    });
+  }
 
-  if (innerText !== null) element.innerText = innerText;
+  if (innerText) element.innerText = innerText;
 
   return element;
 };

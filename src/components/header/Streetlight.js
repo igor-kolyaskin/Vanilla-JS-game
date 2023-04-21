@@ -16,8 +16,6 @@ class Streetlight {
       tag: "div",
       attributes: [["id", "refresh-button"]],
       classes: ["refresh-button"],
-      children: [],
-      innerText: null,
     };
     this.refreshButton = Element(configRefreshButton);
 
@@ -25,7 +23,6 @@ class Streetlight {
       tag: "div",
       attributes: [["id", "streetlight-text-message"]],
       classes: ["street-text-parts"],
-      children: [],
       innerText: "Hallo",
     };
     this.textMessage = Element(configTextMessage);
@@ -34,7 +31,6 @@ class Streetlight {
       tag: "div",
       attributes: [["id", "streetlight-text-number"]],
       classes: ["street-text-parts"],
-      children: [],
       innerText: "?",
     };
     this.textNumber = Element(configTextNumber);
@@ -45,7 +41,6 @@ class Streetlight {
       tag: "div",
       attributes: [["id", "streetlight-text-word"]],
       classes: ["street-text-parts"],
-      children: [],
       innerText: " кликов",
     };
     this.textWord = Element(configTextWord);
@@ -53,14 +48,12 @@ class Streetlight {
     const configText = {
       tag: "div",
       attributes: [["id", "streetlight-text"]],
-      classes: [],
       children: [
         this.textMessage,
         this.textNumber,
         this.textSpinner,
         this.textWord,
       ],
-      innerText: null,
     };
     this.text = Element(configText);
 
@@ -69,7 +62,6 @@ class Streetlight {
       attributes: [["id", "streetlight"]],
       classes: ["slider-min-max"],
       children: [this.text, this.refreshButton],
-      innerText: null,
     };
     const streetlight = Element(configStreetlight);
 

@@ -14,9 +14,7 @@ const Settings = () => {
   const configSettingsWrapper = {
     tag: "section",
     attributes: [["id", "settings-wrapper"]],
-    classes: [],
     children: [...sliderArray],
-    innerText: null,
   };
   const settingsWrapper = Element(configSettingsWrapper);
 
