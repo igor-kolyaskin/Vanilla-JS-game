@@ -1,6 +1,6 @@
-/* eslint-disable no-undef */
 import getStreetlightMessage from "../../utils/getStreetlightMessage";
 import Spinner from "../common/Spinner";
+import Element from "../common/Element";
 
 class Streetlight {
   constructor() {
@@ -12,42 +12,66 @@ class Streetlight {
   }
 
   render() {
-    const streetlight = document.createElement("section");
-    streetlight.setAttribute("id", "streetlight");
+    const configRefreshButton = {
+      tag: "div",
+      attributes: [["id", "refresh-button"]],
+      classes: ["refresh-button"],
+      children: [],
+      innerText: null,
+    };
+    this.refreshButton = Element(configRefreshButton);
 
-    const refreshButton = document.createElement("div");
-    refreshButton.setAttribute("id", "refresh-button");
-    refreshButton.classList.add("refresh-button");
-    // refreshButton.innerText = "Обновить поле";
-    this.refreshButton = refreshButton;
+    const configTextMessage = {
+      tag: "div",
+      attributes: [["id", "streetlight-text-message"]],
+      classes: ["street-text-parts"],
+      children: [],
+      innerText: "Hallo",
+    };
+    this.textMessage = Element(configTextMessage);
 
-    const text = document.createElement("div");
-    text.setAttribute("id", "streetlight-text");
-    this.text = text;
+    const configTextNumber = {
+      tag: "div",
+      attributes: [["id", "streetlight-text-number"]],
+      classes: ["street-text-parts"],
+      children: [],
+      innerText: "?",
+    };
+    this.textNumber = Element(configTextNumber);
 
-    const textMessage = document.createElement("div");
-    textMessage.setAttribute("id", "streetlight-text-message");
-    textMessage.classList.add("street-text-parts");
-    textMessage.innerText = "Hallo";
-    this.textMessage = textMessage;
+    this.textSpinner = Spinner();
 
-    const textNumber = document.createElement("div");
-    textNumber.setAttribute("id", "streetlight-text-number");
-    textNumber.classList.add("street-text-parts");
-    textNumber.innerText = "?";
-    this.textNumber = textNumber;
+    const configTextWord = {
+      tag: "div",
+      attributes: [["id", "streetlight-text-word"]],
+      classes: ["street-text-parts"],
+      children: [],
+      innerText: " кликов",
+    };
+    this.textWord = Element(configTextWord);
 
-    const textSpinner = Spinner(["street-text-parts", "street-text-spinner"]);
-    this.textSpinner = textSpinner;
+    const configText = {
+      tag: "div",
+      attributes: [["id", "streetlight-text"]],
+      classes: [],
+      children: [
+        this.textMessage,
+        this.textNumber,
+        this.textSpinner,
+        this.textWord,
+      ],
+      innerText: null,
+    };
+    this.text = Element(configText);
 
-    const textWord = document.createElement("div");
-    textWord.setAttribute("id", "streetlight-text-word");
-    textWord.classList.add("street-text-parts");
-    textWord.innerText = " кликов";
-    this.textWord = textWord;
-
-    text.append(textMessage, textNumber, textSpinner, textWord);
-    streetlight.append(text, refreshButton);
+    const configStreetlight = {
+      tag: "section",
+      attributes: [["id", "streetlight"]],
+      classes: ["slider-min-max"],
+      children: [this.text, this.refreshButton],
+      innerText: null,
+    };
+    const streetlight = Element(configStreetlight);
 
     return streetlight;
   }
