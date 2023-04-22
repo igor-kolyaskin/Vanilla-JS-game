@@ -30,7 +30,7 @@ const Element = ({
 export default Element;
 
 // const configElement = {
-//   tag: "section",
+//   tag: "div",
 //   attributes: [["id", "streetlight"]],
 //   classes: ["slider-min-max"],
 //   children: [this.text, this.refreshButton],

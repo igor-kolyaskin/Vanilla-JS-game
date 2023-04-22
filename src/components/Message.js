@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import getMessageText from "../utils/getModalMessageText";
+import Element from "./common/Element";
 
 class Message {
   constructor() {
@@ -8,21 +9,27 @@ class Message {
   }
 
   render() {
-    const message = document.createElement("section");
-    message.setAttribute("id", "message");
+    const configMessageButton = {
+      tag: "button",
+      attributes: [["id", "message-button"]],
+    };
+    const messageButton = Element(configMessageButton);
 
-    const messageButton = document.createElement("button");
-    messageButton.setAttribute("id", "message-button");
+    const configMessageText = {
+      tag: "p",
+      attributes: [["id", "message-text"]],
+      innerText: getMessageText("greeting"),
+    };
+    this.messageText = Element(configMessageText);
 
-    const messageText = document.createElement("p");
-    messageText.setAttribute("id", "message-text");
-    this.messageText = messageText;
-    this.messageText.innerText = getMessageText("greeting");
+    const configMessage = {
+      tag: "section",
+      attributes: [["id", "message"]],
+      children: [messageButton, this.messageText],
+    };
+    this.messageElement = Element(configMessage);
 
-    message.append(messageButton, messageText);
-    this.messageElement = message;
-
-    return message;
+    return this.messageElement;
   }
 
   open(textType) {
