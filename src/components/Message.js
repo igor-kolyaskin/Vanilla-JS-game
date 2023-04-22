@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import getMessageText from "../utils/getModalMessageText";
 import Element from "./common/Element";
 

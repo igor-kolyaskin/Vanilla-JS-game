@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
 import state from "../../store/state";
+import Element from "../common/Element";
 
 class ProgressBar {
   constructor() {
@@ -8,28 +8,41 @@ class ProgressBar {
   }
 
   render() {
-    const progressBar = document.createElement("section");
-    progressBar.setAttribute("id", "progressbar");
+    const configScoreMax = {
+      tag: "div",
+      attributes: [["id", "progressbar-score-max"]],
+      innerText: state.fieldConfig.scoreToWin,
+    };
+    this.scoreMax = Element(configScoreMax);
 
-    const progressBarMask = document.createElement("div");
-    progressBarMask.setAttribute("id", "progressbar-mask");
+    const configScoreMin = {
+      tag: "div",
+      attributes: [["id", "progressbar-score-min"]],
+      innerText: "0",
+    };
+    const scoreMin = Element(configScoreMin);
 
-    const scoreMax = document.createElement("div");
-    scoreMax.setAttribute("id", "progressbar-score-max");
-    scoreMax.innerText = state.fieldConfig.scoreToWin;
-    this.scoreMax = scoreMax;
+    const configProgressBarGreen = {
+      tag: "div",
+      attributes: [["id", "progressbar-green"]],
+    };
+    const progressBarGreen = Element(configProgressBarGreen);
 
-    const scoreMin = document.createElement("div");
-    scoreMin.setAttribute("id", "progressbar-score-min");
-    scoreMin.innerText = "0";
-
-    const progressBarGreen = document.createElement("div");
-    progressBarGreen.setAttribute("id", "progressbar-green");
     this.barGreen = progressBarGreen;
 
-    progressBarMask.append(progressBarGreen);
+    const configProgressBarMask = {
+      tag: "div",
+      attributes: [["id", "progressbar-mask"]],
+      children: [progressBarGreen],
+    };
+    const progressBarMask = Element(configProgressBarMask);
 
-    progressBar.append(scoreMax, progressBarMask, scoreMin);
+    const configProgressBar = {
+      tag: "section",
+      attributes: [["id", "progressbar"]],
+      children: [this.scoreMax, progressBarMask, scoreMin],
+    };
+    const progressBar = Element(configProgressBar);
 
     return progressBar;
   }
