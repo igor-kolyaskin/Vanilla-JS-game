@@ -1,30 +1,14 @@
+import Element from "../common/Element";
 import Bonus from "./Bonus";
+import bonusConfigArray from "../../constants/constantsBonuses";
 
 const Bonuses = () => {
-  // eslint-disable-next-line no-undef
-  const bonuses = document.createElement("section");
-  bonuses.setAttribute("id", "bonuses");
-
-  const confingBonus1 = {
-    id: 1,
-    iconUrl: "url(\"./assets/png/color-bang-icon.png\")",
-    tooltipText: "color-bang",
-    amount: 3,
+  const configBonuses = {
+    tag: "section",
+    attributes: [["id", "bonuses"]],
+    children: [...bonusConfigArray.map((bonusConfig) => Bonus(bonusConfig))],
   };
-
-  const confingBonus2 = {
-    id: 2,
-    iconUrl: "url(\"./assets/png/colulmn-bang-icon.png\")",
-    tooltipText: "column-bang",
-    amount: 5,
-  };
-  const bonusOne = Bonus(confingBonus1);
-  const bonusTwo = Bonus(confingBonus2);
-  // bonusOne.addEventListener("click", () => console.log(state._fieldConfig));
-
-  bonuses.append(bonusOne, bonusTwo);
-
-  return bonuses;
+  return Element(configBonuses);
 };
 
 export default Bonuses;
