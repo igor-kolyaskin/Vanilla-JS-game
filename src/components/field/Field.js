@@ -8,6 +8,7 @@ import deepCloneTiles from "../../utils/deepCloneTiles";
 import getRandomTileType from "../../utils/getRandomTileType";
 import TileBlast from "./TileBlast";
 import Tile from "./Tile";
+import { Div } from "../../elements";
 import getClickableTilesInCurrentField from "../../bll/getClickableTilesInCurrentField";
 
 class Field {
@@ -54,15 +55,17 @@ class Field {
       field = elements.field;
       elements.field.innerHTML = "";
     } else {
-      field = document.createElement("div");
-      field.setAttribute("id", "field");
+      const configField = { attributes: { id: "field" } };
+      field = Div(configField);
+
+      const configFieldWrapper = {
+        attributes: { id: "field-wrapper" },
+        children: [field],
+      };
+      fieldWrapper = Div(configFieldWrapper);
+
       elements.field = field;
-
-      fieldWrapper = document.createElement("div");
-      fieldWrapper.setAttribute("id", "field-wrapper");
       elements.fieldWrapper = fieldWrapper;
-
-      fieldWrapper.append(field);
     }
 
     const domTiles = this._createDomTiles();
@@ -75,15 +78,17 @@ class Field {
     const domTiles = Array(this.numX)
       .fill(0)
       .map((clmn, indexX) => {
-        const column = document.createElement("div");
-        domColumnRefs.push(column);
-        column.setAttribute("id", `column-${indexX}`);
-        column.classList.add("column");
-
         const tiles = Array(this.numY)
           .fill(0)
           .map((_, indexY) => this._getDomTile(indexX, indexY, indexY));
-        column.append(...tiles);
+
+        const configColumn = {
+          attributes: { id: `column-${indexX}` },
+          classes: ["column"],
+          children: tiles,
+        };
+        const column = Div(configColumn);
+        domColumnRefs.push(column);
 
         return column;
       });
