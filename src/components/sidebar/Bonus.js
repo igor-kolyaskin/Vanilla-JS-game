@@ -7,9 +7,8 @@ const Bonus = (config) => {
 
   const configBonusIcon = {
     classes: ["bonus-icon"],
+    styles: { backgroundImage: iconUrl },
   };
-  const bonusIcon = Div(configBonusIcon);
-  bonusIcon.style.backgroundImage = iconUrl;
 
   const configBonusTooltip = {
     attributes: [["data-tooltip", `${tooltipText}`]],
@@ -24,7 +23,7 @@ const Bonus = (config) => {
   const configBonus = {
     attributes: [["id", `bonus-${id}`]],
     classes: ["bonus"],
-    children: [bonusIcon, Div(configBonusTooltip), Div(configBonusAmount)],
+    children: [Div(configBonusIcon), Div(configBonusTooltip), Div(configBonusAmount)],
   };
 
   return Div(configBonus);

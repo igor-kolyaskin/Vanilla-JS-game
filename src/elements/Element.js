@@ -1,5 +1,5 @@
 const Element = (tag, {
-  attributes, classes, children, innerText,
+  attributes, classes, children, innerText, styles,
 }) => {
   // eslint-disable-next-line no-undef
   const element = document.createElement(tag);
@@ -22,6 +22,12 @@ const Element = (tag, {
     });
   }
 
+  if (styles) {
+    Object.entries(styles).forEach(([key, value]) => {
+      element.style[key] = value;
+    });
+  }
+
   if (innerText) element.innerText = innerText;
 
   return element;
@@ -34,5 +40,6 @@ export default Element;
 //   classes: ["slider-min-max"],
 //   children: [this.text, this.refreshButton],
 //   innerText: "innerText",
+//   styles: {width: "100px", backgrounImage: "url()"}
 // };
 // const element = Element(configElement);
