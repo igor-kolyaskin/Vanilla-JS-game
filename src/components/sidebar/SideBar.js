@@ -9,7 +9,7 @@ const SideBar = () => {
   const progressBar = progressBarInstance.render();
 
   const configAside = {
-    attributes: [["id", "sidebar"]],
+    attributes: { id: "sidebar" },
     children: [score, bonuses, progressBar],
   };
   const aside = Aside(configAside);

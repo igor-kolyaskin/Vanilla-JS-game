@@ -5,7 +5,7 @@ const Element = (tag, {
   const element = document.createElement(tag);
 
   if (attributes) {
-    attributes.forEach((attribute) => {
+    Object.entries(attributes).forEach((attribute) => {
       element.setAttribute(...attribute);
     });
   }
@@ -36,7 +36,7 @@ const Element = (tag, {
 export default Element;
 
 // const configElement = {
-//   attributes: [["id", "streetlight"]],
+//   attributes: {id: "streetlight"},
 //   classes: ["slider-min-max"],
 //   children: [this.text, this.refreshButton],
 //   innerText: "innerText",

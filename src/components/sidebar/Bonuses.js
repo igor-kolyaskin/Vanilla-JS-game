@@ -4,7 +4,7 @@ import bonusConfigArray from "../../constants/constantsBonuses";
 
 const Bonuses = () => {
   const configBonuses = {
-    attributes: [["id", "bonuses"]],
+    attributes: {id: "bonuses"},
     children: [...bonusConfigArray.map((bonusConfig) => Bonus(bonusConfig))],
   };
   return Section(configBonuses);

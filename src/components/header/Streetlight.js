@@ -14,14 +14,14 @@ class Streetlight {
   render() {
     const configRefreshButton = {
       tag: "div",
-      attributes: [["id", "refresh-button"]],
+      attributes: {id: "refresh-button"},
       classes: ["refresh-button"],
     };
     this.refreshButton = Div(configRefreshButton);
 
     const configTextMessage = {
       tag: "div",
-      attributes: [["id", "streetlight-text-message"]],
+      attributes: {id: "streetlight-text-message"},
       classes: ["street-text-parts"],
       innerText: "Hallo",
     };
@@ -29,7 +29,7 @@ class Streetlight {
 
     const configTextNumber = {
       tag: "div",
-      attributes: [["id", "streetlight-text-number"]],
+      attributes: {id: "streetlight-text-number"},
       classes: ["street-text-parts"],
       innerText: "?",
     };
@@ -39,7 +39,7 @@ class Streetlight {
 
     const configTextWord = {
       tag: "div",
-      attributes: [["id", "streetlight-text-word"]],
+      attributes: {id: "streetlight-text-word"},
       classes: ["street-text-parts"],
       innerText: " кликов",
     };
@@ -47,7 +47,7 @@ class Streetlight {
 
     const configText = {
       tag: "div",
-      attributes: [["id", "streetlight-text"]],
+      attributes: {id: "streetlight-text"},
       children: [
         this.textMessage,
         this.textNumber,
@@ -59,7 +59,7 @@ class Streetlight {
 
     const configStreetlight = {
       tag: "section",
-      attributes: [["id", "streetlight"]],
+      attributes: {id: "streetlight"},
       classes: ["slider-min-max"],
       children: [this.text, this.refreshButton],
     };

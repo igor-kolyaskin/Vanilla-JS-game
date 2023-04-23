@@ -12,12 +12,12 @@ function App() {
   const message = messageInstance.render();
 
   const configMain = {
-    attributes: [["id", "main"]],
+    attributes: { id: "main" },
     children: [Header(), field, message],
   };
 
   const configApp = {
-    attributes: [["id", "app"]],
+    attributes: { id: "app" },
     children: [Main(configMain), SideBar()],
   };
   const app = Div(configApp);

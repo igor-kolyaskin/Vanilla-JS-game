@@ -7,7 +7,7 @@ const Slider = (config) => {
   } = config;
 
   const configSliderLabel = {
-    attributes: [["id", `slider-label-${id}`]],
+    attributes: { id: `slider-label-${id}` },
     innerText: `${labelText}: ${value}`,
   };
   const sliderLabel = Div(configSliderLabel);
@@ -25,24 +25,24 @@ const Slider = (config) => {
   const maxValue = Div(configMaxValue);
 
   const configSlider = {
-    attributes: Object.entries({
+    attributes: {
       ...config,
       id: `slider-${id}`,
       type: "range",
-    }),
+    },
     classes: ["slider"],
   };
   const slider = Input(configSlider);
 
   const configSliderWrapper = {
-    attributes: [["id", `slider-wrapper-${id}`]],
+    attributes: { id: `slider-wrapper-${id}` },
     classes: ["slider-wrapper"],
     children: [minValue, slider, maxValue],
   };
   const sliderWrapper = Div(configSliderWrapper);
 
   const configSliderContainer = {
-    attributes: [["id", `slider-container-${id}`]],
+    attributes: { id: `slider-container-${id}` },
     classes: ["slider-container"],
     children: [sliderLabel, sliderWrapper],
   };

@@ -11,7 +11,7 @@ const Bonus = (config) => {
   };
 
   const configBonusTooltip = {
-    attributes: [["data-tooltip", `${tooltipText}`]],
+    attributes: { "data-tooltip": `${tooltipText}` },
     classes: ["bonus-tooltip"],
   };
 
@@ -21,7 +21,7 @@ const Bonus = (config) => {
   };
 
   const configBonus = {
-    attributes: [["id", `bonus-${id}`]],
+    attributes: { id: `bonus-${id}` },
     classes: ["bonus"],
     children: [Div(configBonusIcon), Div(configBonusTooltip), Div(configBonusAmount)],
   };

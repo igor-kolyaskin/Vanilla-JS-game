@@ -6,7 +6,7 @@ import { Header, Button } from "../../elements";
 
 export default () => {
   const configButtonNewGame = {
-    attributes: [["id", "btn-new-game"]],
+    attributes: { id: "btn-new-game" },
     classes: ["header-button"],
     innerText: "Go!",
   };
@@ -17,7 +17,7 @@ export default () => {
   streetlight.addEventListener("click", onClickStreetlight);
 
   const configButtonSettings = {
-    attributes: [["id", "btn-settings"]],
+    attributes: { id: "btn-settings" },
     classes: ["header-button"],
   };
   const btnSettings = Button(configButtonSettings);
@@ -26,7 +26,7 @@ export default () => {
   streetlightInstance.showMessage("blockIsTooSmall");
 
   const headerConfig = {
-    attributes: [["id", "header"]],
+    attributes: { id: "header" },
     children: [btnNewGame, streetlight, btnSettings],
   };
 
