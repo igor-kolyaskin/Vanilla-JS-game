@@ -10,21 +10,21 @@ class ProgressBar {
   render() {
     const configScoreMax = {
       tag: "div",
-      attributes: {id: "progressbar-score-max"},
+      attributes: { id: "progressbar-score-max" },
       innerText: state.fieldConfig.scoreToWin,
     };
     this.scoreMax = Div(configScoreMax);
 
     const configScoreMin = {
       tag: "div",
-      attributes: {id: "progressbar-score-min"},
+      attributes: { id: "progressbar-score-min" },
       innerText: "0",
     };
     const scoreMin = Div(configScoreMin);
 
     const configProgressBarGreen = {
       tag: "div",
-      attributes: {id: "progressbar-green"},
+      attributes: { id: "progressbar-green" },
     };
     const progressBarGreen = Div(configProgressBarGreen);
 
@@ -32,14 +32,14 @@ class ProgressBar {
 
     const configProgressBarMask = {
       tag: "div",
-      attributes: {id: "progressbar-mask"},
+      attributes: { id: "progressbar-mask" },
       children: [progressBarGreen],
     };
     const progressBarMask = Div(configProgressBarMask);
 
     const configProgressBar = {
       tag: "section",
-      attributes: {id: "progressbar"},
+      attributes: { id: "progressbar" },
       children: [this.scoreMax, progressBarMask, scoreMin],
     };
     const progressBar = Section(configProgressBar);

@@ -9,17 +9,17 @@ class Message {
 
   render() {
     const configMessageButton = {
-      attributes: {id: "message-button"},
+      attributes: { id: "message-button" },
     };
 
     const configMessageText = {
-      attributes: {id: "message-text"},
+      attributes: { id: "message-text" },
       innerText: getMessageText("greeting"),
     };
     this.messageText = Paragraph(configMessageText);
 
     const configMessage = {
-      attributes: {id: "message"},
+      attributes: { id: "message" },
       children: [Button(configMessageButton), this.messageText],
     };
     this.messageElement = Section(configMessage);
