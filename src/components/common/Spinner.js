@@ -1,4 +1,4 @@
-import Element from "./Element";
+import Element from "../../elements/Element";
 
 const Spinner = () => {
   const configSpinner = {

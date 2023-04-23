@@ -1,6 +1,6 @@
 import getStreetlightMessage from "../../utils/getStreetlightMessage";
 import Spinner from "../common/Spinner";
-import Element from "../common/Element";
+import Element from "../../elements/Element";
 
 class Streetlight {
   constructor() {

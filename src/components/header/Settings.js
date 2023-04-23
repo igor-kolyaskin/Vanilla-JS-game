@@ -3,7 +3,7 @@ import Slider from "../common/Slider";
 import onChangeSlider from "../../listeners/onChangeSlider";
 import sliderConfig from "../../constants/sliderConfig";
 import state from "../../store/state";
-import Element from "../common/Element";
+import Element from "../../elements/Element";
 
 const Settings = () => {
   const sliderArray = sliderConfig.map((sl) => Slider({

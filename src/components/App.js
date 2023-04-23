@@ -1,5 +1,5 @@
 import Header from "./header/Header";
-import Element from "./common/Element";
+import Element from "../elements/Element";
 import fieldInstance from "./field/Field";
 import messageInstance from "./Message";
 import SideBar from "./sidebar/SideBar";

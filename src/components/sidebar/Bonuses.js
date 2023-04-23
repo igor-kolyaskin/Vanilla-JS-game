@@ -1,4 +1,4 @@
-import Element from "../common/Element";
+import Element from "../../elements/Element";
 import Bonus from "./Bonus";
 import bonusConfigArray from "../../constants/constantsBonuses";
 

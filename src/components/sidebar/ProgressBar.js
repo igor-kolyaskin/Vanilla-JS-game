@@ -1,5 +1,5 @@
 import state from "../../store/state";
-import Element from "../common/Element";
+import Element from "../../elements/Element";
 
 class ProgressBar {
   constructor() {

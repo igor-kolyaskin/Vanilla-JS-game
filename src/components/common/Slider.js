@@ -1,5 +1,5 @@
 import elements from "../../store/elements";
-import Element from "./Element";
+import Element from "../../elements/Element";
 
 const Slider = (config) => {
   const {

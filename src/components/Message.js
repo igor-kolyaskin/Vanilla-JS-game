@@ -1,5 +1,5 @@
 import getMessageText from "../utils/getModalMessageText";
-import Element from "./common/Element";
+import Element from "../elements/Element";
 
 class Message {
   constructor() {

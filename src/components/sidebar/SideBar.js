@@ -1,7 +1,7 @@
 import progressBarInstance from "./ProgressBar";
 import scoreInstance from "./Score";
 import Bonuses from "./Bonuses";
-import Element from "../common/Element";
+import Element from "../../elements/Element";
 
 const SideBar = () => {
   const score = scoreInstance.render();
