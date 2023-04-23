@@ -1,5 +1,5 @@
 import elements from "../../store/elements";
-import Element from "../../elements/Element";
+import { Div, Input, Section } from "../../elements";
 
 const Slider = (config) => {
   const {
@@ -7,28 +7,24 @@ const Slider = (config) => {
   } = config;
 
   const configSliderLabel = {
-    tag: "div",
     attributes: [["id", `slider-label-${id}`]],
     innerText: `${labelText}: ${value}`,
   };
-  const sliderLabel = Element(configSliderLabel);
+  const sliderLabel = Div(configSliderLabel);
 
   const configMinValue = {
-    tag: "div",
     classes: ["slider-min-max"],
     innerText: min,
   };
-  const minValue = Element(configMinValue);
+  const minValue = Div(configMinValue);
 
   const configMaxValue = {
-    tag: "div",
     classes: ["slider-min-max"],
     innerText: max,
   };
-  const maxValue = Element(configMaxValue);
+  const maxValue = Div(configMaxValue);
 
   const configSlider = {
-    tag: "input",
     attributes: Object.entries({
       ...config,
       id: `slider-${id}`,
@@ -36,23 +32,21 @@ const Slider = (config) => {
     }),
     classes: ["slider"],
   };
-  const slider = Element(configSlider);
+  const slider = Input(configSlider);
 
   const configSliderWrapper = {
-    tag: "div",
     attributes: [["id", `slider-wrapper-${id}`]],
     classes: ["slider-wrapper"],
     children: [minValue, slider, maxValue],
   };
-  const sliderWrapper = Element(configSliderWrapper);
+  const sliderWrapper = Div(configSliderWrapper);
 
   const configSliderContainer = {
-    tag: "section",
     attributes: [["id", `slider-container-${id}`]],
     classes: ["slider-container"],
     children: [sliderLabel, sliderWrapper],
   };
-  const sliderContainer = Element(configSliderContainer);
+  const sliderContainer = Section(configSliderContainer);
 
   elements.sliders = Object.assign(elements.sliders, { [id]: slider });
   elements.sliderLabels = Object.assign(elements.sliderLabels, {

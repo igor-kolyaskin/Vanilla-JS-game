@@ -1,9 +1,8 @@
-/* eslint-disable no-undef */
 import Slider from "../common/Slider";
 import onChangeSlider from "../../listeners/onChangeSlider";
 import sliderConfig from "../../constants/sliderConfig";
 import state from "../../store/state";
-import Element from "../../elements/Element";
+import { Section } from "../../elements";
 
 const Settings = () => {
   const sliderArray = sliderConfig.map((sl) => Slider({
@@ -12,11 +11,10 @@ const Settings = () => {
   }));
 
   const configSettingsWrapper = {
-    tag: "section",
     attributes: [["id", "settings-wrapper"]],
     children: [...sliderArray],
   };
-  const settingsWrapper = Element(configSettingsWrapper);
+  const settingsWrapper = Section(configSettingsWrapper);
 
   settingsWrapper.addEventListener("input", onChangeSlider);
 

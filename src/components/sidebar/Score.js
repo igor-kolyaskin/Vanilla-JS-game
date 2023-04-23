@@ -1,5 +1,5 @@
 import state from "../../store/state";
-import Element from "../../elements/Element";
+import { Div, Section } from "../../elements";
 
 class Score {
   constructor() {
@@ -13,35 +13,35 @@ class Score {
       attributes: [["id", "moves-display"]],
       innerText: state.fieldConfig.movesToWin,
     };
-    this.movesDilplay = Element(configMovesDilplay);
+    this.movesDilplay = Div(configMovesDilplay);
 
     const configScoresTitle = {
       tag: "div",
       attributes: [["id", "scores-title"]],
       innerText: "очки:",
     };
-    const scoresTitle = Element(configScoresTitle);
+    const scoresTitle = Div(configScoresTitle);
 
     const configScoresNumber = {
       tag: "div",
       attributes: [["id", "scores-number"]],
       innerText: "0",
     };
-    this.scoresNumber = Element(configScoresNumber);
+    this.scoresNumber = Div(configScoresNumber);
 
     const configScoresDisplay = {
       tag: "div",
       attributes: [["id", "scores-display"]],
       children: [scoresTitle, this.scoresNumber],
     };
-    const scoresDisplay = Element(configScoresDisplay);
+    const scoresDisplay = Div(configScoresDisplay);
 
     const configScore = {
       tag: "section",
       attributes: [["id", "score"]],
       children: [this.movesDilplay, scoresDisplay],
     };
-    const score = Element(configScore);
+    const score = Section(configScore);
 
     return score;
   }

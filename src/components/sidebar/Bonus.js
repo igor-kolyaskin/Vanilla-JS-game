@@ -1,28 +1,33 @@
-/* eslint-disable no-undef */
+import { Div } from "../../elements";
+
 const Bonus = (config) => {
   const {
     id, iconUrl, tooltipText, amount,
   } = config;
 
-  const bonus = document.createElement("div");
-  bonus.setAttribute("id", `bonus-${id}`);
-  bonus.classList.add("bonus");
-
-  const bonusIcon = document.createElement("div");
+  const configBonusIcon = {
+    classes: ["bonus-icon"],
+  };
+  const bonusIcon = Div(configBonusIcon);
   bonusIcon.style.backgroundImage = iconUrl;
-  bonusIcon.classList.add("bonus-icon");
 
-  const bonusTooltip = document.createElement("div");
-  bonusTooltip.setAttribute("data-tooltip", `${tooltipText}`);
-  bonusTooltip.classList.add("bonus-tooltip");
+  const configBonusTooltip = {
+    attributes: [["data-tooltip", `${tooltipText}`]],
+    classes: ["bonus-tooltip"],
+  };
 
-  const bonusAmount = document.createElement("div");
-  bonusAmount.innerText = amount;
-  bonusAmount.classList.add("bonus-amount");
+  const configBonusAmount = {
+    classes: ["bonus-amount"],
+    innerText: amount,
+  };
 
-  bonus.append(bonusIcon, bonusTooltip, bonusAmount);
+  const configBonus = {
+    attributes: [["id", `bonus-${id}`]],
+    classes: ["bonus"],
+    children: [bonusIcon, Div(configBonusTooltip), Div(configBonusAmount)],
+  };
 
-  return bonus;
+  return Div(configBonus);
 };
 
 export default Bonus;

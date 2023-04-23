@@ -1,31 +1,34 @@
-/* eslint-disable no-undef */
 import streetlightInstance from "./Streetlight";
 import onClickStreetlight from "../../listeners/onClickStreetlight";
 import onClickSettings from "../../listeners/onClickSettings";
 import onClickNewGame from "../../listeners/onClickNewGame";
+import { Header, Button } from "../../elements";
 
-const Header = () => {
-  const header = document.createElement("header");
-  header.setAttribute("id", "header");
-
-  const btnNewGame = document.createElement("button");
-  btnNewGame.setAttribute("id", "btn-new-game");
-  btnNewGame.classList.add("header-button");
-  btnNewGame.innerText = "Go!";
+export default () => {
+  const configButtonNewGame = {
+    attributes: [["id", "btn-new-game"]],
+    classes: ["header-button"],
+    innerText: "Go!",
+  };
+  const btnNewGame = Button(configButtonNewGame);
   btnNewGame.addEventListener("click", onClickNewGame);
 
   const streetlight = streetlightInstance.render();
   streetlight.addEventListener("click", onClickStreetlight);
 
-  const btnSettings = document.createElement("button");
-  btnSettings.setAttribute("id", "btn-settings");
-  btnSettings.classList.add("header-button");
+  const configButtonSettings = {
+    attributes: [["id", "btn-settings"]],
+    classes: ["header-button"],
+  };
+  const btnSettings = Button(configButtonSettings);
   btnSettings.addEventListener("click", onClickSettings);
 
-  header.append(btnNewGame, streetlight, btnSettings);
   streetlightInstance.showMessage("blockIsTooSmall");
 
-  return header;
-};
+  const headerConfig = {
+    attributes: [["id", "header"]],
+    children: [btnNewGame, streetlight, btnSettings],
+  };
 
-export default Header;
+  return Header(headerConfig);
+};

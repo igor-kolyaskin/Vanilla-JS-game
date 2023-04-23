@@ -1,5 +1,5 @@
-const Element = ({
-  tag, attributes, classes, children, innerText,
+const Element = (tag, {
+  attributes, classes, children, innerText,
 }) => {
   // eslint-disable-next-line no-undef
   const element = document.createElement(tag);
@@ -30,7 +30,6 @@ const Element = ({
 export default Element;
 
 // const configElement = {
-//   tag: "div",
 //   attributes: [["id", "streetlight"]],
 //   classes: ["slider-min-max"],
 //   children: [this.text, this.refreshButton],

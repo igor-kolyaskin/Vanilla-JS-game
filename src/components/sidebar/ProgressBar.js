@@ -1,5 +1,5 @@
 import state from "../../store/state";
-import Element from "../../elements/Element";
+import { Div, Section } from "../../elements";
 
 class ProgressBar {
   constructor() {
@@ -13,20 +13,20 @@ class ProgressBar {
       attributes: [["id", "progressbar-score-max"]],
       innerText: state.fieldConfig.scoreToWin,
     };
-    this.scoreMax = Element(configScoreMax);
+    this.scoreMax = Div(configScoreMax);
 
     const configScoreMin = {
       tag: "div",
       attributes: [["id", "progressbar-score-min"]],
       innerText: "0",
     };
-    const scoreMin = Element(configScoreMin);
+    const scoreMin = Div(configScoreMin);
 
     const configProgressBarGreen = {
       tag: "div",
       attributes: [["id", "progressbar-green"]],
     };
-    const progressBarGreen = Element(configProgressBarGreen);
+    const progressBarGreen = Div(configProgressBarGreen);
 
     this.barGreen = progressBarGreen;
 
@@ -35,14 +35,14 @@ class ProgressBar {
       attributes: [["id", "progressbar-mask"]],
       children: [progressBarGreen],
     };
-    const progressBarMask = Element(configProgressBarMask);
+    const progressBarMask = Div(configProgressBarMask);
 
     const configProgressBar = {
       tag: "section",
       attributes: [["id", "progressbar"]],
       children: [this.scoreMax, progressBarMask, scoreMin],
     };
-    const progressBar = Element(configProgressBar);
+    const progressBar = Section(configProgressBar);
 
     return progressBar;
   }

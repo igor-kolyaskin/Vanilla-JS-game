@@ -1,5 +1,5 @@
 import getMessageText from "../utils/getModalMessageText";
-import Element from "../elements/Element";
+import { Button, Paragraph, Section } from "../elements";
 
 class Message {
   constructor() {
@@ -9,24 +9,20 @@ class Message {
 
   render() {
     const configMessageButton = {
-      tag: "button",
       attributes: [["id", "message-button"]],
     };
-    const messageButton = Element(configMessageButton);
 
     const configMessageText = {
-      tag: "p",
       attributes: [["id", "message-text"]],
       innerText: getMessageText("greeting"),
     };
-    this.messageText = Element(configMessageText);
+    this.messageText = Paragraph(configMessageText);
 
     const configMessage = {
-      tag: "section",
       attributes: [["id", "message"]],
-      children: [messageButton, this.messageText],
+      children: [Button(configMessageButton), this.messageText],
     };
-    this.messageElement = Element(configMessage);
+    this.messageElement = Section(configMessage);
 
     return this.messageElement;
   }

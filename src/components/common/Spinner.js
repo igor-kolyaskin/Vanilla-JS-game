@@ -1,12 +1,9 @@
-import Element from "../../elements/Element";
+import { Div } from "../../elements";
 
 const Spinner = () => {
-  const configSpinner = {
-    tag: "div",
-    classes: ["lds-dual-ring", "street-text-parts", "street-text-spinner"],
-  };
+  const configSpinner = { classes: ["lds-dual-ring", "street-text-parts", "street-text-spinner"] };
 
-  return Element(configSpinner);
+  return Div(configSpinner);
 };
 
 export default Spinner;

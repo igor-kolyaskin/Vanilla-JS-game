@@ -1,6 +1,6 @@
 import getStreetlightMessage from "../../utils/getStreetlightMessage";
 import Spinner from "../common/Spinner";
-import Element from "../../elements/Element";
+import { Div, Section } from "../../elements";
 
 class Streetlight {
   constructor() {
@@ -17,7 +17,7 @@ class Streetlight {
       attributes: [["id", "refresh-button"]],
       classes: ["refresh-button"],
     };
-    this.refreshButton = Element(configRefreshButton);
+    this.refreshButton = Div(configRefreshButton);
 
     const configTextMessage = {
       tag: "div",
@@ -25,7 +25,7 @@ class Streetlight {
       classes: ["street-text-parts"],
       innerText: "Hallo",
     };
-    this.textMessage = Element(configTextMessage);
+    this.textMessage = Div(configTextMessage);
 
     const configTextNumber = {
       tag: "div",
@@ -33,7 +33,7 @@ class Streetlight {
       classes: ["street-text-parts"],
       innerText: "?",
     };
-    this.textNumber = Element(configTextNumber);
+    this.textNumber = Div(configTextNumber);
 
     this.textSpinner = Spinner();
 
@@ -43,7 +43,7 @@ class Streetlight {
       classes: ["street-text-parts"],
       innerText: " кликов",
     };
-    this.textWord = Element(configTextWord);
+    this.textWord = Div(configTextWord);
 
     const configText = {
       tag: "div",
@@ -55,7 +55,7 @@ class Streetlight {
         this.textWord,
       ],
     };
-    this.text = Element(configText);
+    this.text = Div(configText);
 
     const configStreetlight = {
       tag: "section",
@@ -63,7 +63,7 @@ class Streetlight {
       classes: ["slider-min-max"],
       children: [this.text, this.refreshButton],
     };
-    const streetlight = Element(configStreetlight);
+    const streetlight = Section(configStreetlight);
 
     return streetlight;
   }
