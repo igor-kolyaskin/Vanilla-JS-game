@@ -1,13 +1,13 @@
-/* eslint-disable no-undef */
+import { Div } from "../../elements";
+
 function TileBlast() {
-  const tileBlast = document.createElement("div");
-  tileBlast.classList.add("tile-blast");
+  const configBlast = { classes: ["blast"] };
 
-  const blast = document.createElement("div");
-  blast.classList.add("blast");
+  const configTileBlast = {
+    classes: ["tile-blast"],
+    children: [Div(configBlast)],
+  };
 
-  tileBlast.append(blast);
-
-  return tileBlast;
+  return Div(configTileBlast);
 }
 export default TileBlast;
