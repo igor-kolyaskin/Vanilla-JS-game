@@ -7,6 +7,7 @@ import streetlightInstance from "../header/Streetlight";
 import deepCloneTiles from "../../utils/deepCloneTiles";
 import getRandomTileType from "../../utils/getRandomTileType";
 import TileBlast from "./TileBlast";
+import Tile from "./Tile";
 import getClickableTilesInCurrentField from "../../bll/getClickableTilesInCurrentField";
 
 class Field {
@@ -81,7 +82,7 @@ class Field {
 
         const tiles = Array(this.numY)
           .fill(0)
-          .map((_, indexY) => this._createDomTile(indexX, indexY));
+          .map((_, indexY) => this._getDomTile(indexX, indexY, indexY));
         column.append(...tiles);
 
         return column;
@@ -91,17 +92,10 @@ class Field {
     return domTiles;
   }
 
-  _createDomTile(x, y, top = y) {
+  _getDomTile(x, y, top) {
     const { type } = this.tiles[x][y];
-    const tile = document.createElement("div");
-    tile.setAttribute("id", `tile-${x}-${y}`);
-    tile.classList.add("tile");
-    tile.style.backgroundImage = `url(./assets/png/tile_${type}.png)`;
-    // tile.style.backgroundColor = `var(--tile-${type}-clr)`;
-    tile.style.top = `${state.fieldConfig.tileSize * top}rem`;
-    // tile.innerText = type;
 
-    return tile;
+    return Tile(x, y, top, type);
   }
 
   // changeAggregatedTiles(x, y, aggArea)
@@ -222,7 +216,7 @@ class Field {
     // create replenishment for DOM
     const domReplenishment = Array(gap)
       .fill(0)
-      .map((_, index) => this._createDomTile(columnNum, index, index - gap));
+      .map((_, index) => this._getDomTile(columnNum, index, index - gap));
 
     // add replenishment tiles to DOM column
     domColumn.prepend(...domReplenishment);
