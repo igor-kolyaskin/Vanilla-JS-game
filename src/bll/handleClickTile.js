@@ -1,6 +1,7 @@
 import fieldInstance from "../components/field/Field";
 import game from "./Game";
 import { wait, setVariablesCSS } from "../utils";
+import { delayDissappearBlast } from "../constants/configTimer";
 
 const handleClickTile = async (x, y, tileColor, aggregationArea) => {
   // if aggregation area >= 5, and this tile isn't Bang (color === 10) itself, then
@@ -33,7 +34,7 @@ const handleClickTile = async (x, y, tileColor, aggregationArea) => {
     "--tile-blast-bgn-clr": "rgba(0, 0, 0, .4)",
   };
   setVariablesCSS(variablesCSS);
-  await wait(500);
+  await wait(delayDissappearBlast);
 
   variablesCSS = { "--tile-blast-bgn-clr": "rgba(0, 0, 0, .1)" };
   setVariablesCSS(variablesCSS);

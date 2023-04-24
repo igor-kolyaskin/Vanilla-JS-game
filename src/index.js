@@ -6,6 +6,7 @@ import gameInstance from "./bll/Game";
 import elements from "./store/elements";
 import setVariablesCSS from "./utils/setVariablesCSS";
 import message from "./components/Message";
+import { transitionTileShift } from "./constants/configTimer";
 
 // eslint-disable-next-line no-undef
 const config = localStorage.getItem("config");
@@ -39,6 +40,7 @@ const variablesCSS = {
   "--num-y": `${numY}`,
   "--shift-x": `${0.5 + (9 - numX) * 1.5}rem`,
   "--shift-y": `${0.5 + (9 - numY) * 1.5}rem`,
+  "--transition-tile-shift": `${transitionTileShift / 1000}s`,
 };
 setVariablesCSS(variablesCSS);
 

@@ -10,6 +10,7 @@ import TileBlast from "./TileBlast";
 import Tile from "./Tile";
 import { Div } from "../../elements";
 import getClickableTilesInCurrentField from "../../bll/getClickableTilesInCurrentField";
+import { stepShiftTiles } from "../../constants/configTimer";
 
 class Field {
   constructor() {
@@ -235,7 +236,7 @@ class Field {
       while (whileCondition) {
         whileCondition = false;
         // eslint-disable-next-line no-await-in-loop
-        await wait(100);
+        await wait(stepShiftTiles);
 
         tileNum = 0;
         // eslint-disable-next-line no-restricted-syntax, prefer-const

@@ -39,5 +39,5 @@
     background-repeat: no-repeat;
     background-size: 96%;
     box-sizing: border-box;
-    transition: top 0.4s ease-out;
+    transition: top var(--transition-tile-shift) ease-out;
 }
