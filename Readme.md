@@ -1,4 +1,4 @@
-# Игра Blast
+# Vanilla-JS-game
 
 https://brut-de-brut.github.io/Blast/dist
 
